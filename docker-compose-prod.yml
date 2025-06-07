@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      args:
+        - HOST=0.0.0.0
+        - PORT=4000
+    env_file:
+      - env/.env-prod-backend
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - HOST=0.0.0.0
+        - PORT=4000
+    ports:
+      - 5000:4000
+    env_file:
+      - env/.env-prod-frontend
+    depends_on:
+      - backend
+
+  signature:
+    build:
+      context: ./signature
+      args:
+        - PORT=WXYZ
+    depends_on:
+      - frontend
