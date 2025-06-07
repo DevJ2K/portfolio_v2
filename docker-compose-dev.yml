@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+
+  # Hot-reload
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      args:
+        - HOST=0.0.0.0
+        - PORT=4000
+    ports:
+      - 4001:4000
+    volumes:
+      - ./backend/app:/app
+    env_file:
+      - env/.env-dev-backend
+
+  # Not hot-reload
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      args:
+        - HOST=0.0.0.0
+        - PORT=4000
+    ports:
+      - 4000:4000
+    env_file:
+      - env/.env-dev-frontend
