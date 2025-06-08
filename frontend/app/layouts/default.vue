@@ -4,6 +4,8 @@
       <NuxtPage />
     </UApp>
     <!-- <ChatBot /> -->
+     <!-- <ChatbotChatBot /> -->
+      <Chatbot />
     <div class="fixed bottom-4 left-4 z-[2000]">
       <span class="sm:hidden dark:text-white text-black">XS</span>
       <span class="hidden sm:block md:hidden dark:text-white text-black">SM</span>
