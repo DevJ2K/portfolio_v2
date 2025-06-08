@@ -15,6 +15,7 @@ class ConversationHandler:
             content = f.read()
         return content
 
+    @staticmethod
     def get_context(rag: RAG, input_messages: list[ChatMessage], query: str, k_context: int = 2) -> list[ChatMessage]:
         messages = input_messages.copy()
         messages.append({

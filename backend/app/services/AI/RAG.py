@@ -1,6 +1,7 @@
 from app.utils.logger import rag_logger
 from app.utils.Colors import BHMAG, RESET
 from app.exceptions.RAGError import RAGError
+from app.configuration.Configuration import CONFIGURATION
 from pathlib import Path
 from rich.progress import track
 import numpy as np
@@ -9,7 +10,7 @@ import ollama
 
 class RAG:
     def __init__(self, datasets: list[Path]) -> None:
-        self.EMBEDDING_MODEL = 'hf.co/CompendiumLabs/bge-base-en-v1.5-gguf'  # (..., 768)
+        self.EMBEDDING_MODEL: str = str(CONFIGURATION.OLLAMA_MODEL)  # (..., 768)
 
         self.chunks: list[str] = []
         self.chunk_embeddings: np.ndarray = np.empty((0))
@@ -25,7 +26,7 @@ class RAG:
         self.chunk_embeddings = self.chunk_embeddings.reshape((0, chunks_embeddings.shape[1]))  # (0, d)
         self.chunk_embeddings = np.vstack([self.chunk_embeddings, chunks_embeddings])
 
-    def __get_chunks__(self, datasets: Path) -> list[str]:
+    def __get_chunks__(self, datasets: list[Path]) -> list[str]:
         chunks = []
         for dataset in datasets:
             try:
