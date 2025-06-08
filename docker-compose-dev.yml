@@ -4,7 +4,7 @@ services:
 
   # Hot-reload
   backend:
-    container_name: backend
+    container_name: portfolio-backend
     build:
       context: ./backend
       args:
@@ -14,12 +14,14 @@ services:
       - 4001:4000
     volumes:
       - ./backend/app:/app
+      - ./backend/requirements.txt:/app/requirements.txt
+      - ./backend/script.sh:/app/script.sh
     env_file:
       - env/.env-dev-backend
 
   # Not hot-reload
   frontend:
-    container_name: frontend
+    container_name: portfolio-frontend
     build:
       context: ./frontend
       args:
