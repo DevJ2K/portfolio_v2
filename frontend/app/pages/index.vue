@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <h1>Hello world !</h1>
-  </div>
+  <main class="relative flex size-full flex-col items-center">
+    <ViewMain />
+    <!-- <ViewMain id="skills"/> -->
+  </main>
 </template>
 
 <script setup lang="ts">

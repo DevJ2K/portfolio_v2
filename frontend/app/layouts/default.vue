@@ -1,5 +1,6 @@
 <template>
-  <div class="text-zinc-900 bg-zinc-100">
+  <div class="text-zinc-900 bg-background min-h-screen flex justify-center">
+    <Navbar />
     <UApp>
       <NuxtPage />
     </UApp>
