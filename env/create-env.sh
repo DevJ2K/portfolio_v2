@@ -15,6 +15,7 @@ for env in "${environments[@]}"; do
     if [[ "$target" == "backend" ]]; then
       cat > "$filepath" <<EOL
 MISTRAL_API_KEY=
+OLLAMA_MODEL=
 EOL
 
     elif [[ "$target" == "frontend" ]]; then
