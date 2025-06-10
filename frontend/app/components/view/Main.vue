@@ -4,7 +4,7 @@
         class="gradient-text">DevJ2K</span></h1>
     <h2 class="text-subtitle font-extrabold max-md:px-4">Software Engineer & Student</h2>
 
-    <p class="text-body text-zinc-600 mt-4 max-w-2xl text-center max-md:px-4">
+    <p class="text-body text-foreground-secondary mt-4 max-w-2xl text-center max-md:px-4">
       Based in Paris and studying at <a href="https://42.fr/en/homepage/" target="_blank" class="gradient-text">42</a>,
       I’m a 19 years old passionate about exploring cutting-edge technologies and mastering new skills. My
       goal is to drive impactful projects that challenge the mind and push boundaries.
