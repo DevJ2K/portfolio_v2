@@ -1,8 +1,10 @@
 <template>
   <div class="text-zinc-900 bg-background min-h-screen flex justify-center">
-    <Navbar />
     <UApp>
-      <NuxtPage />
+      <Navbar />
+      <div class="max-w-[1024px] w-full h-full lg:border-l lg:border-r border-window-border">
+        <NuxtPage />
+      </div>
     </UApp>
     <!-- <ChatBot /> -->
      <!-- <ChatbotChatBot /> -->

@@ -1,22 +1,22 @@
 <template>
-  <div class="h-screen flex flex-col items-center justify-center bg-background text-foreground">
-    <h1 class="text-[max(32px,32px)] font-extrabold leading-8">Hey, I’m Theo — aka <span
+  <div class="w-full h-[90vh] flex flex-col items-center justify-center text-foreground text-center">
+    <h1 class="text-title font-extrabold leading-8 max-md:px-4">Hey, I’m Theo — aka <span
         class="gradient-text">DevJ2K</span></h1>
-    <h2 class="text-[max(28px,28px)] font-extrabold">Software Engineer & Student</h2>
+    <h2 class="text-subtitle font-extrabold max-md:px-4">Software Engineer & Student</h2>
 
-    <p class="text-lg text-zinc-600 mt-4 max-w-2xl text-center">
+    <p class="text-body text-zinc-600 mt-4 max-w-2xl text-center max-md:px-4">
       Based in Paris and studying at <a href="https://42.fr/en/homepage/" target="_blank" class="gradient-text">42</a>,
       I’m a 19 years old passionate about exploring cutting-edge technologies and mastering new skills. My
       goal is to drive impactful projects that challenge the mind and push boundaries.
     </p>
 
-    <div class="flex mt-7 gap-14 text-sm">
-      <div class="flex gap-2 justify-center items-center">
-        <div class="size-3 bg-green-400 rounded-full custom-ping" />
+    <div class="flex mt-7 gap-7 md:gap-14 text-body">
+      <div class="flex gap-1.25 md:gap-2 justify-center items-center">
+        <div class="size-1.5 md:size-2.5 bg-green-400 rounded-full custom-ping" />
         <p>Available for Internship</p>
       </div>
-      <div class="flex gap-2 justify-center items-center">
-        <div class="size-3 bg-green-400 rounded-full custom-ping" />
+      <div class="flex gap-1.25 md:gap-2 justify-center items-center">
+        <div class="size-1.5 md:size-2.5 bg-green-400 rounded-full custom-ping" />
         <p>Open for work</p>
       </div>
     </div>
@@ -42,19 +42,19 @@
 }
 
 .custom-ping {
-  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: ping 1.0s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 @keyframes ping {
   0% {
     transform: scale(1);
-    opacity: 0.1;
+    opacity: 0.4;
   }
 
   75%,
   100% {
     transform: scale(1.5);
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 </style>

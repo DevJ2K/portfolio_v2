@@ -1,6 +1,8 @@
 <template>
   <main class="relative flex size-full flex-col items-center">
-    <ViewMain />
+    <ViewMain/>
+    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+
     <!-- <ViewMain id="skills"/> -->
   </main>
 </template>
