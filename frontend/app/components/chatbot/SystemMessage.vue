@@ -3,7 +3,7 @@
     <div class="min-w-6 max-w-6 md:max-w-7 md:min-w-7">
       <div class="h-fit min-w-fit rounded-full shadow-md -translate-y-0.5">
         <NuxtImg
-          src="/j2klogo.png"
+          src="/images/j2klogo.png"
           alt="Assistant J2K"
           width="400"
           height="400"

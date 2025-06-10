@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 
-const { name, icon } = defineProps({
+defineProps({
   name: {
     type: String,
     required: true

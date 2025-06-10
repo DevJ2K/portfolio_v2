@@ -25,7 +25,7 @@
         @click="openChatbot"
       >
         <NuxtImg
-          src="/j2klogo.png"
+          src="/images/j2klogo.png"
           alt="Assistant J2K"
           width="400"
           height="400"
