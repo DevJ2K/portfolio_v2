@@ -5,6 +5,10 @@
     <ViewProjects id="projects"/>
     <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
     <ViewWork id="work"/>
+    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <ViewEducation id="education"/>
+    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <h1 class="mt-12">Hello</h1>
     <!-- <ViewMain id="skills"/> -->
   </main>
 </template>
