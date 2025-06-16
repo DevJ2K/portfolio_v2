@@ -5,6 +5,7 @@
     description="Projects that reflect what I love to build." />
 
     <PickerBar
+      class="mt-8"
       :items="['AI', 'Web', 'Mobile']"
       :selected="selectedTag"
       @select="(index) => selectedTag = index" />
@@ -26,7 +27,8 @@
 </template>
 
 <script setup lang="ts">
-const selectedTag = ref(0);
+const tags = ['AI', 'Web', 'Mobile'];
+const selectedTag = ref(tags[0]);
 </script>
 
 <style scoped>

@@ -2,10 +2,10 @@
   <div class="grid grid-cols-3 items-center justify-center gap-2 bg-ui-background p-2 border border-ui-border rounded-2xl picker-shadow">
     <button
     v-for="(item, index) in items" :key="index"
-      :class="['px-4 py-2 rounded-lg font-medium border-b border-r border-transparent', index === selected
+      :class="['px-4 py-2 rounded-lg font-medium border-b border-r border-transparent text-body', item === selected
       ? 'text-blue-500 selected-shadow border-ui-border'
-      : 'text-foreground-secondary cursor-pointer hover:text-blue-400']"
-      @click="$emit('select', index)">
+      : 'text-foreground-secondary cursor-pointer hover:text-blue-800']"
+      @click="$emit('select', item)">
       {{ item }}
     </button>
   </div>
@@ -18,13 +18,13 @@ defineProps({
     required: true
   },
   selected: {
-    type: Number,
-    default: 0
+    type: String,
+    required: true
   }
 })
 
 defineEmits<{
-  select: [index: number]
+  select: [tag: string]
 }>()
 </script>
 
