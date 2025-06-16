@@ -1,17 +1,18 @@
 <template>
-  <div class="flip-card bg-transparent group" @click="toggleFace">
+  <div class="flip-card bg-transparent group h-full" @click="toggleFace">
     <div
-        class="flip-card-inner size-full p-4 flex flex-col justify-center items-center border border-ui-border rounded-lg custom-shadow relative w-full h-64"
-         :class="showingFace === 'front' ? 'rotate-y-0' : 'rotate-y-180'">
+        class="flip-card-inner size-full p-4 flex flex-col justify-center items-center border border-ui-border rounded-lg custom-shadow relative w-full h-full"
+        :class="showingFace === 'front' ? 'rotate-y-0' : 'rotate-y-180'"
+        :style="{ minHeight: dynamicHeight + 'px' }">
 
       <div class="flip-card-front flex flex-col items-center justify-center gap-2">
-
         <div class="flex items-center justify-center border-2 md:border-4 border-white p-1 size-fit rounded-xl">
            <component :is="skill.icon" clazz="text-black size-6 md:size-10" />
         </div>
         <h1 class="font-medium text-center">{{ skill.name }}</h1>
         <p class="absolute bottom-2 text-xs text-foreground-secondary/70 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Click to reveal</p>
       </div>
+
       <div class="flip-card-back rotate-y-180 p-3 flex flex-col items-start justify-start gap-2 text-sm">
         <h1 class="font-medium text-left">{{ skill.description }}</h1>
         <ul class="list-inside text-left">
@@ -29,7 +30,8 @@
 
 <script lang="ts" setup>
 import type { Skill } from '~/types/Skill';
-defineProps({
+
+const { skill } = defineProps({
   skill: {
     type: Object as () => Skill,
     required: true
@@ -37,15 +39,22 @@ defineProps({
 })
 
 const showingFace = ref("front");
+const dynamicHeight = ref(200);
 
 const toggleFace = () => {
   showingFace.value = showingFace.value === "front" ? "back" : "front";
 };
 
+onMounted(() => {
+  const estimatedFrontHeight = 120;
+  const estimatedBackHeight = 50 + (skill.achievements?.length || 0) * 30;
+
+  dynamicHeight.value = Math.max(estimatedFrontHeight, estimatedBackHeight, 0);
+});
+
 </script>
 
 <style>
-
 .flip-card {
   perspective: 1000px;
 }
@@ -59,10 +68,9 @@ const toggleFace = () => {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-
 
 .custom-shadow:hover {
   cursor: pointer;
