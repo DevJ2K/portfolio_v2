@@ -54,7 +54,7 @@ onMounted(() => {
 
 </script>
 
-<style>
+<style scoped>
 .flip-card {
   perspective: 1000px;
 }
