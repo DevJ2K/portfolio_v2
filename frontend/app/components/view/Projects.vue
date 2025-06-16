@@ -4,6 +4,10 @@
     title="Projects"
     description="Projects that reflect what I love to build." />
 
+    <PickerBar
+      :items="['AI', 'Web', 'Mobile']"
+      :selected="selectedTag"
+      @select="(index) => selectedTag = index" />
 
     <div class="flex flex-wrap justify-center gap-8 mx-4 my-12">
       <ProjectCard
@@ -22,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-
+const selectedTag = ref(0);
 </script>
 
 <style scoped>
