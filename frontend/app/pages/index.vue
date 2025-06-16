@@ -11,6 +11,8 @@
     <ViewSkills id="skills"/>
     <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
     <ViewContact id="contact"/>
+    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <ViewFooter id="footer"/>
   </main>
 </template>
 
