@@ -4,7 +4,7 @@
     title="Work Experience"
     description="A brief look at where I've worked and the roles I've held." />
 
-    <div class="flex flex-col items-center justify-center w-full max-w-4xl gap-8 mt-12">
+    <div class="flex flex-col items-center justify-center w-full max-w-4xl gap-5 md:gap-8 mt-12">
       <div v-for="(work, index) in workExperiences" :key="index" class="grid grid-cols-3 items-center justify-center w-full gap-3">
         <p class="col-span-1 text-foreground-secondary/70 text-left">
           {{ work.duration }}
@@ -26,7 +26,7 @@ const workExperiences: WorkExperience[] = [
     company: '???',
     duration: 'Feb. 2025 - Present',
     position: 'CTO & Fullstack Developer',
-    logo: '/images/work/devj2k.png',
+    logo: '/images/experiences/unknown-project.png',
     connector: 'for',
     clazz: 'bg-gradient-to-b from-[#E0EFFF] to-[#F5E0FF] border-[#DC8FFF]'
   },
@@ -34,7 +34,7 @@ const workExperiences: WorkExperience[] = [
     company: 'Credit Agricole Corporate & Investment Bank',
     duration: 'Jan. 2025 - Present',
     position: 'Software Engineer Internship',
-    logo: '/images/work/devj2k.png',
+    logo: '/images/experiences/cacib.png',
     connector: 'at',
     clazz: 'bg-[#FFFFFF] border-[#DCDCDC]'
   },
@@ -42,7 +42,7 @@ const workExperiences: WorkExperience[] = [
     company: 'LudiLab',
     duration: 'Jan. 2025 - Feb. 2025',
     position: 'Web3 Developer',
-    logo: '/images/work/devj2k.png',
+    logo: '/images/experiences/ludilab.jpeg',
     connector: 'for',
     clazz: 'bg-[#D4D4FF] border-[#A1A0DE]'
   },
@@ -50,7 +50,7 @@ const workExperiences: WorkExperience[] = [
     company: 'Belles Des Pins',
     duration: 'Oct. 2024',
     position: 'Mobile Developer',
-    logo: '/images/work/devj2k.png',
+    logo: '/images/experiences/bellesdespins.png',
     connector: 'for',
     clazz: 'bg-[#FFE2D4] border-[#DEB4A0]'
   },
@@ -58,7 +58,7 @@ const workExperiences: WorkExperience[] = [
     company: 'WaveInvest',
     duration: 'Dec. 2022 - Feb. 2023',
     position: 'Mobile Developer',
-    logo: '/images/work/devj2k.png',
+    logo: '/images/experiences/waveinvest.png',
     connector: 'for',
     clazz: 'bg-[#FED4FF] border-[#DCA0DE]'
   }
