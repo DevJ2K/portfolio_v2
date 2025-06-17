@@ -1,5 +1,5 @@
 <template>
-  <a class="flex items-center gap-2 bg-ui-background hover:bg-ui-background-hover border border-ui-border px-5 py-4 rounded-2xl custom-shadow" :href="link" target="_blank">
+  <a class="flex items-center gap-2 bg-ui-background hover:bg-ui-background-hover/70 border border-ui-border px-5 py-4 rounded-2xl custom-shadow" :href="link" target="_blank">
     <div class="flex items-center justify-center size-5 md:size-6">
       <Icon :name="icon" size="64" />
     </div>
