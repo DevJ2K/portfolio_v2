@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed min-h-22 group flex items-end justify-end transition-all duration-300 ease-in-out"
+    class="fixed min-h-22 group flex items-end justify-end transition-all duration-300 ease-in-out z-50"
     :class="{ 'bottom-4 right-4 md:bottom-8 md:right-8': !isOpen,
               'bottom-0 right-0 md:bottom-8 md:right-8': isOpen }"
   >

@@ -1,7 +1,7 @@
 <template>
-  <div class="fixed bg-white z-50 top-12 flex items-center justify-between p-2 md:w-3/4 rounded-full custom-shadow">
+  <div class="fixed bg-white z-40 top-12 flex items-center justify-between p-2 md:w-[max(70vw,768px)] rounded-full custom-shadow">
     <a href="#" @click="scrollToSection('main', $event)">
-      <div class="size-26 h-fit rounded-md flex items-center justify-center -rotate-6 ml-4">
+      <div class="size-26 h-fit rounded-md flex items-center justify-center md:-rotate-6 md:ml-4">
         <NuxtImg src="/images/DevJ2K.png" alt="Assistant J2K" width="400" />
       </div>
     </a>
