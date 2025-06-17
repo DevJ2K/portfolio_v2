@@ -1,17 +1,17 @@
 <template>
   <main class="relative flex size-full flex-col items-center text-body">
     <ViewMain/>
-    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <div class="w-full h-px bg-window-border mb-12"/> <!-- Separator -->
     <ViewProjects id="projects"/>
-    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <div class="w-full h-px bg-window-border mt-18 mb-12"/> <!-- Separator -->
     <ViewWork id="work"/>
-    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <div class="w-full h-px bg-window-border mt-18 mb-12"/> <!-- Separator -->
     <ViewEducation id="education"/>
-    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <div class="w-full h-px bg-window-border mt-18 mb-12"/> <!-- Separator -->
     <ViewSkills id="skills"/>
-    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <div class="w-full h-px bg-window-border mt-18 mb-12"/> <!-- Separator -->
     <ViewContact id="contact"/>
-    <div class="mt-0 w-full h-px bg-window-border"/> <!-- Separator -->
+    <div class="w-full h-px bg-window-border mt-12"/> <!-- Separator -->
     <ViewFooter id="footer"/>
   </main>
 </template>

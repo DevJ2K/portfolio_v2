@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-12 flex flex-col items-center justify-center text-foreground text-center">
+  <div class="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
     <SectionIntroduction
     title="Contact"
     description="You can find my contact information below if you'd like to get in touch." />

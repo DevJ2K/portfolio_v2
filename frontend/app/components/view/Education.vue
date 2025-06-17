@@ -1,6 +1,7 @@
 <template>
-  <div class="w-full mt-12 px-4 flex flex-col items-center justify-center text-foreground text-center">
-    <SectionIntroduction title="Education"
+  <div class="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
+    <SectionIntroduction
+      title="Education"
       description="Where I built the foundations of my software engineering journey." />
     <div class="flex flex-wrap justify-center w-full max-w-4xl gap-6 mt-12">
       <div v-for="(education, index) in educations" :key="index" class="max-w-sm">

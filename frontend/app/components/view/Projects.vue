@@ -1,16 +1,16 @@
 <template>
-  <div class="w-full mt-12 flex flex-col items-center justify-center text-foreground text-center">
+  <div class="w-full flex flex-col items-center justify-center text-foreground text-center px-4">
     <SectionIntroduction
     title="Projects"
     description="Projects that reflect what I love to build." />
 
     <PickerBar
-      class="mt-8"
+      class="my-8 bg-red-500"
       :items="['AI', 'Web', 'Mobile']"
       :selected="selectedTag"
       @select="(index) => selectedTag = index" />
 
-    <div class="flex flex-wrap justify-center gap-8 mx-4 my-12">
+    <div class="flex flex-wrap justify-center gap-8">
       <ProjectCard
         title="SnakeAI"
         description="The goal of this project is to introduce basic of reinforcement learning with a snake game. The snake has to reach a minimum length of 10."

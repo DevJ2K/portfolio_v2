@@ -1,9 +1,9 @@
 <template>
-    <div class="w-full mt-12 flex flex-col items-center justify-center text-foreground text-center">
+    <div class="w-full flex flex-col items-center justify-center text-foreground text-center">
     <SectionIntroduction
     title="Skills"
     description="Explore the cards to learn how I work with each language." />
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 w-full mt-12">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 w-full mt-8">
         <div v-for="skill in skills" :key="skill.name">
             <SkillItem :skill="skill" />
 

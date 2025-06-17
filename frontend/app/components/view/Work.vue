@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-12 px-4 flex flex-col items-center justify-center text-foreground text-center">
+  <div class="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
     <SectionIntroduction
     title="Work Experience"
     description="A brief look at where I've worked and the roles I've held." />
