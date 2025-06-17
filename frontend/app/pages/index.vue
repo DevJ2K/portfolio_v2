@@ -1,6 +1,6 @@
 <template>
   <main class="relative flex size-full flex-col items-center text-body">
-    <ViewMain/>
+    <ViewMain id="main"/>
     <div class="w-full h-px bg-window-border mb-12"/> <!-- Separator -->
     <ViewProjects id="projects"/>
     <div class="w-full h-px bg-window-border mt-18 mb-12"/> <!-- Separator -->
