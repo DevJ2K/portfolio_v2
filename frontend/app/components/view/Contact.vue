@@ -25,14 +25,14 @@
     </div>
 
     <button
-        class="border rounded-full px-6 py-4 flex items-center gap-2 w-fit mt-12 bg-black text-white border-black cursor-pointer hover:bg-gray-800 hover:border-gray-800">
+        class="border rounded-full px-6 py-4 flex items-center gap-2 w-fit mt-12 bg-black text-white border-black cursor-pointer hover:bg-gray-800 hover:border-gray-800" @click="modalStore.toggleContactModal">
         Contact me
       </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-
+const modalStore = useModalStore()
 </script>
 
 <style scoped>

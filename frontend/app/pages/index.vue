@@ -13,6 +13,8 @@
     <ViewContact id="contact"/>
     <div class="w-full h-px bg-window-border mt-12"/> <!-- Separator -->
     <ViewFooter id="footer"/>
+
+    <ContactModal />
   </main>
 </template>
 

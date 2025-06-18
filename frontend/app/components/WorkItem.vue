@@ -10,8 +10,8 @@
       <h1 class="text-sm">{{ workExperience.company }}</h1>
     </div>
 
-    <UModal v-model:open="isModalOpen" class="text-foreground" :title="workExperience.company">
-      <template #header>
+    <UModal v-model:open="isModalOpen" class="text-foreground" :title="workExperience.company" :description="`${workExperience.position} | ${workExperience.duration}`">
+      <!-- <template #header>
         <div class="flex items-center justify-between w-full">
           <div class="flex gap-2 justify-center items-center">
             <div class="min-h-6 min-w-6 size-6 rounded-md overflow-hidden">
@@ -22,17 +22,11 @@
           </div>
           <Icon name="maki:cross" size="16" class="cursor-pointer text-black hover:text-gray-800" @click="toggleModal" />
         </div>
-      </template>
+      </template> -->
 
       <template #body>
         <p class="text-body whitespace-pre-line">{{ workExperience.description }}</p>
       </template>
-
-      <!-- <template #footer>
-        <UButton color="success" variant="outline" class="rounded-full" @click="open = false">
-          Fermer
-        </UButton>
-      </template> -->
     </UModal>
   </div>
 </template>

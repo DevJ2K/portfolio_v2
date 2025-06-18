@@ -37,7 +37,7 @@
     <div>
       <button
         class="hidden md:flex cursor-pointer bg-black text-white px-6 py-4 rounded-full hover:bg-gray-800 transition-colors duration-300"
-        @click="scrollToSection('contact')">
+        @click="modalStore.toggleContactModal">
         Contact me
       </button>
       <button
@@ -54,6 +54,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeSection = ref('')
 const menuIsOpen = ref(false)
+const modalStore = useModalStore()
 
 const headerOffset = 140
 
