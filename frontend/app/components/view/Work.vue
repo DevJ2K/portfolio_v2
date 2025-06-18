@@ -27,6 +27,7 @@ const workExperiences: WorkExperience[] = [
     duration: 'Feb. 2025 - Present',
     position: 'CTO & Fullstack Developer',
     logo: '/images/experiences/unknown-project.png',
+    description: 'Working on a new project that is still under wraps.',
     connector: 'for',
     clazz: 'bg-gradient-to-b from-[#E0EFFF] to-[#F5E0FF] border-[#DC8FFF]'
   },
@@ -35,6 +36,9 @@ const workExperiences: WorkExperience[] = [
     duration: 'Jan. 2025 - Present',
     position: 'Software Engineer Internship',
     logo: '/images/experiences/cacib.png',
+    description: "Working on the development of a new web application for the bank.\n\n\
+    Its main goal is to provide a better user experience for the bank's clients.\
+    The application is built using Nuxt 3, TypeScript, and Tailwind CSS.",
     connector: 'at',
     clazz: 'bg-[#FFFFFF] border-[#DCDCDC]'
   },
@@ -43,6 +47,7 @@ const workExperiences: WorkExperience[] = [
     duration: 'Jan. 2025 - Feb. 2025',
     position: 'Web3 Developer',
     logo: '/images/experiences/ludilab.jpeg',
+    description: 'Developing a web3 application for the company.',
     connector: 'for',
     clazz: 'bg-[#D4D4FF] border-[#A1A0DE]'
   },
@@ -51,6 +56,7 @@ const workExperiences: WorkExperience[] = [
     duration: 'Oct. 2024',
     position: 'Mobile Developer',
     logo: '/images/experiences/bellesdespins.png',
+    description: 'Developing a mobile application for the company.',
     connector: 'for',
     clazz: 'bg-[#FFE2D4] border-[#DEB4A0]'
   },
@@ -59,6 +65,7 @@ const workExperiences: WorkExperience[] = [
     duration: 'Dec. 2022 - Feb. 2023',
     position: 'Mobile Developer',
     logo: '/images/experiences/waveinvest.png',
+    description: 'Developing a mobile application for the company.',
     connector: 'for',
     clazz: 'bg-[#FED4FF] border-[#DCA0DE]'
   }
