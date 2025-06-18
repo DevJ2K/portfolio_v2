@@ -53,7 +53,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeSection = ref('')
-const menuIsOpen = ref(true)
+const menuIsOpen = ref(false)
 
 const headerOffset = 140
 

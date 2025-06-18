@@ -47,7 +47,7 @@ const toggleFace = () => {
 
 onMounted(() => {
   const estimatedFrontHeight = 120;
-  const estimatedBackHeight = 50 + (skill.achievements?.length || 0) * 30;
+  const estimatedBackHeight = 50 + (skill.achievements?.length || 0) * 35;
 
   dynamicHeight.value = Math.max(estimatedFrontHeight, estimatedBackHeight, 0);
 });
