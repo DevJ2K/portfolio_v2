@@ -1,52 +1,49 @@
 <template>
-  <div class="fixed bg-white z-40 top-12 flex items-center justify-between p-2 md:w-[max(70vw,768px)] rounded-full custom-shadow">
+  <div
+    class="fixed bg-white z-40 top-12 flex items-center justify-between gap-3 p-2 md:w-[max(70vw,768px)] rounded-full custom-shadow">
     <a href="#" @click="scrollToSection('main', $event)">
-      <div class="size-26 h-fit rounded-md flex items-center justify-center md:-rotate-6 md:ml-4">
+      <div class="w-22 md:w-26 h-fit rounded-md flex items-center justify-center md:-rotate-6 md:ml-4">
         <NuxtImg src="/images/DevJ2K.png" alt="Assistant J2K" width="400" />
       </div>
     </a>
 
-    <nav class="hidden md:flex gap-12 font-medium">
-      <a
-        href="#projects"
-        class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
-        :class="{ 'text-purple-500': activeSection === 'projects' }"
-        @click="scrollToSection('projects', $event)"
-      >
+    <!-- hidden md:flex -->
+    <nav class="menu-item" :class="{
+      'menu-item-open': menuIsOpen,
+      'menu-item-close': !menuIsOpen,
+    }">
+      <a href="#projects" class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+        :class="{ 'text-purple-500': activeSection === 'projects' }" @click="scrollToSection('projects', $event)">
         Projects
       </a>
-      <a
-        href="#work"
-        class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
-        :class="{ 'text-purple-500': activeSection === 'work' }"
-        @click="scrollToSection('work', $event)"
-      >
+      <a href="#work" class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+        :class="{ 'text-purple-500': activeSection === 'work' }" @click="scrollToSection('work', $event)">
         Experience
       </a>
-      <a
-        href="#education"
-        class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
-        :class="{ 'text-purple-500': activeSection === 'education' }"
-        @click="scrollToSection('education', $event)"
-      >
+      <a href="#education" class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+        :class="{ 'text-purple-500': activeSection === 'education' }" @click="scrollToSection('education', $event)">
         Education
       </a>
-      <a
-        href="#skills"
-        class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
-        :class="{ 'text-purple-500': activeSection === 'skills' }"
-        @click="scrollToSection('skills', $event)"
-      >
+      <a href="#skills" class="text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+        :class="{ 'text-purple-500': activeSection === 'skills' }" @click="scrollToSection('skills', $event)">
         Skills
+      </a>
+      <a href="#contact" class="block md:hidden text-black hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+        :class="{ 'text-purple-500': activeSection === 'contact' }" @click="scrollToSection('contact', $event)">
+        Contact
       </a>
     </nav>
 
-    <div class="hidden md:flex">
+    <div>
       <button
-        class="cursor-pointer bg-black text-white px-6 py-4 rounded-full hover:bg-gray-800 transition-colors duration-300"
-        @click="scrollToSection('contact')"
-      >
+        class="hidden md:flex cursor-pointer bg-black text-white px-6 py-4 rounded-full hover:bg-gray-800 transition-colors duration-300"
+        @click="scrollToSection('contact')">
         Contact me
+      </button>
+      <button
+        class="flex md:hidden cursor-pointer bg-black text-white px-4 py-2.5 rounded-full hover:bg-gray-800 transition-colors duration-300"
+        @click="toggleMenu">
+        <Icon name="material-symbols:menu-rounded" size="24" />
       </button>
     </div>
   </div>
@@ -56,6 +53,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeSection = ref('')
+const menuIsOpen = ref(true)
 
 const headerOffset = 140
 
@@ -69,6 +67,7 @@ const scrollToSection = (sectionId, event = null) => {
     const elementPosition = element.offsetTop
     const offsetPosition = elementPosition - headerOffset
 
+    menuIsOpen.value = false;
     window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth'
@@ -94,7 +93,6 @@ const updateActiveSection = () => {
   }
 }
 
-// Gestionnaire de scroll avec throttling pour optimiser les performances
 let ticking = false
 const handleScroll = () => {
   if (!ticking) {
@@ -106,10 +104,14 @@ const handleScroll = () => {
   }
 }
 
-// Lifecycle hooks
+const toggleMenu = () => {
+  menuIsOpen.value = !menuIsOpen.value
+  console.log('Menu toggled:', menuIsOpen.value)
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-  updateActiveSection() // Détecter la section active au chargement
+  updateActiveSection()
 })
 
 onUnmounted(() => {
@@ -120,36 +122,5 @@ onUnmounted(() => {
 <style scoped>
 .custom-shadow {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* Animation d'apparition du header */
-.header-enter-active {
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-}
-
-.header-enter-from {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-/* Indicateur de section active */
-.active-indicator {
-  position: relative;
-}
-
-.active-indicator::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #3b82f6;
-  transform: scaleX(0);
-  transition: transform 0.3s ease-out;
-}
-
-.active-indicator.active::after {
-  transform: scaleX(1);
 }
 </style>
