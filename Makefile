@@ -62,11 +62,11 @@ down:
 
 logs:
 	@echo "$(GRAY)Viewing logs for services...$(DEF_COLOR)"
-	@docker-compose -f $(DOCKER_FILE) logs -f
+	@docker-compose -f docker-compose-$(ENV).yml logs -f
 
 clean:
 	@echo "$(RED)Removing Docker containers, networks, images, and volumes...$(DEF_COLOR)"
-	@docker-compose -f $(DOCKER_FILE) down --rmi all --volumes --remove-orphans
+	@docker-compose -f docker-compose-$(ENV).yml down --rmi all --volumes --remove-orphans
 
 ##############################
 # ENVIRONMENT
@@ -75,27 +75,11 @@ local:
 	@docker-compose -f $(DOCKER_FILE_DEV) up -d
 # @docker-compose -f $(DOCKER_FILE_DEV) up -d backend frontend
 
-# dev:
-# 	@echo "$(GREEN)Running local development environment...$(DEF_COLOR)"
-# 	@docker-compose -f $(DOCKER_FILE_DEV) build
-# 	@docker-compose -f $(DOCKER_FILE_DEV) up -d
-
-# 	@while [ $$(docker-compose -f $(DOCKER_FILE_DEV) logs deploy --no-log-prefix | wc -l) -ne 2 ]; do \
-# 		sleep 0.1; \
-# 	done
-# 	@docker-compose -f $(DOCKER_FILE) logs deploy --no-log-prefix
-
-
 prod:
 	@echo "$(GREEN)Running production environment...$(DEF_COLOR)"
 	@docker-compose -f $(DOCKER_FILE_PROD) build
 	@docker-compose -f $(DOCKER_FILE_PROD) up -d
 
-	@clear
-	@while [ $$(docker-compose -f $(DOCKER_FILE_PROD) logs signature --no-log-prefix | wc -l) -eq 0 ]; do \
-		sleep 0.1; \
-	done
-	@docker-compose -f $(DOCKER_FILE_PROD) logs signature --no-log-prefix
 
 ##############################
 # PHONY
@@ -108,6 +92,20 @@ down-local:
 
 down-prod:
 	@$(MAKE) down ENV=prod
+
+down-all: down-local down-prod
+
+logs-local:
+	@$(MAKE) logs ENV=dev
+
+logs-prod:
+	@$(MAKE) logs ENV=prod
+
+clean-local:
+	@$(MAKE) clean ENV=dev
+
+clean-prod:
+	@$(MAKE) clean ENV=prod
 
 # down-dev:
 # 	@$(MAKE) down ENV=dev
