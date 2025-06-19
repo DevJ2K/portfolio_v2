@@ -16,6 +16,9 @@ for env in "${environments[@]}"; do
       cat > "$filepath" <<EOL
 MISTRAL_API_KEY=
 OLLAMA_MODEL=
+EMAIL_RECEIVER=
+EMAIL_SENDER=
+PASSWORD_SENDER=
 EOL
 
     elif [[ "$target" == "frontend" ]]; then
