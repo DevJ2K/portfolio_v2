@@ -1,12 +1,12 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 export const useModalStore = defineStore("modal", {
   state: () => ({
-    contactIsOpen: true,
+    contactIsOpen: false,
   }),
   actions: {
     toggleContactModal() {
       this.contactIsOpen = !this.contactIsOpen;
-    }
-  }
-})
+    },
+  },
+});
