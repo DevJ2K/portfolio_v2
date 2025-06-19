@@ -11,6 +11,15 @@ class Configuration:
         self.OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
         if not self.OLLAMA_MODEL:
             raise ValueError("Please set the OLLAMA_MODEL environment variable.")
+        self.EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
+        if not self.EMAIL_RECEIVER:
+            raise ValueError("Please set the EMAIL_RECEIVER environment variable.")
+        self.EMAIL_SENDER = os.getenv("EMAIL_SENDER")
+        if not self.EMAIL_SENDER:
+            raise ValueError("Please set the EMAIL_SENDER environment variable.")
+        self.PASSWORD_SENDER = os.getenv("PASSWORD_SENDER")
+        if not self.PASSWORD_SENDER:
+            raise ValueError("Please set the PASSWORD_SENDER environment variable.")
 
 
 CONFIGURATION = Configuration()

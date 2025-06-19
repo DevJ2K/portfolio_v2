@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes.chat import chat
+from app.routes.contact import contact
 from app.utils.logger import main_logger
 
 
@@ -42,3 +43,9 @@ main_app.include_router(
     chat.router,
     prefix="/chat",
     tags=["Chat"])
+
+# CONTACT
+main_app.include_router(
+    contact.router,
+    prefix="/contact",
+    tags=["Contact"])
