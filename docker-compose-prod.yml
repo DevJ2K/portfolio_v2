@@ -51,8 +51,10 @@ services:
     volumes:
       - ./nginx/certbot/www:/var/www/certbot:rw
       - ./nginx/certbot/conf:/etc/letsencrypt:rw
-    networks:
-      - portfolio-network
+    command: >
+      certonly --webroot --webroot-path=/var/www/certbot
+       --email ajavontheopro@gmail.com --agree-tos --no-eff-email
+       -d devj2k.com -d www.devj2k.com
 
 networks:
   portfolio-network:
