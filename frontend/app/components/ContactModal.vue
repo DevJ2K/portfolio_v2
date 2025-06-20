@@ -101,6 +101,8 @@ const sendMessage = async () => {
     return;
   }
 
+  modalStore.toggleContactModal();
+
   const response = await fetch("/api/contact/send", {
     method: "POST",
     headers: {
@@ -121,7 +123,6 @@ const sendMessage = async () => {
     return;
   }
 
-  modalStore.toggleContactModal();
   contactUs.value.email = "";
   contactUs.value.title = "";
   contactUs.value.message = "";
