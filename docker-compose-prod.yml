@@ -33,9 +33,9 @@ services:
     image: nginx:latest
     # container_name: portfolio-nginx
     volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./nginx/certbot/www/:/var/www/certbot/:ro
-      - ./nginx/certbot/conf/:/etc/letsencrypt/:ro
+      - ./nginx/conf/app.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certbot/www:/var/www/certbot:ro
+      - ./nginx/certbot/conf:/etc/letsencrypt:ro
     ports:
       - 80:80
       - 443:443
@@ -45,14 +45,14 @@ services:
     networks:
       - portfolio-network
 
-  # certbot:
-  #   image: certbot/certbot
-  # #   container_name: certbot
-  #   volumes:
-  #     - ./nginx/certbot/www/:/var/www/certbot/:rw
-  #     - ./nginx/certbot/conf/:/etc/letsencrypt/:rw
-  #   networks:
-  #     - portfolio-network
+  certbot:
+    image: certbot/certbot
+  #   container_name: certbot
+    volumes:
+      - ./nginx/certbot/www:/var/www/certbot:rw
+      - ./nginx/certbot/conf:/etc/letsencrypt:rw
+    networks:
+      - portfolio-network
 
 networks:
   portfolio-network:
