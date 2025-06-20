@@ -34,7 +34,7 @@ services:
     # container_name: portfolio-nginx
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      # - ./nginx/certbot/www:/var/www/certbot
+      - ./nginx/certbot/www:/var/www/certbot
       # - ./nginx/certbot/conf:/etc/letsencrypt
     ports:
       - 80:80
@@ -45,15 +45,15 @@ services:
     networks:
       - portfolio-network
 
-  # certbot:
-  #   image: certbot/certbot
+  certbot:
+    image: certbot/certbot
   #   container_name: certbot
-  #   volumes:
-  #     - ./nginx/certbot/www:/var/www/certbot
-  #     - ./nginx/certbot/conf:/etc/letsencrypt
+    volumes:
+      - ./nginx/certbot/www:/var/www/certbot
+      - ./nginx/certbot/conf:/etc/letsencrypt
   #   entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 1; done'"
-  #   networks:
-  #     - portfolio-network
+    networks:
+      - portfolio-network
 
 networks:
   portfolio-network:
