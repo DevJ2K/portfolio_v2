@@ -107,7 +107,6 @@ const handleScroll = () => {
 
 const toggleMenu = () => {
   menuIsOpen.value = !menuIsOpen.value
-  console.log('Menu toggled:', menuIsOpen.value)
 }
 
 onMounted(() => {

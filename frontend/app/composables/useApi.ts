@@ -50,7 +50,6 @@ export const useApi = () => {
         }
       } catch (error: Error | unknown) {
         if (signal.aborted) {
-          console.log("Streaming aborted by user.");
           resolveDone();
         } else {
           rejectDone(error);

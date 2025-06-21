@@ -18,7 +18,6 @@ const scrollDown = async (force: boolean = true) => {
 
   const distanceToBottom =
     container.scrollHeight - container.scrollTop - container.clientHeight;
-  console.log("Distance to bottom:", distanceToBottom);
 
   if ((0 < distanceToBottom && distanceToBottom < threshold) || force) {
     bottom.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -31,7 +30,6 @@ const getConversation = () => {
   if (messages) {
     conversations = JSON.parse(messages) as Array<Chat>;
   }
-  console.log("Conversations loaded:", conversations);
   return conversations;
 };
 
@@ -39,7 +37,6 @@ const saveConversation = (messages: Array<Chat>) => {
   const stringifiedMessages = JSON.stringify(messages);
   if (stringifiedMessages.length < 3000000) {
     localStorage.setItem(LOCAL_STORAGE_KEY, stringifiedMessages);
-    console.log("Conversations saved:", messages);
   } else {
     console.warn("Conversation too large to store. Please clear it.");
   }

@@ -8,7 +8,7 @@
     <div
       class="relative flex flex-col z-50 bg-zinc-100 chat-shadow rounded-4xl overflow-hidden transition-all duration-300 ease-in-out"
       :class="{
-        'w-full h-screen md:h-[max(65vh,550px)] md:w-[max(30vw,500px)] rounded-none md:rounded-4xl': isOpen,
+        'w-screen h-screen md:h-[max(65vh,550px)] md:w-[max(30vw,500px)] rounded-none md:rounded-4xl': isOpen,
         'size-18': !isOpen,
         'animate-bounce group-hover:animate-none': isFirstOpen,
         // 'animate-custom-floating-btn group-hover:no-animation': isFirstOpen,
@@ -47,12 +47,20 @@
             <span class="text-orange-500 font-semibold">Mistral LLM</span></span
           >
         </div>
-        <button
-          class="cursor-pointer ml-auto flex items-center justify-center text-zinc-500 hover:text-zinc-800"
-          @click="closeChatbot"
-        >
-          <Icon name="maki:cross" size="24" />
-        </button>
+        <div class="flex ml-auto gap-6">
+          <button
+            class="cursor-pointer ml-auto flex items-center justify-center text-zinc-500 hover:text-zinc-800"
+            @click="newChat"
+          >
+            <Icon name="ci:chat-add" size="20" />
+          </button>
+          <button
+            class="cursor-pointer ml-auto flex items-center justify-center text-zinc-500 hover:text-zinc-800"
+            @click="closeChatbot"
+          >
+            <Icon name="maki:cross" size="20" />
+          </button>
+        </div>
       </div>
 
       <!-- Chat Window -->
@@ -90,20 +98,21 @@ const isOpen = ref(false);
 const isFirstOpen = ref(true);
 
 const sendMessage = () => {
-  console.log("Sending message:", prompt.value);
   if (prompt.value.trim() === "") return;
   const message = prompt.value.trim();
   prompt.value = "";
   chatbotStore.sendMessage(message);
 };
 
+const newChat = () => {
+  chatbotStore.clearConversation();
+};
+
 const openChatbot = () => {
-  console.log("Opening chatbot...");
   isFirstOpen.value = false;
   isOpen.value = true;
 };
 const closeChatbot = () => {
-  console.log("Closing chatbot...");
   isOpen.value = false;
 };
 </script>
