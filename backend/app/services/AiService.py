@@ -3,6 +3,7 @@ from app.services.AI.RAG import RAG
 from app.models.core.ChatMessage import ChatMessage
 from app.models.core.LLM.MistralInput import MistralInput
 from mistralai import Mistral, CompletionEvent
+from app.utils.logger import ai_logger
 
 
 class AiService:
@@ -28,9 +29,16 @@ class AiService:
             model=self.model,
             messages=conversation
         )
+        response = ""
         for event in response_stream:
-            if isinstance(event, CompletionEvent) and event.data.choices[0].finish_reason is None:
-                yield event.data.choices[0].delta.content
+            print(event, flush=True)
+            if isinstance(event, CompletionEvent):
+                delta = event.data.choices[0].delta
+                if delta and delta.content:
+                    token = delta.content
+                    response += token
+                    yield token
+        ai_logger.info(f"Response: {response}")
 
 
 if __name__ == "__main__":
