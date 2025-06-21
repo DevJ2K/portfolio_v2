@@ -19,11 +19,13 @@ class AiService:
         self.model = "mistral-large-2402"
 
     def enrich(self, messages: list[ChatMessage], query: str) -> list[ChatMessage]:
+        ai_logger.info(f"Enriching conversation with query: '{query}'")
         return ConversationHandler.get_context(self.rag, messages, query, self.context_size)
 
     def ask(self, messages: list[ChatMessage]):
         conversation_handler = ConversationHandler()
         conversation: list[MistralInput] = conversation_handler.build(messages=messages)
+        # ai_logger.debug(f"Conversation: {conversation}")
 
         response_stream = self.client.chat.stream(
             model=self.model,
@@ -31,7 +33,6 @@ class AiService:
         )
         response = ""
         for event in response_stream:
-            print(event, flush=True)
             if isinstance(event, CompletionEvent):
                 delta = event.data.choices[0].delta
                 if delta and delta.content:
