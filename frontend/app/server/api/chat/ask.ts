@@ -3,10 +3,8 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
 
   if (!config.apiKey) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: "API key is not configured.",
-    });
+    console.error("API key is not configured.");
+    throw new Error("API key is not configured.");
   }
   const controller = new AbortController();
 

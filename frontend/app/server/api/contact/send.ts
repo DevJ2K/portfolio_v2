@@ -7,15 +7,12 @@ export default defineEventHandler(async (event) => {
     throw new Error("API key is not configured.");
   }
 
-  return await $fetch(`${config.apiBaseUrl}/chat/enrich`, {
+  return await fetch(`${config.apiBaseUrl}/contact/send`, {
     method: event.method,
     headers: {
       "Content-Type": "application/json",
       "x-api-key": config.apiKey,
     },
-    body: JSON.stringify({
-      conversation: body.conversation,
-      prompt: body.prompt,
-    }),
+    body,
   });
 });

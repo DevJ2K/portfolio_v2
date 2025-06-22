@@ -105,9 +105,6 @@ const sendMessage = async () => {
 
   const response = await fetch("/api/contact/send", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify({
       email: contactUs.value.email.trim(),
       title: contactUs.value.title.trim(),
@@ -117,7 +114,8 @@ const sendMessage = async () => {
   if (!response.ok) {
     toast.add({
       title: "Error",
-      description:"An error occurred while sending the message. Please try again later.",
+      description:
+        "An error occurred while sending the message. Please try again later.",
       color: "error",
     });
     return;
