@@ -1,16 +1,28 @@
 <template>
   <div class="flex items-center gap-3">
-    <h1 class="hidden md:block">{{ workExperience.position }} {{ workExperience.connector }}</h1>
+    <h1 class="hidden md:block">
+      {{ workExperience.position }} {{ workExperience.connector }}
+    </h1>
 
-    <div class="flex gap-1.5 justify-center items-center py-1.5 px-2 rounded-xl border cursor-pointer custom-shadow"
-      :class="workExperience.clazz" @click="toggleModal">
-      <div class="min-h-6 min-w-6 size-6 md:min-h-8 md:min-w-8  md:size-8 rounded-md overflow-hidden">
+    <div
+      class="flex gap-1.5 justify-center items-center py-1.5 px-2 rounded-xl border cursor-pointer custom-shadow"
+      :class="workExperience.clazz"
+      @click="toggleModal"
+    >
+      <div
+        class="min-h-6 min-w-6 size-6 md:min-h-8 md:min-w-8 md:size-8 rounded-md overflow-hidden"
+      >
         <NuxtImg :src="workExperience.logo" alt="Assistant J2K" width="400" />
       </div>
       <h1 class="text-sm">{{ workExperience.company }}</h1>
     </div>
 
-    <UModal v-model:open="isModalOpen" class="text-foreground" :title="workExperience.company" :description="`${workExperience.position} | ${workExperience.duration}`">
+    <UModal
+      v-model:open="isModalOpen"
+      class="text-foreground"
+      :title="workExperience.company"
+      :description="`${workExperience.position} | ${workExperience.duration}`"
+    >
       <!-- <template #header>
         <div class="flex items-center justify-between w-full">
           <div class="flex gap-2 justify-center items-center">
@@ -25,7 +37,9 @@
       </template> -->
 
       <template #body>
-        <p class="text-body whitespace-pre-line">{{ workExperience.description }}</p>
+        <p class="text-body whitespace-pre-line">
+          {{ workExperience.description }}
+        </p>
       </template>
     </UModal>
   </div>
@@ -37,15 +51,15 @@ import type { WorkExperience } from "~/types/WorkExperience";
 defineProps({
   workExperience: {
     type: Object as () => WorkExperience,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const isModalOpen = ref(false)
+const isModalOpen = ref(false);
 
 const toggleModal = () => {
-  isModalOpen.value = !isModalOpen.value
-}
+  isModalOpen.value = !isModalOpen.value;
+};
 </script>
 
 <style scoped>

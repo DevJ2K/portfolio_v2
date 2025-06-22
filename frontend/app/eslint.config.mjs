@@ -5,7 +5,7 @@ export default withNuxt(
   {
     rules: {
       'no-console': 'off',
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
       'vue/no-unused-components': 'warn',
       'vue/require-default-prop': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
