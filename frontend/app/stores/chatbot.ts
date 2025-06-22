@@ -40,7 +40,7 @@ const saveConversation = (messages: Array<Chat>) => {
   } else {
     console.warn("Conversation too large to store. Please clear it.");
   }
-}
+};
 
 export const useChatbotStore = defineStore("chatbot", {
   state: () => ({
@@ -56,54 +56,42 @@ export const useChatbotStore = defineStore("chatbot", {
 
       this.messages.push({ content: message, role: "user", context: [] });
 
-      const response = await fetch("/api/chat/enrich", {
+      const response = (await $fetch("/api/chat/enrich", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+        body: {
           conversation: this.messages.slice(0, -1),
           prompt: message.trim(),
-         }),
-      });
-      if (!response.ok) {
-        console.error("Error response:", await response.json());
+        },
+      }).catch((_) => {
         throw new Error("An error occurred while sending the message.");
-      }
-      const responseJson = await response.json();
+      })) as { conversation: Array<Chat> };
 
-      this.messages = responseJson.conversation as Array<Chat>;
+      this.messages = response.conversation as Array<Chat>;
       saveConversation(this.messages);
 
       this.messages.push({ content: "", role: "assistant", context: null });
 
       const { abort, done } = await fetchAiResponse(
-				`/api/chat/ask`, {
-				method: 'POST',
-				body: JSON.stringify({
+        {
           conversation: this.messages.slice(0, -1),
-        }),
-        headers: {
-          'Content-Type': 'application/json',
         },
-			},
-				(token: string) => {
-					if (this.messages[this.messages.length - 1] != null) {
-						this.messages[this.messages.length - 1].content += token;
-					} else {
-						abort();
-						return;
-					}
-					scrollDown(false);
-				}
-			);
-			await done;
+        (token: string) => {
+          if (this.messages[this.messages.length - 1] != null) {
+            this.messages[this.messages.length - 1].content += token;
+          } else {
+            abort();
+            return;
+          }
+          scrollDown(false);
+        }
+      );
+      await done;
       this.isTyping = false;
       saveConversation(this.messages);
     },
     clearConversation() {
       this.messages = [];
       saveConversation(this.messages);
-    }
+    },
   },
 });

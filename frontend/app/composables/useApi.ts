@@ -1,21 +1,23 @@
+import type { Chat } from "~/types/Chat";
+
 export const useApi = () => {
 
   const fetchAiResponse = async (
-    endpoint: string,
-    options: RequestInit = {},
-    onMessage: (data: string) => void
+    body: { conversation: Array<Chat> },
+    onMessage: (_: string) => void
   ) => {
-
-    const headers = new Headers(options.headers || {});
-    headers.set("Accept", "text/event-stream");
 
     const controller = new AbortController();
     const signal = controller.signal;
 
-    const response = await fetch(endpoint, { ...options, headers, signal });
+    const response = await fetch('/api/chat/ask', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      signal,
+    });
 
     if (!response.ok) {
-      console.error("Error response:", await response.json());
+      console.error("Error response:", await response.json().catch(() => ({})));
       throw new Error("An error occurred while streaming the response.");
     }
 

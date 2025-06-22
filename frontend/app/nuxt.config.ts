@@ -29,6 +29,10 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    apiKey: process.env.NUXT_API_KEY || '',
+    apiBaseUrl: `${process.env.NUXT_API_BASE_URL}`,
+  },
   css: [
     '@/assets/css/main.css'
   ],
@@ -39,19 +43,22 @@ export default defineNuxtConfig({
   eslint: {
     config: {}
   },
-  routeRules: {
-    '/api/**': { proxy: `${process.env.NUXT_API_BASE_URL}/**` },
-  },
+  // routeRules: {
+  //   '/api/**': { proxy: `${process.env.NUXT_API_BASE_URL}/**` },
+  // },
   vite: {
-    server: {
-      proxy: {
-        '/api': {
-          target: `${process.env.NUXT_API_BASE_URL}`,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      }
-    },
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       target: `${process.env.NUXT_API_BASE_URL}`,
+    //       changeOrigin: true,
+    //       headers: {
+    //         'x-api-key': 'null',
+    //       },
+    //       rewrite: (path) => path.replace(/^\/api/, ''),
+    //     },
+    //   }
+    // },
     plugins: [
       tailwindcss(),
       eslintPlugin({
