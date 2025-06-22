@@ -20,6 +20,12 @@ class Configuration:
         self.PASSWORD_SENDER = os.getenv("PASSWORD_SENDER")
         if not self.PASSWORD_SENDER:
             raise ValueError("Please set the PASSWORD_SENDER environment variable.")
+        self.API_KEY = os.getenv("API_KEY")
+        if not self.API_KEY:
+            raise ValueError("Please set the API_KEY environment variable.")
+        self.PROXY_STATUS = os.getenv("PROXY_STATUS") # disabled || enabled
+        if not self.PROXY_STATUS:
+            raise ValueError("Please set the PROXY_STATUS environment variable.")
 
 
 CONFIGURATION = Configuration()

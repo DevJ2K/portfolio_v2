@@ -19,11 +19,14 @@ OLLAMA_MODEL=
 EMAIL_RECEIVER=
 EMAIL_SENDER=
 PASSWORD_SENDER=
+API_KEY=
+PROXY_STATUS=
 EOL
 
     elif [[ "$target" == "frontend" ]]; then
       cat > "$filepath" <<EOL
 NUXT_API_BASE_URL=
+API_KEY=
 EOL
     fi
 

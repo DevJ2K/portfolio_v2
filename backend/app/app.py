@@ -1,9 +1,10 @@
-from fastapi import FastAPI, status
+from fastapi import FastAPI, status, Request, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes.chat import chat
 from app.routes.contact import contact
+from app.configuration.Configuration import CONFIGURATION
 from app.utils.logger import main_logger
 
 
@@ -21,11 +22,22 @@ main_app.add_middleware(
 @main_app.exception_handler(Exception)
 async def generic_error_handler(request, exc: Exception):
     main_logger.error(f"Unexpected error: {exc}")
+    if isinstance(exc, HTTPException):
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"message": exc.detail}
+        )
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={"message": "An unexpected error occurred."}
     )
 
+@main_app.middleware("http")
+async def check_internal_api(request: Request, call_next):
+    # main_logger.info(f"Internal API request: {request.method} {request.url.path}")
+    if request.headers.get("x-api-key") != CONFIGURATION.API_KEY and CONFIGURATION.PROXY_STATUS == "enabled":
+        raise HTTPException(status_code=403, detail="Forbidden")
+    return await call_next(request)
 
 @main_app.get("/healthcheck")
 async def healthcheck():
