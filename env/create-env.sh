@@ -21,6 +21,7 @@ EMAIL_SENDER=
 PASSWORD_SENDER=
 API_KEY=
 PROXY_STATUS=
+DISCORD_WEBHOOK_URL=
 EOL
 
     elif [[ "$target" == "frontend" ]]; then

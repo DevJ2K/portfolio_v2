@@ -4,13 +4,16 @@ import re
 import dotenv
 from email.message import EmailMessage
 from app.utils.logger import contact_logger
+from app.services.Contact.NotificationProvider import NotificationProvider
+from app.services.Contact.Providers import DiscordProvider, SmtpProvider
 
 
 class ContactService:
-    def __init__(self, email_receiver: str, email_sender: str, password_sender: str) -> None:
+    def __init__(self, email_receiver: str, email_sender: str, password_sender: str, providers: list[NotificationProvider]) -> None:
         self.EMAIL_RECEIVER = email_receiver
         self.EMAIL_SENDER = email_sender
         self.PASSWORD_SENDER = password_sender
+        self.providers = providers
 
     def __input_validation(self, email: str, title: str, message: str) -> bool:
         if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
@@ -22,34 +25,33 @@ class ContactService:
         return True
 
     def send(self, email: str, title: str, message: str) -> bool:
+
         if not self.__input_validation(email, title, message):
             raise ValueError("Input validation failed.")
-        return self.__send_via_smtplib(email, title, message)
-
-    def __send_via_smtplib(self, email: str, title: str, message: str) -> bool:
-        msg = EmailMessage()
-        msg['Subject'] = f"[New contact message] : {title}"
-        msg['From'] = self.EMAIL_SENDER
-        msg['To'] = self.EMAIL_RECEIVER
-        msg.set_content(f"Sender: {email}\n\nBody: {message}")
-
-        try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-                smtp.starttls()
-                smtp.login(self.EMAIL_SENDER, self.PASSWORD_SENDER)
-                smtp.send_message(msg)
-            contact_logger.debug(f"Message from '{email}' has been sucsessfully sent with title -> '{title}'")
-            return True
-        except Exception as e:
-            contact_logger.error(f"Failed to send message: {e}")
-            return False
+        sent_status = []
+        for provider in self.providers:
+            print(f"Trying to send message using {provider.__class__.__name__}")
+            try:
+                if provider.send(email, title, message):
+                    contact_logger.debug(f"Message from '{email}' has been successfully sent with title -> '{title}'")
+                    sent_status.append(True)
+            except Exception as e:
+                contact_logger.error(f"Failed to send message using {provider.__class__.__name__}: {e}")
+                sent_status.append(False)
+        return any(sent_status)
 
 if __name__ == "__main__":
     dotenv.load_dotenv()
     contact_service = ContactService(
         email_receiver="spamboxdetheo@gmail.com",
         email_sender=os.getenv("EMAIL_SENDER"),
-        password_sender=os.getenv("PASSWORD_SENDER"))
+        password_sender=os.getenv("PASSWORD_SENDER"), providers=[
+            DiscordProvider(webhook_url=os.getenv("DISCORD_WEBHOOK_URL")),
+            SmtpProvider(
+                email_sender=os.getenv("EMAIL_SENDER"),
+                password_sender=os.getenv("PASSWORD_SENDER"),
+                email_receiver=os.getenv('EMAIL_RECEIVER')
+            )])
 
     contact_service.send("myemail@taunt.fr", "Test", "Salut !")
 
