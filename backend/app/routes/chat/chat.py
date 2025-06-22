@@ -20,17 +20,18 @@ ai_service = AiService(
     api_key=CONFIGURATION.MISTRAL_API_KEY,
     context_size=3)
 
+
 def display_request_info(request: Request, route: str):
     client_host = request.client.host
     headers = request.headers
     api_logger.info(f"Route: '{route}' - Client IP: {client_host} - User-agent: {headers.get('User-Agent', 'Unknown')}")
+
 
 @router.post('/enrich', description="Add context on your prompt and add it to the conversation.")
 async def enrich(body: EnrichmentModel, request: Request) -> ConversationModel:
     display_request_info(request, '/enrich')
     return ConversationModel(
         conversation=ai_service.enrich(messages=body.conversation, query=body.prompt))
-
 
 
 @router.post('/ask', description="Ask anything to the LLM.")
@@ -40,4 +41,3 @@ async def ask(body: ConversationModel, request: Request) -> StreamingResponse:
         ai_service.ask(body.conversation),
         media_type="text/event-stream"
     )
-

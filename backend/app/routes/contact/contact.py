@@ -13,7 +13,8 @@ contact_service = ContactService(
     password_sender=CONFIGURATION.PASSWORD_SENDER,
     providers=[
         DiscordProvider(webhook_url=CONFIGURATION.DISCORD_WEBHOOK_URL)
-])
+    ])
+
 
 @router.post('/send', description="Send a contact message")
 async def contact(body: ContactModel):

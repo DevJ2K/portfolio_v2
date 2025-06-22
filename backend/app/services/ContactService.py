@@ -1,8 +1,6 @@
-import smtplib
 import os
 import re
 import dotenv
-from email.message import EmailMessage
 from app.utils.logger import contact_logger
 from app.services.Contact.NotificationProvider import NotificationProvider
 from app.services.Contact.Providers import DiscordProvider, SmtpProvider
@@ -40,6 +38,7 @@ class ContactService:
                 sent_status.append(False)
         return any(sent_status)
 
+
 if __name__ == "__main__":
     dotenv.load_dotenv()
     contact_service = ContactService(
@@ -54,4 +53,3 @@ if __name__ == "__main__":
             )])
 
     contact_service.send("myemail@taunt.fr", "Test", "Salut !")
-

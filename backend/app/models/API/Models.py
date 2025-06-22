@@ -10,6 +10,7 @@ class EnrichmentModel(BaseModel):
     conversation: list[ChatMessage]
     prompt: str
 
+
 class ContactModel(BaseModel):
     email: EmailStr
     title: str

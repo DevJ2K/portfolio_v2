@@ -64,6 +64,7 @@ import smtplib
 #             print(f"Mailgun error: {e}")
 #             return False
 
+
 class DiscordProvider(NotificationProvider):
     def __init__(self, webhook_url: str):
         self.webhook_url = webhook_url
@@ -92,6 +93,7 @@ class DiscordProvider(NotificationProvider):
         except Exception as e:
             contact_logger.error(f"Discord error: {e}")
             return False
+
 
 class SmtpProvider(NotificationProvider):
     def __init__(self, email_sender: str, password_sender: str, email_receiver: str):
