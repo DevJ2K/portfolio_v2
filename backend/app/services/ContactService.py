@@ -34,10 +34,11 @@ class ContactService:
         msg.set_content(f"Sender: {email}\n\nBody: {message}")
 
         try:
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+                smtp.starttls()
                 smtp.login(self.EMAIL_SENDER, self.PASSWORD_SENDER)
                 smtp.send_message(msg)
-            contact_logger.debug(f"Message has been sucsessfully sent: {email} -> {title}")
+            contact_logger.debug(f"Message from '{email}' has been sucsessfully sent with title -> '{title}'")
             return True
         except Exception as e:
             contact_logger.error(f"Failed to send message: {e}")

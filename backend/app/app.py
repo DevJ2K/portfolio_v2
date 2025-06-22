@@ -36,7 +36,7 @@ async def generic_error_handler(request, exc: Exception):
 async def check_internal_api(request: Request, call_next):
     # main_logger.info(f"Internal API request: {request.method} {request.url.path}")
     if request.headers.get("x-api-key") != CONFIGURATION.API_KEY and CONFIGURATION.PROXY_STATUS == "enabled":
-        raise HTTPException(status_code=403, detail="Forbidden")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Forbidden")
     return await call_next(request)
 
 @main_app.get("/healthcheck")
