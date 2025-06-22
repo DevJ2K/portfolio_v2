@@ -16,6 +16,19 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@pinia/nuxt',
   ],
+  app: {
+    head: {
+      title: 'DevJ2K - Portfolio',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { charset: 'utf-8' },
+        { name: 'description', content: 'Portfolio of DevJ2K' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ],
+    },
+  },
   css: [
     '@/assets/css/main.css'
   ],
