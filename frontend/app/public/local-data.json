@@ -1,6 +1,17 @@
 {
   "projects": [
     {
+      "title": "Portfolio-v2",
+      "description": "This is this portfolio website, built with Nuxt 3 and TypeScript. It showcases my skills, projects, and experiences. It is designed to be responsive and user-friendly. I implemented a chatbot with a RAG (Retrieval-Augmented Generation) architecture to answer questions about me.",
+      "image": "/images/unknown.jpg",
+      "tags": ["AI"],
+
+      "onlineLink": "https://devj2k.com",
+      "githubLink": "https://github.com/DevJ2K/portfolio_v2",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+    {
       "title": "SnakeAI",
       "description": "The goal of this project is to introduce basic of reinforcement learning with a snake game. The snake has to reach a minimum length of 10.",
       "image": "/images/projects/snake_ai.png",
@@ -29,8 +40,8 @@
       "borderColor": "border-[#F766FF]",
       "startDate": "Sep. 2020",
       "endDate": "Present",
-      "stat": "+90 projects | +140 repositories",
-      "description": "A good programmer never stop to learn itself.",
+      "stat": "+140 repositories",
+      "description": "Self-driven learning is at the heart of great engineering.",
       "btnIcon": "mingcute:github-line",
       "btnText": "View GitHub",
       "btnActive": true,
@@ -43,9 +54,9 @@
       "startDate": "Sep. 2023",
       "endDate": "2026",
       "stat": "+76 solo & team projects",
-      "description": "Enroll for a master degree in AI & Data",
+      "description": "Enroll for a Master's degree in IT Architecture, specialized in AI & Data.",
       "btnIcon": "ic:outline-lock",
-      "btnText": "View Certificate",
+      "btnText": "View Master's degree",
       "btnActive": false
     },
     {
@@ -53,7 +64,7 @@
       "image": "/images/educations/harvard.png",
       "borderColor": "border-[#FF6666]",
       "startDate": "2025",
-      "stat": "+3 courses followed",
+      "stat": "-",
       "description": "Online courses about CS and AI.",
       "btnIcon": "ic:outline-lock",
       "btnText": "View Certificate",
@@ -65,81 +76,81 @@
         "name": "Python",
         "description": "My favorite language for data science and machine learning.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "Nuxt",
         "description": "My favorite language for building web applications.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "Java",
         "description": "My favorite language for building enterprise applications.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "Swift",
         "description": "For iOS and macOS application development.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "C",
         "description": "For low-level programming and systems development.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "C++",
         "description": "For performance-critical applications and game development.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "Firebase",
         "description": "Cloud-based platform for building web and mobile applications.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "Docker",
         "description": "Powerful tool for containerization and deployment.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     },
     {
         "name": "Typescript",
         "description": "I use TypeScript to build scalable and maintainable web applications.",
         "achievements": [
-            "AAA",
-            "BBB",
-            "CCC"
+            "- 1 -",
+            "- 2 -",
+            "- 3 -"
         ]
     }
   ],
@@ -158,7 +169,7 @@
     "duration": "Jan. 2025 - Present",
     "position": "Software Engineer Internship",
     "logo": "/images/experiences/cacib.png",
-    "description": "Working on the development of a new web application for the bank.\n\nIts main goal is to provide a better user experience for the bank's clients. The application is built using Nuxt 3, TypeScript, and Tailwind CSS.",
+    "description": "Working on a project to improve the bank's internal tools and processes.",
     "connector": "at",
     "clazz": "bg-[#FFFFFF] border-[#DCDCDC]"
   },
