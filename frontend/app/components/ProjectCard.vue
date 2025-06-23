@@ -6,15 +6,26 @@
     <h1 class="text-left font-semibold text-xl">{{ title }}</h1>
 
     <div class="flex gap-2 text-body">
-      <a v-if="onlineLink" :href="onlineLink" target="_blank" class="badge badge-shadow text-[#38D52A] border border-[#9EFFAB]">
+      <a v-if="onlineLink" :href="onlineLink" target="_blank" class="badge badge-shadow badge-hover text-[#38D52A] border border-[#9EFFAB]">
         <Icon name="ant-design:signal-filled" size="16" />
         Online
       </a>
 
-      <a v-if="githubName" :href="`https://github.com/DevJ2K/${githubName}`" target="_blank" class=" badge badge-shadow text-[#2A74D5] border border-[#9AC9FF]">
+      <a v-if="githubName" :href="`https://github.com/DevJ2K/${githubName}`" target="_blank" class=" badge badge-shadow badge-hover text-[#2A74D5] border border-[#9AC9FF]">
         <Icon name="mingcute:github-line" size="16" />
         GitHub
       </a>
+
+      <span v-if="isPrivate" class="cursor-default badge badge-shadow text-[#D52A2A] border border-[#FFABAB]">
+        <Icon name="ant-design:lock-filled" size="16" />
+        Private
+      </span>
+
+      <span v-if="isSoonOnline" class="cursor-default badge badge-shadow text-[#D5A22A] border border-[#FFDBAB]">
+        <Icon name="ant-design:clock-circle-filled" size="16" />
+        Soon
+      </span>
+
     </div>
 
 
@@ -41,6 +52,14 @@ defineProps({
     type: String,
     required: false
   },
+  isPrivate: {
+    type: Boolean,
+    required: false
+  },
+  isSoonOnline: {
+    type: Boolean,
+    required: false
+  },
   image: {
     type: String,
     required: true
@@ -61,10 +80,6 @@ defineProps({
   border-radius: 8px;
 }
 
-.badge:hover {
-  background-color: var(--color-ui-background-hover);
-}
-
 .custom-shadow {
   box-shadow: 2px 2px 16px 0 rgba(0, 0, 0, 0.07);
 }
@@ -75,7 +90,8 @@ defineProps({
               inset -1px -1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.badge-shadow:hover {
+.badge-hover:hover {
+  background-color: var(--color-ui-background-hover);
   box-shadow: 0.5px 0.5px 0px 0 rgba(0, 0, 0, 0.1);
 }
 </style>

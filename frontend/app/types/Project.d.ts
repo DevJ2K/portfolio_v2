@@ -7,4 +7,7 @@ export interface Project {
 
   onlineLink?: string;
   githubLink?: string;
+
+  isPrivate: boolean;
+  isSoonOnline: boolean;
 }

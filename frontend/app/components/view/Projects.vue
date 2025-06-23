@@ -19,6 +19,8 @@
         :description="project.description"
         :online-link="project.onlineLink"
         :github-name="project.githubLink ? project.githubLink.split('/').pop() : ''"
+        :is-private="project.isPrivate"
+        :is-soon-online="project.isSoonOnline"
         :image="project.image" />
     </div>
   </div>
@@ -39,6 +41,8 @@ const projects: Project[] = [
 
     onlineLink: 'https://snakeai.devj2k.com',
     githubLink: 'https://github.com/DevJ2K/SnakeAI',
+    isPrivate: false,
+    isSoonOnline: false,
   },
   {
     title: 'Gomoku',
@@ -47,6 +51,8 @@ const projects: Project[] = [
     tags: ['AI'],
 
     githubLink: 'https://github.com/DevJ2K/app_gomoku',
+    isPrivate: false,
+    isSoonOnline: false,
   }
 ]
 
