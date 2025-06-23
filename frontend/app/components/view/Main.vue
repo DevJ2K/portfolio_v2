@@ -2,12 +2,9 @@
   <div class="w-full h-[90vh] flex flex-col items-center justify-center text-foreground text-center">
     <h1 class="text-title font-extrabold leading-8 max-md:px-4">Hey, I’m Theo — aka <span
         class="gradient-text">DevJ2K</span></h1>
-    <h2 class="text-subtitle font-extrabold max-md:px-4">Software Engineer & Student</h2>
-
+    <h2 class="text-subtitle font-extrabold max-md:px-4"><span class="gradient-text-2">AI</span>-focused Software Engineer & Master's Student</h2>
     <p class="text-body text-foreground-secondary mt-4 max-w-2xl text-center max-md:px-4">
-      Based in Paris and studying at <a href="https://42.fr/en/homepage/" target="_blank" class="gradient-text">42</a>,
-      I’m a 19 years old passionate about exploring cutting-edge technologies and mastering new skills. My
-      goal is to drive impactful projects that challenge the mind and push boundaries.
+      Based in Paris and currently studying at <a href="https://42.fr/en/homepage/" target="_blank" class="gradient-text-3">42</a>, I’m a 20 years old software engineering student with a strong interest in artificial intelligence and a constant curiosity for emerging technologies. I enjoy diving into complex challenges and building innovative projects that make a real impact.
     </p>
 
     <div class="flex mt-7 gap-7 md:gap-14 text-body">
@@ -34,8 +31,20 @@
 
 <style scoped>
 .gradient-text {
-  /* background: linear-gradient(90deg, #f97316, #f59e0b, #eab308, #84cc16, #22c55e, #06b6d4, #3b82f6, #8b5cf6, #a855f7, #ec4899); */
   background: linear-gradient(90deg, #4F13DD, #A37CFF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.gradient-text-2 {
+  background: linear-gradient(90deg, #1871ff, #dd52ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-3 {
+  background: linear-gradient(90deg, #6629ff, #3287ff);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
