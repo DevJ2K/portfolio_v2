@@ -1,6 +1,7 @@
 from app.utils.logger import rag_logger
 from app.utils.Colors import BHMAG, RESET
 from app.exceptions.RAGError import RAGError
+from app.models.core.RagDataset import RagDataset
 from app.configuration.Configuration import CONFIGURATION
 from pathlib import Path
 from rich.progress import track
@@ -9,7 +10,7 @@ import ollama
 
 
 class RAG:
-    def __init__(self, datasets: list[Path]) -> None:
+    def __init__(self, datasets: list[RagDataset]) -> None:
         self.EMBEDDING_MODEL: str = str(CONFIGURATION.OLLAMA_MODEL)  # (..., 768)
 
         self.chunks: list[str] = []
@@ -26,16 +27,24 @@ class RAG:
         self.chunk_embeddings = self.chunk_embeddings.reshape((0, chunks_embeddings.shape[1]))  # (0, d)
         self.chunk_embeddings = np.vstack([self.chunk_embeddings, chunks_embeddings])
 
-    def __get_chunks__(self, datasets: list[Path]) -> list[str]:
+    def __get_chunks__(self, datasets: list[RagDataset]) -> list[str]:
         chunks = []
         for dataset in datasets:
             try:
-                with open(dataset, 'r') as f:
+                with open(dataset.path, 'r') as f:
                     # Each line in the dataset file is an information.
                     content = f.read()
-                    chunks += [chunk for chunk in content.splitlines() if chunk.strip() != ""]
+                    if dataset.splitter == "all":
+                        chunks += [content]
+                    elif dataset.splitter == "lines":
+                        chunks += [chunk for chunk in content.splitlines() if chunk.strip() != ""]
+                    elif dataset.splitter == "paragraphs":
+                        chunks += [chunk for chunk in content.split("\n\n") if chunk.strip() != ""]
+
             except Exception as e:
                 rag_logger.error(f"Failed to retrieve chunks from '{dataset}' : {type(e).__name__} - {str(e)}")
+        for i, chunk in enumerate(chunks):
+            print(f"Chunk {i}: {chunk}")
         return chunks
 
     def __load_chunks__(self, chunks: list[str]) -> np.ndarray:
@@ -62,18 +71,30 @@ class RAG:
 
 
 if __name__ == "__main__":
-    data1 = Path(__file__).parent.parent.parent / "data" / "brut.txt"
-    rag = RAG([data1])
+    rag = RAG([
+        # RagDataset(Path(__file__).parent.parent.parent / "data" / "brut.txt", splitter="all"),
+        # RagDataset(Path(__file__).parent.parent.parent / "data" / "42-cursus.txt", splitter="paragraphs"),
+        RagDataset(Path(__file__).parent.parent.parent / "data" / "life-timeline.txt", splitter="paragraphs")
+    ])
 
-    import time
-    start_time = time.time()
-    rag.retrieve("Qu'elle est la meilleure couleur de SFT-R ?", k=1)
-    end_time = time.time()
-    print(f"Time taken: {end_time - start_time}")
+    # import time
+    # start_time = time.time()
+    # rag.retrieve("Qu'elle est la meilleure couleur de SFT-R ?", k=1)
+    # end_time = time.time()
+    # print(f"Time taken: {end_time - start_time}")
 
-    start_time = time.time()
-    for i in range(50):
-        rag.retrieve("Qu'elle est la meilleure couleur de SFT-R ?", k=1)
-    end_time = time.time()
-    print(f"Time taken: {end_time - start_time}")
-    exit(1)
+    # start_time = time.time()
+    # for i in range(50):
+    #     rag.retrieve("Qu'elle est la meilleure couleur de SFT-R ?", k=1)
+    # end_time = time.time()
+    # print(f"Time taken: {end_time - start_time}")
+    # exit(1)
+    print("--------------------------------------------------")
+    rag.retrieve("What are DevJ2K's main programming skills?", k=3)
+    print("--------------------------------------------------")
+    rag.retrieve("What technologies is DevJ2K passionate about?", k=3)
+    print("--------------------------------------------------")
+    rag.retrieve("How fast did DevJ2K complete the 42 core curriculum?", k=3)
+    print("--------------------------------------------------")
+    rag.retrieve("How did Théo get into coding?", k=3)
+    print("--------------------------------------------------")

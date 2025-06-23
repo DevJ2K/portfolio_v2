@@ -77,7 +77,7 @@
           class="flex flex-col gap-4 items-center justify-center h-full text-zinc-500"
         >
         <p class="text-sm md:text-base text-zinc-600">
-          Ask me anything about SFT-R, I am here to help you!
+          Ask me anything about Théo — also known as DevJ2K.
         </p>
           <button
             v-for="suggestion in suggestions"
@@ -106,9 +106,10 @@ const { messages } = storeToRefs(chatbotStore);
 const prompt = ref("");
 
 const suggestions: Array<string> = [
-  "What is SFT-R?",
-  "How does SFT-R work?",
-  "What are the benefits of using SFT-R?",
+  // "What are DevJ2K's main programming skills?",
+  // "What technologies is DevJ2K passionate about?",
+  "How fast did DevJ2K complete the 42 core curriculum?",
+  "How did Théo get into coding?"
 ];
 
 const isOpen = ref(false);

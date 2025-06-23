@@ -8,7 +8,7 @@ class ConversationHandler:
     def __init__(self) -> None:
         prompts_folder = Path(__file__).parent.parent.parent / "prompts"
         self.__behavior_prompt = self.__load_prompt__(prompts_folder / "settings" / "behavior.txt")
-        self.__rag_prompt = self.__load_prompt__(prompts_folder / "RAG" / "context_only.txt")
+        self.__rag_prompt = self.__load_prompt__(prompts_folder / "RAG" / "context_portfolio.txt")
 
     def __load_prompt__(self, path: Path):
         with open(path, 'r') as f:

@@ -4,6 +4,7 @@ from app.services.AiService import AiService
 from app.services.AI.RAG import RAG
 from app.configuration.Configuration import CONFIGURATION
 from app.models.API.Models import ConversationModel, EnrichmentModel
+from app.models.core.RagDataset import RagDataset
 from app.utils.logger import api_logger
 from pathlib import Path
 from fastapi import Request
@@ -15,7 +16,7 @@ data_folder = Path(__file__).parent.parent.parent / "data"
 
 ai_service = AiService(
     rag=RAG(datasets=[
-        data_folder / "brut.txt"
+        RagDataset(path=data_folder / "life-timeline.txt", splitter="paragraphs"),
     ]),
     api_key=CONFIGURATION.MISTRAL_API_KEY,
     context_size=3)
