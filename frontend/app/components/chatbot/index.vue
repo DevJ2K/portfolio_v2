@@ -1,14 +1,17 @@
 <template>
   <div
     class="fixed min-h-22 group flex items-end justify-end transition-all duration-300 ease-in-out z-50"
-    :class="{ 'bottom-4 right-4 md:bottom-8 md:right-8': !isOpen,
-              'bottom-0 right-0 md:bottom-8 md:right-8': isOpen }"
+    :class="{
+      'bottom-4 right-4 md:bottom-8 md:right-8': !isOpen,
+      'bottom-0 right-0 md:bottom-8 md:right-8': isOpen,
+    }"
   >
     <!-- Integral Box -->
     <div
       class="relative flex flex-col z-50 bg-zinc-100 chat-shadow rounded-4xl overflow-hidden transition-all duration-300 ease-in-out"
       :class="{
-        'w-screen h-screen md:h-[max(65vh,550px)] md:w-[max(30vw,500px)] rounded-none md:rounded-4xl': isOpen,
+        'w-screen h-screen md:h-[max(65vh,550px)] md:w-[max(30vw,500px)] rounded-none md:rounded-4xl':
+          isOpen,
         'size-18': !isOpen,
         'animate-bounce group-hover:animate-none': isFirstOpen,
         // 'animate-custom-floating-btn group-hover:no-animation': isFirstOpen,
@@ -71,9 +74,17 @@
         <ChatbotContent v-if="messages.length > 0" :messages="messages" />
         <div
           v-else
-          class="flex items-center justify-center h-full text-zinc-500"
+          class="flex flex-col gap-4 items-center justify-center h-full text-zinc-500"
         >
-          <p class="text-sm md:text-base">Start chatting with me to learn more about SFT-R!</p>
+        <p class="text-sm md:text-base text-zinc-600">
+          Ask me anything about SFT-R, I am here to help you!
+        </p>
+          <button
+            v-for="suggestion in suggestions"
+            :key="suggestion"
+            class="cursor-pointer text-sm md:text-base hover:text-zinc-600 hover:bg-gray-200 px-2 py-1 rounded-lg border border-purple-300"
+            @click="sendMessage(suggestion)"
+          >{{ suggestion }}</button>
         </div>
       </div>
       <!-- Chat bar -->
@@ -94,12 +105,20 @@ const { messages } = storeToRefs(chatbotStore);
 
 const prompt = ref("");
 
+const suggestions: Array<string> = [
+  "What is SFT-R?",
+  "How does SFT-R work?",
+  "What are the benefits of using SFT-R?",
+];
+
 const isOpen = ref(false);
 const isFirstOpen = ref(true);
 
-const sendMessage = () => {
-  if (prompt.value.trim() === "") return;
-  const message = prompt.value.trim();
+const sendMessage = (message: string = "") => {
+  if (message === "") {
+    message = prompt.value.trim();
+  }
+  if (message === "") return;
   prompt.value = "";
   chatbotStore.sendMessage(message);
 };

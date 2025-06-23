@@ -39,7 +39,7 @@ class AiService:
                     token = delta.content
                     response += token
                     yield token
-        ai_logger.info(f"Response: {response}")
+        ai_logger.info(f"New interaction:\nAsk: {conversation[-1].get("content", None)}\n\nResponse: {response}")
 
 
 if __name__ == "__main__":
