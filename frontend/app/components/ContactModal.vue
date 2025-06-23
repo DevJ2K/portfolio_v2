@@ -84,19 +84,20 @@ const sendMessage = async () => {
   contactUsMissingField.value.title = false;
   contactUsMissingField.value.message = false;
 
-  if (contactUs.value.email === "") {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (contactUs.value.email.trim() === "" || !emailRegex.test(contactUs.value.email)) {
     contactUsMissingField.value.email = true;
   }
-  if (contactUs.value.title === "") {
+  if (contactUs.value.title.trim() === "") {
     contactUsMissingField.value.title = true;
   }
-  if (contactUs.value.message === "") {
+  if (contactUs.value.message.trim() === "") {
     contactUsMissingField.value.message = true;
   }
   if (
-    contactUs.value.title.trim() === "" ||
-    contactUs.value.message.trim() === "" ||
-    contactUs.value.email.trim() === ""
+    contactUsMissingField.value.email ||
+    contactUsMissingField.value.title ||
+    contactUsMissingField.value.message
   ) {
     return;
   }
