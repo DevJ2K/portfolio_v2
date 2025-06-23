@@ -16,44 +16,8 @@
 
 import type { Education } from '~/types/Education';
 
-const educations: Education[] = [
-  {
-    title: 'Self-learning',
-    image: '/images/educations/self_learning.png',
-    borderColor: 'border-[#F766FF]',
-    startDate: 'Sep. 2020',
-    endDate: 'Present',
-    stat: '+90 projects | +140 repositories',
-    description: 'A good programmer never stop to learn itself.',
-    btnIcon: 'mingcute:github-line',
-    btnText: 'View GitHub',
-    btnActive: true,
-    link: 'https://github.com/DevJ2K'
-  },
-  {
-    title: '42 Paris',
-    image: '/images/educations/42.png',
-    borderColor: 'border-[#FFC966]',
-    startDate: 'Sep. 2023',
-    endDate: '2026',
-    stat: '+76 solo & team projects',
-    description: 'Enroll for a master degree in AI & Data',
-    btnIcon: 'ic:outline-lock',
-    btnText: 'View Certificate',
-    btnActive: false
-  },
-  {
-    title: 'Harvard University',
-    image: '/images/educations/harvard.png',
-    borderColor: 'border-[#FF6666]',
-    startDate: '2025',
-    stat: '+3 courses followed',
-    description: 'Online courses about CS and AI.',
-    btnIcon: 'ic:outline-lock',
-    btnText: 'View Certificate',
-    btnActive: false
-  }
-]
+const myDataStore = useMyDataStore();
+const educations: Education[] = myDataStore.educations;
 </script>
 
 <style scoped></style>

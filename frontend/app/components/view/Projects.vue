@@ -32,29 +32,8 @@ import type { Project } from '~/types/Project';
 const tags = ['AI', 'Web', 'Mobile'];
 const selectedTag = ref(tags[0]);
 
-const projects: Project[] = [
-  {
-    title: 'SnakeAI',
-    description: 'The goal of this project is to introduce basic of reinforcement learning with a snake game. The snake has to reach a minimum length of 10.',
-    image: '/images/projects/snake_ai.png',
-    tags: ['AI'],
-
-    onlineLink: 'https://snakeai.devj2k.com',
-    githubLink: 'https://github.com/DevJ2K/SnakeAI',
-    isPrivate: false,
-    isSoonOnline: false,
-  },
-  {
-    title: 'Gomoku',
-    description: 'The goal of this project is to make an AI capable of beating human players at Gomoku.',
-    image: '/images/projects/app_gomoku.png',
-    tags: ['AI'],
-
-    githubLink: 'https://github.com/DevJ2K/app_gomoku',
-    isPrivate: false,
-    isSoonOnline: false,
-  }
-]
+const myDataStore = useMyDataStore();
+const projects: Project[] = myDataStore.projects;
 
 </script>
 

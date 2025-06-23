@@ -16,99 +16,23 @@
 import { SvgC, SvgCplusplus, SvgDocker, SvgFirebase, SvgJava, SvgNuxt, SvgPython, SvgSwift, SvgTypescript } from '#components';
 import type { Skill } from '~/types/Skill';
 
-const skills: Skill[] = [
-    {
-        name: 'Python',
-        icon: SvgPython,
-        description: 'My favorite language for data science and machine learning.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'Nuxt',
-        icon: SvgNuxt,
-        description: 'My favorite language for building web applications.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'Java',
-        icon: SvgJava,
-        description: 'My favorite language for building enterprise applications.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'Swift',
-        icon: SvgSwift,
-        description: 'For iOS and macOS application development.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'C',
-        icon: SvgC,
-        description: 'For low-level programming and systems development.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'C++',
-        icon: SvgCplusplus,
-        description: 'For performance-critical applications and game development.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'Firebase',
-        icon: SvgFirebase,
-        description: 'Cloud-based platform for building web and mobile applications.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'Docker',
-        icon: SvgDocker,
-        description: 'Powerful tool for containerization and deployment.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
-    {
-        name: 'Typescript',
-        icon: SvgTypescript,
-        description: 'I use TypeScript to build scalable and maintainable web applications.',
-        achievements: [
-            'AAA',
-            'BBB',
-            'CCC'
-        ]
-    },
+const iconMap = {
+    'Python': SvgPython,
+    'Java': SvgJava,
+    'Typescript': SvgTypescript,
+    'Nuxt': SvgNuxt,
+    'Docker': SvgDocker,
+    'Firebase': SvgFirebase,
+    'C': SvgC,
+    'C++': SvgCplusplus,
+    'Swift': SvgSwift,
+} as Record<string, any>;
 
-]
+const myDataStore = useMyDataStore();
+const skills: Skill[] = myDataStore.skills.map(skill => ({
+    ...skill,
+    icon: iconMap[skill.name] || null,
+}));
 </script>
 
 <style scoped>
