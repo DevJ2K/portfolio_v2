@@ -80,6 +80,16 @@ prod:
 	@docker-compose -f $(DOCKER_FILE_PROD) build
 	@docker-compose -f $(DOCKER_FILE_PROD) up -d
 
+deploy:
+	@echo "$(GREEN)Deploying production environment...$(DEF_COLOR)"
+	@echo "$(RED)Stopping existing production containers...$(DEF_COLOR)"
+	@docker-compose -f $(DOCKER_FILE_PROD) down --rmi all --volumes --remove-orphans
+	@echo "$(BLUE)Fetching latest code...$(DEF_COLOR)"
+	@git pull
+	@echo "$(MAGENTA)Running production environment...$(DEF_COLOR)"
+	@docker-compose -f $(DOCKER_FILE_PROD) build
+	@docker-compose -f $(DOCKER_FILE_PROD) up -d
+
 
 ##############################
 # PHONY
