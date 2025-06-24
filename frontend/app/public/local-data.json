@@ -38,7 +38,6 @@
       "isSoonOnline": false
     },
 
-
     {
       "title": "Portfolio-v2 (Web Part)",
       "description": "This new version of my portfolio is built with Nuxt for the frontend and FastAPI for the backend. It gave me the opportunity to build a complete fullstack application, exploring essential software development concepts, followed by a secure deployment.",
@@ -67,7 +66,6 @@
       "isPrivate": false,
       "isSoonOnline": false
     },
-
 
     {
       "title": "Weather3D",
@@ -147,8 +145,7 @@
       "duration": "Dec. 2022 - Feb. 2023",
       "position": "Product Designer & Mobile Developer",
       "logo": "/images/experiences/waveinvest.png",
-      "description": "As a former sneaker reseller, I identified a clear gap in the market: the absence of a dedicated management tool tailored to reselling needs. I reached out to SamaraCG, a well-known private group specializing in sneaker reselling, to propose building a custom application for their members.\n\nThis led to the creation of WaveSpace, a sneaker management platform designed to help resellers track, organize, and optimize their inventory and operations.\n\n\n**Feedback from the CEO:**\n*To be honest, WaveSpace is one of the best projects I've done with Theo (out of the many we've worked on together). It was an accounting management application specifically designed for trainer retailers, and I have to say I'm absolutely delighted with the result. Théo was very responsive whenever I needed changes or adjustments (with follow-up even after the application was finished). He always listens to my requests and understands my needs perfectly. In terms of value for money, WaveSpace is more than reasonable. Théo offers very competitive rates without ever sacrificing quality of service. He is also very understanding when it comes to budget issues. Overall, I would highly recommend working with Theo as it has been a positive and rewarding experience.*"
-,
+      "description": "As a former sneaker reseller, I identified a clear gap in the market: the absence of a dedicated management tool tailored to reselling needs. I reached out to SamaraCG, a well-known private group specializing in sneaker reselling, to propose building a custom application for their members.\n\nThis led to the creation of WaveSpace, a sneaker management platform designed to help resellers track, organize, and optimize their inventory and operations.\n\n\n**Feedback from the CEO:**\n*To be honest, WaveSpace is one of the best projects I've done with Theo (out of the many we've worked on together). It was an accounting management application specifically designed for trainer retailers, and I have to say I'm absolutely delighted with the result. Théo was very responsive whenever I needed changes or adjustments (with follow-up even after the application was finished). He always listens to my requests and understands my needs perfectly. In terms of value for money, WaveSpace is more than reasonable. Théo offers very competitive rates without ever sacrificing quality of service. He is also very understanding when it comes to budget issues. Overall, I would highly recommend working with Theo as it has been a positive and rewarding experience.*",
       "connector": "for",
       "clazz": "bg-[#FED4FF] border-[#DCA0DE]"
     }
@@ -194,48 +191,82 @@
   "skills": [
     {
       "name": "Python",
-      "description": "My favorite language for data science and machine learning.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "My favorite language — I use it in most of my projects.",
+      "achievements": [
+        "FastAPI for building modern APIs",
+        "Robust unit testing with Pytest and Unittest",
+        "Widely used in AI and data-related projects"
+      ]
     },
     {
       "name": "Nuxt",
-      "description": "My favorite language for building web applications.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "My go-to framework for building web apps.",
+      "achievements": [
+        "Built on Vue with a clear and intuitive syntax",
+        "Quick to set up and ideal for dynamic interfaces",
+        "Perfect for full-stack web development"
+      ]
     },
     {
       "name": "Java",
-      "description": "My favorite language for building enterprise applications.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "A great language for enterprise-level applications.",
+      "achievements": [
+        "Built stable backends with Spring Boot",
+        "Valuable for scalable architectures",
+        "Applied in real-world business environments"
+      ]
     },
     {
       "name": "Swift",
-      "description": "For iOS and macOS application development.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "My favorite language for mobile development.",
+      "achievements": [
+        "Clean syntax and powerful IDE (Xcode)",
+        "Excellent official documentation and community support"
+      ]
     },
     {
       "name": "C",
-      "description": "For low-level programming and systems development.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "The first language I used during the core curriculum at 42.",
+      "achievements": [
+        "Helped me understand low-level memory management",
+        "Gained deep understanding of how computers work",
+        "Extremely fast and efficient at runtime"
+      ]
     },
     {
       "name": "C++",
-      "description": "For performance-critical applications and game development.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "The second language I used during the core curriculum at 42.",
+      "achievements": [
+        "Great for mastering object-oriented programming concepts",
+        "Used in algorithms and systems logic",
+        "Popular and backed by strong documentation"
+      ]
     },
     {
       "name": "Firebase",
-      "description": "Cloud-based platform for building web and mobile applications.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "My primary choice for cloud-based databases.",
+      "achievements": [
+        "Easy to set up and manage",
+        "Cost-effective for low-to-medium traffic apps",
+        "Strong ecosystem with real-time capabilities"
+      ]
     },
     {
       "name": "Docker",
-      "description": "Powerful tool for containerization and deployment.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "Essential for building production-ready apps.",
+      "achievements": [
+        "Containerization of frontend and backend services",
+        "Simplifies deployment and environment consistency",
+        "Ideal for multi-machine development setups"
+      ]
     },
     {
       "name": "Typescript",
-      "description": "I use TypeScript to build scalable and maintainable web applications.",
-      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
+      "description": "I use it in all my web projects.",
+      "achievements": [
+        "Improves code clarity with type safety",
+        "Works seamlessly with ESLint and modern frameworks"
+      ]
     }
   ]
 }

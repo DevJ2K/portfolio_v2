@@ -16,11 +16,11 @@
       <div class="flip-card-back rotate-y-180 p-3 flex flex-col items-start justify-start gap-2 text-sm">
         <h1 class="font-medium text-left">{{ skill.description }}</h1>
         <ul class="list-inside text-left flex flex-col gap-2">
-          <li v-for="achievement in skill.achievements" :key="achievement" class="flex items-center gap-2">
-            <div class="flex items-center justify-center size-5 md:size-6 text-[#65DB64] bg-[#A6F9A5] rounded-full border border-[#65DB64]">
+          <li v-for="achievement in skill.achievements" :key="achievement" class="flex items-center justify-start gap-2">
+            <div class="flex items-center justify-center size-4 md:size-5 text-[#65DB64] bg-[#A6F9A5] rounded-full border border-[#65DB64]">
               <Icon name="material-symbols:check-rounded" size="64" />
             </div>
-            <span class="text-foreground-secondary">{{ achievement }}</span>
+            <span class="text-foreground-secondary max-sm:text-xs">{{ achievement }}</span>
           </li>
         </ul>
       </div>
@@ -47,7 +47,7 @@ const toggleFace = () => {
 
 onMounted(() => {
   const estimatedFrontHeight = 120;
-  const estimatedBackHeight = 50 + (skill.achievements?.length || 0) * 35;
+  const estimatedBackHeight = 50 + (skill.achievements?.length || 0) * 40;
 
   dynamicHeight.value = Math.max(estimatedFrontHeight, estimatedBackHeight, 0);
 });
