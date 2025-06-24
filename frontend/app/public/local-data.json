@@ -111,7 +111,7 @@
       "duration": "Feb. 2025 - Present",
       "position": "Co-Founder & CTO",
       "logo": "/images/experiences/unknown-project.png",
-      "description": "In charge of all aspects of development: architecture, backend, frontend, deployment, and technical strategy. This project is still under wraps...",
+      "description": "In charge of all aspects of development: architecture, backend, frontend, deployment, and technical strategy.\nThis project is still under wraps...",
       "connector": "of",
       "clazz": "bg-gradient-to-b from-[#E0EFFF] to-[#F5E0FF] border-[#DC8FFF]"
     },
@@ -120,7 +120,7 @@
       "duration": "Jan. 2025 - Present",
       "position": "Software Engineer Internship",
       "logo": "/images/experiences/cacib.png",
-      "description": "Working on a project to improve the bank's internal tools and processes.\n\n\n**Feedback from my manager/tutor:**\n*Great integration in the firm. Theo progressed very well on technology on various programimng languages. He will be very welcome again if we wants another experience in CACIB (in France or in other locations).*",
+      "description": "Contributed to the redevelopment of CACIB’s regulatory reporting system, a critical project focused on improving performance, maintainability, and code quality.\n\nDespite having no prior experience with Java, I quickly became operational by working with tools such as Spring Boot, relational databases, and applying the hexagonal architecture pattern. I also learned to apply common design patterns to build scalable and maintainable components. Throughout the project, I adhered to key engineering principles like SOLID and KISS, and used SonarQube to ensure clean and maintainable code.\n\nOne of my main contributions was the development of a key component: a parser that transforms internal banking files (CIBML) into structured Java objects used throughout the processing pipeline.\n\nI also worked on observability, integrating OpenTelemetry, Prometheus, and Grafana to monitor application metrics and detect potential issues early.\n\nThroughout the internship, I actively participated in Agile Scrum workflows alongside Product Owners and developers. The project involved over 200 merge requests, and I became familiar with CI/CD pipelines and collaborative development practices.\n\nThis experience significantly strengthened both my technical and communication skills, especially in explaining complex logic to non-developers in a clear and structured manner.\n\n\n**Feedback from my manager/tutor:**\n*Great integration in the firm. Theo progressed very well on technology on various programimng languages. He will be very welcome again if we wants another experience in CACIB (in France or in other locations).*",
       "connector": "at",
       "clazz": "bg-[#FFFFFF] border-[#DCDCDC]"
     },
