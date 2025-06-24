@@ -83,6 +83,7 @@ prod:
 deploy:
 	@echo "$(GREEN)Deploying production environment...$(DEF_COLOR)"
 	@echo "$(RED)Stopping existing production containers...$(DEF_COLOR)"
+	@docker-compose -f $(DOCKER_FILE_PROD) down
 	@docker-compose -f $(DOCKER_FILE_PROD) down --rmi all --volumes --remove-orphans
 	@echo "$(BLUE)Fetching latest code...$(DEF_COLOR)"
 	@git pull
@@ -93,7 +94,7 @@ deploy:
 
 ##############################
 # PHONY
-.PHONY: help build up down restart logs clean local dev prod down-prod down-dev down-local
+.PHONY: help build up down restart logs clean local dev prod down-prod down-dev down-local deploy
 
 ##############################
 # CUSTOM OVERRIDES
