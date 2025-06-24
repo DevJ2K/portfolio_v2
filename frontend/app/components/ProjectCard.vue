@@ -16,14 +16,14 @@
         GitHub
       </a>
 
-      <span v-if="isPrivate" class="cursor-default badge badge-shadow text-[#D52A2A] border border-[#FFABAB]">
-        <Icon name="ant-design:lock-filled" size="16" />
-        Private
-      </span>
-
       <span v-if="isSoonOnline" class="cursor-default badge badge-shadow text-[#D5A22A] border border-[#FFDBAB]">
         <Icon name="ant-design:clock-circle-filled" size="16" />
         Soon
+      </span>
+
+      <span v-if="isPrivate" class="cursor-default badge badge-shadow text-[#D52A2A] border border-[#FFABAB]">
+        <Icon name="ant-design:lock-filled" size="16" />
+        Private
       </span>
 
     </div>

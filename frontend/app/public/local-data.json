@@ -1,11 +1,10 @@
 {
   "projects": [
     {
-      "title": "Portfolio-v2",
-      "description": "This is this portfolio website, built with Nuxt 3 and TypeScript. It showcases my skills, projects, and experiences. It is designed to be responsive and user-friendly. I implemented a chatbot with a RAG (Retrieval-Augmented Generation) architecture to answer questions about me.",
-      "image": "/images/unknown.jpg",
+      "title": "Portfolio-v2 (AI Part)",
+      "description": "This project, which corresponds to this website, integrates a RAG (Retrieval-Augmented Generation) system combined with a Mistral LLM. The data used to power the RAG is based on myself, allowing it to answer any questions you might have about me.",
+      "image": "/images/projects/portfolio-ai.png",
       "tags": ["AI"],
-
       "onlineLink": "https://devj2k.com",
       "githubLink": "https://github.com/DevJ2K/portfolio_v2",
       "isPrivate": false,
@@ -13,24 +12,146 @@
     },
     {
       "title": "SnakeAI",
-      "description": "The goal of this project is to introduce basic of reinforcement learning with a snake game. The snake has to reach a minimum length of 10.",
+      "description": "This project involves implementing reinforcement learning in a snake game. The snake has very limited vision, and the goal is to achieve the longest possible length through learning.",
       "image": "/images/projects/snake_ai.png",
       "tags": ["AI"],
-
-      "onlineLink": "https://snakeai.devj2k.com",
-      "githubLink": "https://github.com/DevJ2K/SnakeAI",
+      "githubLink": "https://github.com/DevJ2K/snakeAI",
       "isPrivate": false,
       "isSoonOnline": false
     },
     {
       "title": "Gomoku",
-      "description": "The goal of this project is to make an AI capable of beating human players at Gomoku.",
-      "image": "/images/projects/app_gomoku.png",
+      "description": "The goal of this project is to develop an AI capable of beating a human player in the game of Gomoku. It uses the Mini-Max Algorithm with Alpha-Beta Pruning, combined with other optimization techniques for better performance.",
+      "image": "/images/projects/gomoku.png",
       "tags": ["AI"],
-
       "githubLink": "https://github.com/DevJ2K/app_gomoku",
       "isPrivate": false,
       "isSoonOnline": false
+    },
+    {
+      "title": "LinearRegression",
+      "description": "This project serves as an introduction to a fundamental concept in machine learning: linear regression. The idea is to build a program that predicts the price of a car based on its mileage using a linear regression model trained with a gradient descent algorithm.",
+      "image": "/images/projects/ft_linear_regression.png",
+      "tags": ["AI"],
+      "githubLink": "https://github.com/DevJ2K/ft_linear_regression",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+
+
+    {
+      "title": "Portfolio-v2 (Web Part)",
+      "description": "This new version of my portfolio is built with Nuxt for the frontend and FastAPI for the backend. It gave me the opportunity to build a complete fullstack application, exploring essential software development concepts, followed by a secure deployment.",
+      "image": "/images/projects/portfolio-web.png",
+      "tags": ["Web"],
+      "onlineLink": "https://devj2k.com",
+      "githubLink": "https://github.com/DevJ2K/portfolio_v2",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+    {
+      "title": "???",
+      "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management and more. It’s a major milestone in my journey as a developer.",
+      "image": "/images/projects/unreleased-2.png",
+      "tags": ["Web"],
+      "isPrivate": true,
+      "isSoonOnline": true
+    },
+    {
+      "title": "Rubik's Cube Solver",
+      "description": "The aim of this project was to develop a program capable of solving a Rubik’s Cube using as few moves as possible. Created as a team of two, I mainly worked on the frontend, built with Vue and Three.Js, to produce a nice animated 3D visualization.",
+      "image": "/images/projects/app_rubik.png",
+      "tags": ["Web"],
+      "onlineLink": "https://rubik3d.netlify.app/",
+      "githubLink": "https://github.com/DevJ2K/app_rubik",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+
+
+    {
+      "title": "Weather3D",
+      "description": "A simple weather app built in SwiftUI with a user-friendly interface using the OpenWeather API. It features 3D models rendered with SceneKit that adapt based on the weather and time of day.",
+      "image": "/images/projects/weather_app.png",
+      "tags": ["Mobile"],
+      "githubLink": "https://github.com/DevJ2K/WeatherAppSwiftUI",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+    {
+      "title": "ScreenTimeApp",
+      "description": "This project involved developing an app that can lock access to selected apps for a set or indefinite period, using Apple’s ScreenTime API.",
+      "image": "/images/projects/screentimeapp.png",
+      "tags": ["Mobile"],
+      "githubLink": "https://github.com/DevJ2K/ScreenTimeApp",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+    {
+      "title": "SwiftyCompanion",
+      "description": "This project is an internal app for my school, using the 42 API to provide various information about students. It’s a great project for learning how to handle APIs efficiently.",
+      "image": "/images/projects/swifty_companion.png",
+      "tags": ["Mobile"],
+      "githubLink": "https://github.com/DevJ2K/42-swifty-companion",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+    {
+      "title": "Tododev",
+      "description": "A collaborative to-do list app. The concept is to generate tasks tailored to each user's profile with the help of AI.",
+      "image": "/images/projects/tododev.png",
+      "tags": ["Mobile"],
+      "isPrivate": true,
+      "isSoonOnline": false
+    }
+
+
+  ],
+  "experiences": [
+    {
+      "company": "???",
+      "duration": "Feb. 2025 - Present",
+      "position": "CTO & Fullstack Developer",
+      "logo": "/images/experiences/unknown-project.png",
+      "description": "Working on a new project that is still under wraps.",
+      "connector": "for",
+      "clazz": "bg-gradient-to-b from-[#E0EFFF] to-[#F5E0FF] border-[#DC8FFF]"
+    },
+    {
+      "company": "Credit Agricole Corporate & Investment Bank",
+      "duration": "Jan. 2025 - Present",
+      "position": "Software Engineer Internship",
+      "logo": "/images/experiences/cacib.png",
+      "description": "Working on a project to improve the bank's internal tools and processes.",
+      "connector": "at",
+      "clazz": "bg-[#FFFFFF] border-[#DCDCDC]"
+    },
+    {
+      "company": "LudiLab",
+      "duration": "Jan. 2025 - Feb. 2025",
+      "position": "Web3 Developer",
+      "logo": "/images/experiences/ludilab.jpeg",
+      "description": "Developing a web3 application for the company",
+      "connector": "for",
+      "clazz": "bg-[#D4D4FF] border-[#A1A0DE]"
+    },
+    {
+      "company": "Belles Des Pins",
+      "duration": "Oct. 2024",
+      "position": "Mobile Developer",
+      "logo": "/images/experiences/bellesdespins.png",
+      "description": "Developing a mobile application for the company.",
+      "connector": "for",
+      "clazz": "bg-[#FFE2D4] border-[#DEB4A0]"
+    },
+    {
+      "company": "WaveInvest",
+      "duration": "Dec. 2022 - Feb. 2023",
+      "position": "Mobile Developer",
+      "logo": "/images/experiences/waveinvest.png",
+      "description": "Developing a mobile application for the company.",
+      "connector": "for",
+      "clazz": "bg-[#FED4FF] border-[#DCA0DE]"
     }
   ],
   "educations": [
@@ -72,133 +193,50 @@
     }
   ],
   "skills": [
-        {
-        "name": "Python",
-        "description": "My favorite language for data science and machine learning.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+    {
+      "name": "Python",
+      "description": "My favorite language for data science and machine learning.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "Nuxt",
-        "description": "My favorite language for building web applications.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "Nuxt",
+      "description": "My favorite language for building web applications.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "Java",
-        "description": "My favorite language for building enterprise applications.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "Java",
+      "description": "My favorite language for building enterprise applications.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "Swift",
-        "description": "For iOS and macOS application development.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "Swift",
+      "description": "For iOS and macOS application development.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "C",
-        "description": "For low-level programming and systems development.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "C",
+      "description": "For low-level programming and systems development.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "C++",
-        "description": "For performance-critical applications and game development.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "C++",
+      "description": "For performance-critical applications and game development.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "Firebase",
-        "description": "Cloud-based platform for building web and mobile applications.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "Firebase",
+      "description": "Cloud-based platform for building web and mobile applications.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "Docker",
-        "description": "Powerful tool for containerization and deployment.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "Docker",
+      "description": "Powerful tool for containerization and deployment.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     },
     {
-        "name": "Typescript",
-        "description": "I use TypeScript to build scalable and maintainable web applications.",
-        "achievements": [
-            "- 1 -",
-            "- 2 -",
-            "- 3 -"
-        ]
+      "name": "Typescript",
+      "description": "I use TypeScript to build scalable and maintainable web applications.",
+      "achievements": ["- 1 -", "- 2 -", "- 3 -"]
     }
-  ],
-  "experiences": [
-      {
-    "company": "???",
-    "duration": "Feb. 2025 - Present",
-    "position": "CTO & Fullstack Developer",
-    "logo": "/images/experiences/unknown-project.png",
-    "description": "Working on a new project that is still under wraps.",
-    "connector": "for",
-    "clazz": "bg-gradient-to-b from-[#E0EFFF] to-[#F5E0FF] border-[#DC8FFF]"
-  },
-  {
-    "company": "Credit Agricole Corporate & Investment Bank",
-    "duration": "Jan. 2025 - Present",
-    "position": "Software Engineer Internship",
-    "logo": "/images/experiences/cacib.png",
-    "description": "Working on a project to improve the bank's internal tools and processes.",
-    "connector": "at",
-    "clazz": "bg-[#FFFFFF] border-[#DCDCDC]"
-  },
-  {
-    "company": "LudiLab",
-    "duration": "Jan. 2025 - Feb. 2025",
-    "position": "Web3 Developer",
-    "logo": "/images/experiences/ludilab.jpeg",
-    "description": "Developing a web3 application for the company",
-    "connector": "for",
-    "clazz": "bg-[#D4D4FF] border-[#A1A0DE]"
-  },
-  {
-    "company": "Belles Des Pins",
-    "duration": "Oct. 2024",
-    "position": "Mobile Developer",
-    "logo": "/images/experiences/bellesdespins.png",
-    "description": "Developing a mobile application for the company.",
-    "connector": "for",
-    "clazz": "bg-[#FFE2D4] border-[#DEB4A0]"
-  },
-  {
-    "company": "WaveInvest",
-    "duration": "Dec. 2022 - Feb. 2023",
-    "position": "Mobile Developer",
-    "logo": "/images/experiences/waveinvest.png",
-    "description": "Developing a mobile application for the company.",
-    "connector": "for",
-    "clazz": "bg-[#FED4FF] border-[#DCA0DE]"
-  }
   ]
 }
