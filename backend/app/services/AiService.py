@@ -16,7 +16,7 @@ class AiService:
         # model="open-mixtral-8x22b",  # 8/10, pas mal
         # model="mistral-large-2402",  # 10/10, Pas malllll !!
         # model="devstral-small-latest",
-        self.model = "mistral-large-2402"
+        self.model = "mistral-medium-latest"
 
     def enrich(self, messages: list[ChatMessage], query: str) -> list[ChatMessage]:
         ai_logger.info(f"Enriching conversation with query: '{query}'")
@@ -25,21 +25,49 @@ class AiService:
     def ask(self, messages: list[ChatMessage]):
         conversation_handler = ConversationHandler()
         conversation: list[MistralInput] = conversation_handler.build(messages=messages)
-        # ai_logger.debug(f"Conversation: {conversation}")
 
-        response_stream = self.client.chat.stream(
-            model=self.model,
-            messages=conversation
-        )
-        response = ""
-        for event in response_stream:
-            if isinstance(event, CompletionEvent):
-                delta = event.data.choices[0].delta
-                if delta and delta.content:
-                    token = delta.content
-                    response += token
-                    yield token
-        ai_logger.info(f"New interaction:\nAsk: {conversation[-1].get("content", None)}\n\nResponse: {response}")
+        try:
+            response_stream = self.client.chat.stream(
+                model=self.model,
+                messages=conversation
+            )
+            response = ""
+
+            if hasattr(response_stream, '__iter__'):
+                for event in response_stream:
+                    if isinstance(event, CompletionEvent):
+                        delta = event.data.choices[0].delta
+                        if delta and delta.content:
+                            token = delta.content
+                            response += token
+                            yield token
+
+                ai_logger.info(f"New interaction:\nAsk: {conversation[-1].get('content', None)}\n\nResponse: {response}")
+
+            else:
+                ai_logger.warning("Stream not iterable, falling back to non-streaming")
+                regular_response = self.client.chat.complete(
+                    model=self.model,
+                    messages=conversation
+                )
+                content = regular_response.choices[0].message.content
+                response = content
+                yield content
+                ai_logger.info(f"New interaction:\nAsk: {conversation[-1].get('content', None)}\n\nResponse: {response}")
+
+        except Exception as e:
+            ai_logger.error(f"Error in streaming: {e}")
+            try:
+                regular_response = self.client.chat.complete(
+                    model=self.model,
+                    messages=conversation
+                )
+                content = regular_response.choices[0].message.content
+                yield content
+                ai_logger.info(f"Fallback response: {content}")
+            except Exception as fallback_error:
+                ai_logger.error(f"Fallback also failed: {fallback_error}")
+                yield "<span class='text-red-500'>I'm sorry, I couldn't process your request right now. Please try again in a moment.</span>"
 
 
 if __name__ == "__main__":
