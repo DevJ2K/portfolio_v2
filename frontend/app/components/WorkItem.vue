@@ -37,8 +37,7 @@
       </template> -->
 
       <template #body>
-        <p class="text-body whitespace-pre-line">
-          {{ workExperience.description }}
+        <p class="text-body whitespace-pre-line" v-html="sanitizedDescription">
         </p>
       </template>
     </UModal>
@@ -47,12 +46,19 @@
 
 <script lang="ts" setup>
 import type { WorkExperience } from "~/types/WorkExperience";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
-defineProps({
+
+const { workExperience } = defineProps({
   workExperience: {
     type: Object as () => WorkExperience,
     required: true,
   },
+});
+
+const sanitizedDescription = computed(() => {
+  return DOMPurify.sanitize(marked(workExperience.description).toString());
 });
 
 const isModalOpen = ref(false);

@@ -51,7 +51,7 @@
     },
     {
       "title": "???",
-      "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management and more. It’s a major milestone in my journey as a developer.",
+      "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management, and more. It’s a major milestone in my journey as a developer.",
       "image": "/images/projects/unreleased-2.png",
       "tags": ["Web"],
       "isPrivate": true,
@@ -104,17 +104,15 @@
       "isPrivate": true,
       "isSoonOnline": false
     }
-
-
   ],
   "experiences": [
     {
       "company": "???",
       "duration": "Feb. 2025 - Present",
-      "position": "CTO & Fullstack Developer",
+      "position": "Co-Founder & CTO",
       "logo": "/images/experiences/unknown-project.png",
-      "description": "Working on a new project that is still under wraps.",
-      "connector": "for",
+      "description": "In charge of all aspects of development: architecture, backend, frontend, deployment, and technical strategy. This project is still under wraps...",
+      "connector": "of",
       "clazz": "bg-gradient-to-b from-[#E0EFFF] to-[#F5E0FF] border-[#DC8FFF]"
     },
     {
@@ -122,16 +120,16 @@
       "duration": "Jan. 2025 - Present",
       "position": "Software Engineer Internship",
       "logo": "/images/experiences/cacib.png",
-      "description": "Working on a project to improve the bank's internal tools and processes.",
+      "description": "Working on a project to improve the bank's internal tools and processes.\n\n\n**Feedback from my manager/tutor:**\n*Great integration in the firm. Theo progressed very well on technology on various programimng languages. He will be very welcome again if we wants another experience in CACIB (in France or in other locations).*",
       "connector": "at",
       "clazz": "bg-[#FFFFFF] border-[#DCDCDC]"
     },
     {
       "company": "LudiLab",
       "duration": "Jan. 2025 - Feb. 2025",
-      "position": "Web3 Developer",
+      "position": "Fullstack Web3 Developer",
       "logo": "/images/experiences/ludilab.jpeg",
-      "description": "Developing a web3 application for the company",
+      "description": "During this mission, I designed and developed a fullstack application using Electron, with Vue for the frontend and Python for the backend. The purpose of this application was to integrate a volume bot for the Solana blockchain, with a polished user interface.\n\nThe goal of a volume bot is to simulate buy and sell transactions in order to generate volume on a specific token and create attractiveness around it. These interactions were performed through the Pump.fun platform.\n\n\n**Feedback from the Founder:**\n*Theo went far beyond what we expected, the task was accomplished with great care, requests were quickly understood and perfectly executed. A big bravo to this developer and thank you. I highly recommend this dev.*",
       "connector": "for",
       "clazz": "bg-[#D4D4FF] border-[#A1A0DE]"
     },
@@ -140,16 +138,17 @@
       "duration": "Oct. 2024",
       "position": "Mobile Developer",
       "logo": "/images/experiences/bellesdespins.png",
-      "description": "Developing a mobile application for the company.",
+      "description": "During this mission, I was in charge of redesigning the company’s mobile application using SwiftUI. I created the new design in Figma, got it validated, and then implemented it.\n\nImpressed by the quality of my work and how quickly I delivered it, the CEO offered to extend the collaboration by adding new features. These included cart functionality, product filters, and smooth animations to enhance the user experience — which I gladly accepted.\n\n\n**Feedback from the CEO:**\n*I've had the pleasure of working with this freelancer and I'm extremely satisfied with the quality of his work. He demonstrated his professionalism by answering all my questions promptly and always being available to discuss the details of the project.*",
       "connector": "for",
       "clazz": "bg-[#FFE2D4] border-[#DEB4A0]"
     },
     {
-      "company": "WaveInvest",
+      "company": "SamaraCG",
       "duration": "Dec. 2022 - Feb. 2023",
-      "position": "Mobile Developer",
+      "position": "Product Designer & Mobile Developer",
       "logo": "/images/experiences/waveinvest.png",
-      "description": "Developing a mobile application for the company.",
+      "description": "As a former sneaker reseller, I identified a clear gap in the market: the absence of a dedicated management tool tailored to reselling needs. I reached out to SamaraCG, a well-known private group specializing in sneaker reselling, to propose building a custom application for their members.\n\nThis led to the creation of WaveSpace, a sneaker management platform designed to help resellers track, organize, and optimize their inventory and operations.\n\n\n**Feedback from the CEO:**\n*To be honest, WaveSpace is one of the best projects I've done with Theo (out of the many we've worked on together). It was an accounting management application specifically designed for trainer retailers, and I have to say I'm absolutely delighted with the result. Théo was very responsive whenever I needed changes or adjustments (with follow-up even after the application was finished). He always listens to my requests and understands my needs perfectly. In terms of value for money, WaveSpace is more than reasonable. Théo offers very competitive rates without ever sacrificing quality of service. He is also very understanding when it comes to budget issues. Overall, I would highly recommend working with Theo as it has been a positive and rewarding experience.*"
+,
       "connector": "for",
       "clazz": "bg-[#FED4FF] border-[#DCA0DE]"
     }
