@@ -28,7 +28,6 @@ class ContactService:
             raise ValueError("Input validation failed.")
         sent_status = []
         for provider in self.providers:
-            print(f"Trying to send message using {provider.__class__.__name__}")
             try:
                 if provider.send(email, title, message):
                     contact_logger.debug(f"Message from '{email}' has been successfully sent with title -> '{title}'")

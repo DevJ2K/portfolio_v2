@@ -11,11 +11,11 @@ class AiService:
         self.client = Mistral(api_key=api_key)
         self.rag = rag
         self.context_size = context_size
-        # model="open-mistral-7b",  # 5/10, mais pas assez rédirigé
-        # model="open-mixtral-8x7b",  # 6/10, mais tjrs en anglais
-        # model="open-mixtral-8x22b",  # 8/10, pas mal
-        # model="mistral-large-2402",  # 10/10, Pas malllll !!
-        # model="devstral-small-latest",
+        # self.model="open-mistral-7b"  # 5/10, mais pas assez rédirigé
+        # self.model="open-mixtral-8x7b"  # 6/10, mais tjrs en anglais
+        # self.model="open-mixtral-8x22b"  # 8/10, pas mal
+        # self.model="mistral-large-2402"  # 10/10, Pas malllll !!
+        # self.model="devstral-small-latest"
         self.model = "mistral-medium-latest"
 
     def enrich(self, messages: list[ChatMessage], query: str) -> list[ChatMessage]:

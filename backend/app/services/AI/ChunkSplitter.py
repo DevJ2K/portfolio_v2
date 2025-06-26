@@ -1,6 +1,7 @@
 import json
 from app.models.core.ChunkFormat import ChunkFormat
 
+
 class ChunkSplitter:
     def __init__(self):
         pass
@@ -37,6 +38,7 @@ class ChunkSplitter:
                 raise ValueError(f"Invalid JSON data: {e}")
         else:
             raise ValueError(f"Unknown datatype: {format.datatype}")
+
 
 if __name__ == "__main__":
     from pathlib import Path

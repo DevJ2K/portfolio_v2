@@ -78,7 +78,6 @@ if __name__ == "__main__":
         RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
     ])
 
-
     # import time
     # start_time = time.time()
     # rag.retrieve("Qu'elle est la meilleure couleur de SFT-R ?", k=1)
