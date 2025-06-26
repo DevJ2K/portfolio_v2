@@ -41,6 +41,8 @@ class ConversationHandler:
 
 if __name__ == "__main__":
     from pprint import pprint
+    from app.models.core.RagDataset import RagDataset
+    from app.models.core.ChunkFormat import ChunkFormat
 
     conversation: list[ChatMessage] = [
         {
@@ -63,8 +65,18 @@ if __name__ == "__main__":
         }
     ]
 
-    data1 = Path(__file__).parent.parent.parent / "data" / "brut.txt"
-    rag = RAG([data1])
+    # data1 = Path(__file__).parent.parent.parent / "data" / "brut.txt"
+    # rag = RAG([data1])
+
+    data_folder = Path(__file__).parent.parent.parent / "data"
+
+    rag = RAG(datasets=[
+        RagDataset(path=data_folder / "42cursus.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
+        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
+    ])
 
     conversationHandler = ConversationHandler()
     print("Enrichment Conversation")

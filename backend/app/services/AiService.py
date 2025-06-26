@@ -72,6 +72,8 @@ class AiService:
 
 if __name__ == "__main__":
     from pathlib import Path
+    from app.models.core.RagDataset import RagDataset
+    from app.models.core.ChunkFormat import ChunkFormat
     import os
     import dotenv
 
@@ -81,33 +83,52 @@ if __name__ == "__main__":
     # print(api_key)
     # exit(1)
 
-    data1 = Path(__file__).parent.parent / "data" / "brut.txt"
-    rag = RAG([data1])
+    # rag = RAG([
+    #     RagDataset(Path(__file__).parent.parent / "data" / "life-timeline.txt", splitter="paragraphs")
+    # ])
+
+    data_folder = Path(__file__).parent.parent / "data"
+
+    rag = RAG(datasets=[
+        RagDataset(path=data_folder / "42cursus.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
+        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
+    ])
 
     ai_service = AiService(rag=rag, api_key=api_key)
 
-    conversation: list[ChatMessage] = [
-        {
-            "role": "user",
-            "content": "Salut, ça va ?",
-            "context": ["Le contexte", "Le contexte"]
-        },
-        {
-            "role": "assistant",
-            "content": "Je vais super bien et toi ? Comment puis-je t'aider ?"
-        },
-        {
-            "role": "user",
-            "content": "Dis-moi",
-            "context": ["Le contexte", "Un autre"]
-        },
-        {
-            "role": "assistant",
-            "content": "Oui?"
-        }
-    ]
+    # conversation: list[ChatMessage] = [
+    #     {
+    #         "role": "user",
+    #         "content": "Salut, ça va ?",
+    #         "context": ["Le contexte", "Le contexte"]
+    #     },
+    #     {
+    #         "role": "assistant",
+    #         "content": "Je vais super bien et toi ? Comment puis-je t'aider ?"
+    #     },
+    #     {
+    #         "role": "user",
+    #         "content": "Dis-moi",
+    #         "context": ["Le contexte", "Un autre"]
+    #     },
+    #     {
+    #         "role": "assistant",
+    #         "content": "Oui?"
+    #     }
+    # ]
+    conversation = []
 
-    conversation = ai_service.enrich(messages=conversation, query="Qu'est-ce que SFT-R ?")
+    conversation = ai_service.enrich(messages=conversation, query="En combien de temps Theo a-t-il terminé le cursus de 42 ?")
 
-    for bloc in ai_service.ask(messages=conversation):
-        print(bloc, end="", flush=True)
+    conversation_handler = ConversationHandler()
+    conversation_build: list[MistralInput] = conversation_handler.build(messages=conversation)
+
+    print("=" * 40)
+    print("Enriched conversation:")
+    for msg in conversation_build:
+        print(f"{msg['role']}: {msg['content']}")
+    # for bloc in ai_service.ask(messages=conversation):
+    #     print(bloc, end="", flush=True)

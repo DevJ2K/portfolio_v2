@@ -5,6 +5,7 @@ from app.services.AI.RAG import RAG
 from app.configuration.Configuration import CONFIGURATION
 from app.models.API.Models import ConversationModel, EnrichmentModel
 from app.models.core.RagDataset import RagDataset
+from app.models.core.ChunkFormat import ChunkFormat
 from app.utils.logger import api_logger
 from pathlib import Path
 from fastapi import Request
@@ -13,13 +14,14 @@ from fastapi import Request
 router = APIRouter()
 
 data_folder = Path(__file__).parent.parent.parent / "data"
+CONTEXT_SIZE = 5
 
 ai_service = AiService(
     rag=RAG(datasets=[
         RagDataset(path=data_folder / "life-timeline.txt", splitter="paragraphs"),
     ]),
     api_key=CONFIGURATION.MISTRAL_API_KEY,
-    context_size=3)
+    context_size=CONTEXT_SIZE)
 
 
 def display_request_info(request: Request, route: str):

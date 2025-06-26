@@ -2,6 +2,7 @@ from app.utils.logger import rag_logger
 from app.utils.Colors import BHMAG, RESET
 from app.exceptions.RAGError import RAGError
 from app.models.core.RagDataset import RagDataset
+from app.services.AI.ChunkSplitter import ChunkSplitter
 from app.configuration.Configuration import CONFIGURATION
 from pathlib import Path
 from rich.progress import track
@@ -14,6 +15,7 @@ class RAG:
         self.EMBEDDING_MODEL: str = str(CONFIGURATION.OLLAMA_MODEL)  # (..., 768)
 
         self.chunks: list[str] = []
+        self.chunk_splitter: ChunkSplitter = ChunkSplitter()
         self.chunk_embeddings: np.ndarray = np.empty((0))
 
         # 1. Convert datasets to chunks
@@ -32,15 +34,8 @@ class RAG:
         for dataset in datasets:
             try:
                 with open(dataset.path, 'r') as f:
-                    # Each line in the dataset file is an information.
                     content = f.read()
-                    if dataset.splitter == "all":
-                        chunks += [content]
-                    elif dataset.splitter == "lines":
-                        chunks += [chunk for chunk in content.splitlines() if chunk.strip() != ""]
-                    elif dataset.splitter == "paragraphs":
-                        chunks += [chunk for chunk in content.split("\n\n") if chunk.strip() != ""]
-
+                    chunks += self.chunk_splitter.split(data=content, format=dataset.chunkFormat)
             except Exception as e:
                 rag_logger.error(f"Failed to retrieve chunks from '{dataset}' : {type(e).__name__} - {str(e)}")
         for i, chunk in enumerate(chunks):
@@ -71,11 +66,18 @@ class RAG:
 
 
 if __name__ == "__main__":
-    rag = RAG([
-        # RagDataset(Path(__file__).parent.parent.parent / "data" / "brut.txt", splitter="all"),
-        # RagDataset(Path(__file__).parent.parent.parent / "data" / "42-cursus.txt", splitter="paragraphs"),
-        RagDataset(Path(__file__).parent.parent.parent / "data" / "life-timeline.txt", splitter="paragraphs")
+    from app.models.core.ChunkFormat import ChunkFormat
+
+    data_folder = Path(__file__).parent.parent.parent / "data"
+
+    rag = RAG(datasets=[
+        RagDataset(path=data_folder / "42cursus.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
+        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
     ])
+
 
     # import time
     # start_time = time.time()
@@ -90,11 +92,14 @@ if __name__ == "__main__":
     # print(f"Time taken: {end_time - start_time}")
     # exit(1)
     print("--------------------------------------------------")
-    rag.retrieve("What are DevJ2K's main programming skills?", k=3)
+    rag.retrieve("En combien de temps Theo a-t-il terminé le cursus de 42 ?", k=5)
     print("--------------------------------------------------")
-    rag.retrieve("What technologies is DevJ2K passionate about?", k=3)
-    print("--------------------------------------------------")
-    rag.retrieve("How fast did DevJ2K complete the 42 core curriculum?", k=3)
-    print("--------------------------------------------------")
-    rag.retrieve("How did Théo get into coding?", k=3)
-    print("--------------------------------------------------")
+    # print("--------------------------------------------------")
+    # rag.retrieve("What are DevJ2K's main programming skills?", k=3)
+    # print("--------------------------------------------------")
+    # rag.retrieve("What technologies is DevJ2K passionate about?", k=3)
+    # print("--------------------------------------------------")
+    # rag.retrieve("How fast did DevJ2K complete the 42 core curriculum?", k=3)
+    # print("--------------------------------------------------")
+    # rag.retrieve("How did Théo get into coding?", k=3)
+    # print("--------------------------------------------------")

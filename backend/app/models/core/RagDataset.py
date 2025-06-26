@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal
+from app.models.core.ChunkFormat import ChunkFormat
 
 
 @dataclass
 class RagDataset:
     path: Path
-    splitter: Literal["all", "lines", "paragraphs"]
+    chunkFormat: ChunkFormat
