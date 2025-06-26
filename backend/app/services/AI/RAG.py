@@ -38,8 +38,8 @@ class RAG:
                     chunks += self.chunk_splitter.split(data=content, format=dataset.chunkFormat)
             except Exception as e:
                 rag_logger.error(f"Failed to retrieve chunks from '{dataset}' : {type(e).__name__} - {str(e)}")
-        for i, chunk in enumerate(chunks):
-            print(f"Chunk {i}: {chunk}")
+        # for i, chunk in enumerate(chunks):
+        #     print(f"{BHMAG}Chunk {i + 1}/{len(chunks)}:{RESET} {chunk[:75]}...")
         return chunks
 
     def __load_chunks__(self, chunks: list[str]) -> np.ndarray:

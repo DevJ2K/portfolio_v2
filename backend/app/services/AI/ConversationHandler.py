@@ -7,7 +7,6 @@ from app.services.AI.RAG import RAG
 class ConversationHandler:
     def __init__(self) -> None:
         prompts_folder = Path(__file__).parent.parent.parent / "prompts"
-        self.__behavior_prompt = self.__load_prompt__(prompts_folder / "settings" / "behavior.txt")
         self.__rag_prompt = self.__load_prompt__(prompts_folder / "RAG" / "context_portfolio.txt")
 
     def __load_prompt__(self, path: Path):
@@ -27,14 +26,14 @@ class ConversationHandler:
 
     def build(self, messages: list[ChatMessage]) -> list[MistralInput]:
 
-        contexts: set[str] = set()
+        contexts = []
         for chat in messages[-6:]:
             if chat.get("context") is not None:
-                contexts.update(chat["context"])
+                contexts.extend(chat["context"])
+        contexts = list(dict.fromkeys(contexts).keys())
 
         return [
-            {"role": "system", "content": self.__behavior_prompt},
-            {"role": "system", "content": self.__rag_prompt.format(context=contexts)},
+            {"role": "system", "content": self.__rag_prompt.format(context="".join([f"- {context}\n" for context in contexts]))},
             *[{"role": chat["role"], "content": chat["content"]} for chat in messages]
         ]
 
