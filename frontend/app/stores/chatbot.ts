@@ -14,7 +14,7 @@ const scrollDown = async (force: boolean = true) => {
 
   if (!container || !bottom) return;
 
-  const threshold = 40; // px
+  const threshold = 84; // px
 
   const distanceToBottom =
     container.scrollHeight - container.scrollTop - container.clientHeight;

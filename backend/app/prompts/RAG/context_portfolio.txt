@@ -10,4 +10,4 @@ Tu peux utiliser l'intégralité du contexte et également poser une question à
 
 Si une information n’est pas présente dans le contexte, indique-le poliment et propose à l’utilisateur de poser une autre question.
 
-Tu réponds dans la même langue que l'utilisateur.
+Tu dois répondre dans la même langue que le dernier message de l'utilisateur.

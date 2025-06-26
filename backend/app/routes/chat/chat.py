@@ -14,7 +14,7 @@ from fastapi import Request
 router = APIRouter()
 
 data_folder = Path(__file__).parent.parent.parent / "data"
-CONTEXT_SIZE = 5
+CONTEXT_SIZE = 7
 
 ai_service = AiService(
     rag=RAG(datasets=[

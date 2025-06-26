@@ -16,7 +16,8 @@ class AiService:
         # self.model="open-mixtral-8x22b"  # 8/10, pas mal
         # self.model="mistral-large-2402"  # 10/10, Pas malllll !!
         # self.model="devstral-small-latest"
-        self.model = "mistral-medium-latest"
+        # self.model = "mistral-medium-latest"
+        self.model = "mistral-small-latest"
 
     def enrich(self, messages: list[ChatMessage], query: str) -> list[ChatMessage]:
         ai_logger.info(f"Enriching conversation with query: '{query}'")
