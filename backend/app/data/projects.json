@@ -1,0 +1,73 @@
+{
+  "suffix": "Author: Théo, aka DevJ2K",
+  "content": [
+    {
+      "title": "Portfolio-v2 (AI Part)",
+      "description": "This project, developed by Théo (aka DevJ2K), corresponds to his personal website. It integrates a Retrieval-Augmented Generation (RAG) system combined with a Mistral LLM. The system uses data about Théo to answer questions about him.",
+      "tags": ["AI"],
+      "onlineLink": "https://devj2k.com",
+      "githubLink": "https://github.com/DevJ2K/portfolio_v2"
+    },
+    {
+      "title": "SnakeAI",
+      "description": "In this project, Théo implemented reinforcement learning in a snake game. The snake operates with limited vision, and the objective is to learn to reach the longest possible length through trial and error.",
+      "tags": ["AI"],
+      "githubLink": "https://github.com/DevJ2K/snakeAI"
+    },
+    {
+      "title": "Gomoku",
+      "description": "This project involves developing an AI capable of defeating human players in the game of Gomoku. It relies on the Mini-Max Algorithm with Alpha-Beta Pruning, along with optimization techniques for improved performance.",
+      "tags": ["AI"],
+      "githubLink": "https://github.com/DevJ2K/app_gomoku"
+    },
+    {
+      "title": "LinearRegression",
+      "description": "This project introduces the concept of linear regression. It consists of building a program that predicts car prices based on mileage using a model trained with gradient descent.",
+      "tags": ["AI"],
+      "githubLink": "https://github.com/DevJ2K/ft_linear_regression"
+    },
+    {
+      "title": "Portfolio-v2 (Web Part)",
+      "description": "This version of Théo's portfolio was built using Nuxt for the frontend and FastAPI for the backend. It provided an opportunity to develop a fullstack application, applying essential software engineering concepts and ensuring secure deployment.",
+      "tags": ["Web"],
+      "onlineLink": "https://devj2k.com",
+      "githubLink": "https://github.com/DevJ2K/portfolio_v2"
+    },
+    {
+      "title": "???",
+      "description": "This unreleased project combines all of Théo's skills in AI, design, DevOps, and user data management. It represents a significant milestone in his development journey.",
+      "tags": ["Web"],
+      "isSoonOnline": true
+    },
+    {
+      "title": "Rubik's Cube Solver",
+      "description": "The objective of this project was to create a program capable of solving a Rubik’s Cube in as few moves as possible. Developed in a team of two, Théo focused on the frontend using Vue and Three.js to produce a 3D animated visualization.",
+      "tags": ["Web"],
+      "onlineLink": "https://rubik3d.netlify.app/",
+      "githubLink": "https://github.com/DevJ2K/app_rubik"
+    },
+    {
+      "title": "Weather3D",
+      "description": "This is a weather application built using SwiftUI. It features a user-friendly interface and integrates the OpenWeather API. 3D models rendered with SceneKit adapt based on weather and time conditions.",
+      "tags": ["Mobile"],
+      "githubLink": "https://github.com/DevJ2K/WeatherAppSwiftUI"
+    },
+    {
+      "title": "ScreenTimeApp",
+      "description": "This app was developed to restrict access to selected apps for a defined period, using Apple’s ScreenTime API.",
+      "tags": ["Mobile"],
+      "githubLink": "https://github.com/DevJ2K/ScreenTimeApp"
+    },
+    {
+      "title": "SwiftyCompanion",
+      "description": "This internal school project uses the 42 API to display various student information. It served as a valuable experience for learning how to work with external APIs effectively.",
+      "tags": ["Mobile"],
+      "githubLink": "https://github.com/DevJ2K/42-swifty-companion"
+    },
+    {
+      "title": "Tododev",
+      "description": "This collaborative to-do list app is designed to generate personalized tasks for users using AI. The focus is on adapting tasks to each user's profile and needs.",
+      "tags": ["Mobile"]
+    }
+  ]
+}

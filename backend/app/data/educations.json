@@ -1,0 +1,29 @@
+{
+  "suffix": "Education of Théo, aka DevJ2K",
+  "content": [
+    {
+      "title": "Self-learning",
+      "date": "Sep. 2020 - Present",
+      "description": "Since 2020, Théo (DevJ2K) has pursued a continuous path of self-learning in software development. With over 140 repositories on GitHub, he has explored numerous technologies, frameworks, and domains through personal and experimental projects.",
+      "link": "https://github.com/DevJ2K"
+    },
+    {
+      "title": "42 Paris",
+      "date": "Sep. 2023 - 2026",
+      "description": "Théo joined 42 Paris in September 2023 to pursue a Master's-level program in IT Architecture, with a specialization in Artificial Intelligence and Data. As part of the highly practical, peer-to-peer learning model, he has completed over 76 individual and team-based projects covering topics such as algorithms, systems programming, web development, and AI.",
+	  "common-core-duration": "4 months and 16 days",
+	  "common-core-achievement": "5th fastest worldwide among more than 21,000 students across all 42 campuses",
+	  "link": "https://www.42.fr/en/"
+	},
+	{
+	  "title": "OpenClassrooms",
+	  "date": "2022 - 2023",
+	  "description": "Théo completed several courses on OpenClassrooms, including 'Learn to Code with Python' and 'Build a Website with HTML, CSS, and JavaScript'. These courses provided him with a solid foundation in programming and web development."
+    },
+    {
+      "title": "Harvard University",
+      "date": "2025",
+      "description": "Théo acquired access to online courses from Harvard University, focusing on computer science and artificial intelligence. These resources were selected as part of his self-education plan."
+    }
+  ]
+}

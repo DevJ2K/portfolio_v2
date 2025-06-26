@@ -1,0 +1,84 @@
+{
+  "suffix": "Skills of Théo, aka DevJ2K",
+  "content": [
+    {
+      "name": "Python",
+      "description": "One of Théo’s preferred languages, frequently used in his personal and professional projects.",
+      "achievements": [
+        "Built modern APIs using FastAPI",
+        "Implemented robust unit tests with Pytest and Unittest",
+        "Widely applied in AI and data-related projects"
+      ]
+    },
+    {
+      "name": "Nuxt",
+      "description": "Théo often uses Nuxt as his main framework for building dynamic web applications.",
+      "achievements": [
+        "Built on Vue with clear and intuitive syntax",
+        "Quick setup, ideal for dynamic interfaces",
+        "Well suited for full-stack web development"
+      ]
+    },
+    {
+      "name": "Java",
+      "description": "Used by Théo in enterprise-level development environments, particularly during internships and backend projects.",
+      "achievements": [
+        "Developed stable backends using Spring Boot",
+        "Valuable for building scalable architectures",
+        "Applied in real-world business and banking systems"
+      ]
+    },
+    {
+      "name": "Swift",
+      "description": "A go-to language for Théo when developing mobile applications for iOS.",
+      "achievements": [
+        "Takes advantage of clean syntax and powerful IDE support via Xcode",
+        "Well documented with strong community support"
+      ]
+    },
+    {
+      "name": "C",
+      "description": "The first language Théo used during the 42 core curriculum, foundational in understanding system-level programming.",
+      "achievements": [
+        "Provided deep understanding of low-level memory management",
+        "Reinforced knowledge of how computers work internally",
+        "Offers high performance and efficiency at runtime"
+      ]
+    },
+    {
+      "name": "C++",
+      "description": "Introduced during the 42 core curriculum, C++ helped Théo strengthen his understanding of object-oriented programming.",
+      "achievements": [
+        "Applied in algorithmic and systems logic development",
+        "Useful for mastering OOP concepts",
+        "Supported by extensive documentation and community use"
+      ]
+    },
+    {
+      "name": "Firebase",
+      "description": "A common choice for Théo in cloud-based app development, especially for real-time applications.",
+      "achievements": [
+        "Simple and quick to set up for fullstack apps",
+        "Cost-effective for apps with low to medium traffic",
+        "Provides real-time database capabilities and authentication"
+      ]
+    },
+    {
+      "name": "Docker",
+      "description": "Regularly used by Théo to streamline development and deployment workflows.",
+      "achievements": [
+        "Containerized frontend and backend services efficiently",
+        "Simplified environment replication and consistency",
+        "Useful for multi-machine and production-ready setups"
+      ]
+    },
+    {
+      "name": "Typescript",
+      "description": "Used in all of Théo’s modern web projects for improved code safety and maintainability.",
+      "achievements": [
+        "Enhanced code clarity through static type checking",
+        "Integrated seamlessly with ESLint and modern frameworks like Nuxt"
+      ]
+    }
+  ]
+}

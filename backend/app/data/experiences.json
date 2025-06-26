@@ -1,0 +1,35 @@
+{
+  "suffix": "Experience of Théo, aka DevJ2K",
+  "content": [
+    {
+      "company": "???",
+      "duration": "Feb. 2025 - Present",
+      "position": "Co-Founder & CTO",
+      "description": "Théo (DevJ2K) is responsible for all aspects of product development and technical leadership: software architecture, backend and frontend engineering, deployment infrastructure, and overall technical strategy. This project remains confidential for the moment."
+    },
+    {
+      "company": "Credit Agricole Corporate & Investment Bank",
+      "duration": "Jan. 2025 - Present",
+      "position": "Software Engineer Internship",
+      "description": "Théo contributed to the redesign of CACIB’s regulatory reporting system, a critical backend project focused on performance, maintainability, and clean code practices.\n\nDespite being new to Java, he quickly became proficient using Spring Boot, relational databases, and applied the hexagonal architecture pattern. He implemented scalable components using established design patterns while applying engineering principles like SOLID and KISS. Code quality was ensured via SonarQube.\n\nOne of his key contributions was building a parser that transforms internal CIBML banking files into structured Java objects for downstream processing.\n\nHe also implemented observability tools including OpenTelemetry, Prometheus, and Grafana to monitor application metrics and detect potential issues.\n\nThéo was actively involved in Agile Scrum workflows with Product Owners and developers. The project included over 200 merge requests, and he gained hands-on experience with CI/CD pipelines and collaborative development.\n\nThis experience significantly strengthened his technical and communication skills, particularly in explaining complex logic clearly to non-developers.\n\n**Feedback from his manager/tutor:**\n*Great integration in the firm. Theo progressed very well on technology on various programming languages. He will be very welcome again if he wants another experience in CACIB (in France or in other locations).*"
+    },
+    {
+      "company": "LudiLab",
+      "duration": "Jan. 2025 - Feb. 2025",
+      "position": "Fullstack Web3 Developer",
+      "description": "Théo designed and developed a fullstack desktop application using Electron, with Vue on the frontend and Python on the backend. The goal was to integrate a volume bot for the Solana blockchain, presented through a refined user interface.\n\nThe bot simulates buy/sell transactions to create artificial volume around a token, primarily through the Pump.fun platform.\n\n**Feedback from the Founder:**\n*Theo went far beyond what we expected, the task was accomplished with great care, requests were quickly understood and perfectly executed. A big bravo to this developer and thank you. I highly recommend this dev.*"
+    },
+    {
+      "company": "Belles Des Pins",
+      "duration": "Oct. 2024",
+      "position": "Mobile Developer",
+      "description": "Théo was in charge of redesigning the company’s mobile application using SwiftUI. He first created the new design in Figma, obtained client validation, and then implemented it.\n\nThe quality and speed of his work impressed the CEO, who extended the collaboration to include new features such as cart functionality, product filtering, and smooth animations to enhance user experience.\n\n**Feedback from the CEO:**\n*I've had the pleasure of working with this freelancer and I'm extremely satisfied with the quality of his work. He demonstrated his professionalism by answering all my questions promptly and always being available to discuss the details of the project.*"
+    },
+    {
+      "company": "SamaraCG",
+      "duration": "Dec. 2022 - Feb. 2023",
+      "position": "Product Designer & Mobile Developer",
+      "description": "Identifying a gap in the market for sneaker resellers, Théo proposed a custom solution to SamaraCG, a well-known private sneaker reselling group. The result was WaveSpace, a tailored application designed to help members track, manage, and optimize their inventory and operations.\n\n**Feedback from the CEO:**\n*To be honest, WaveSpace is one of the best projects I've done with Theo (out of the many we've worked on together). It was an accounting management application specifically designed for trainer retailers, and I have to say I'm absolutely delighted with the result. Théo was very responsive whenever I needed changes or adjustments (with follow-up even after the application was finished). He always listens to my requests and understands my needs perfectly. In terms of value for money, WaveSpace is more than reasonable. Théo offers very competitive rates without ever sacrificing quality of service. He is also very understanding when it comes to budget issues. Overall, I would highly recommend working with Theo as it has been a positive and rewarding experience.*"
+    }
+  ]
+}

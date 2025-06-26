@@ -18,7 +18,11 @@ CONTEXT_SIZE = 5
 
 ai_service = AiService(
     rag=RAG(datasets=[
-        RagDataset(path=data_folder / "life-timeline.txt", splitter="paragraphs"),
+        RagDataset(path=data_folder / "life-timeline.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
+        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
+        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
     ]),
     api_key=CONFIGURATION.MISTRAL_API_KEY,
     context_size=CONTEXT_SIZE)

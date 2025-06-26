@@ -108,8 +108,9 @@ const prompt = ref("");
 const suggestions: Array<string> = [
   // "What are DevJ2K's main programming skills?",
   // "What technologies is DevJ2K passionate about?",
-  "How fast did DevJ2K complete the 42 core curriculum?",
-  "How did Théo get into coding?"
+  "How fast did DevJ2K complete the 42 common core?",
+  "How did Théo get into coding?",
+  "Talk about DevJ2K's portfolio.",
 ];
 
 const isOpen = ref(false);

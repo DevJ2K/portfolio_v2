@@ -1,34 +1,38 @@
-End of 2020
-I discovered programming in 10th grade (equivalent to "seconde" in France) with Python. I loved the idea of being able to create anything with just lines of code. This marked the beginning of a long adventure!
+End of 2020  
+In late 2020, Théo (aka DevJ2K) discovered programming during 10th grade (equivalent to "seconde" in France), starting with Python. Fascinated by the idea of creating anything with just lines of code, this moment marked the beginning of his journey into software development.
 
-Throughout 2021
-I worked on my first projects and discovered new languages: HTML, CSS, JavaScript, C#. At the same time, I also started learning 3D animation, a field I am passionate about.
+Throughout 2021  
+Throughout 2021, Théo (DevJ2K) worked on his first programming projects and explored new languages such as HTML, CSS, JavaScript, and C#. During the same period, he also began learning 3D animation — a domain that quickly became a personal passion.
 
-June 2022
-I completed my first concrete project, a game in Python with Tkinter for school. The project requirements were simple, but I enjoyed having no real limits other than my imagination and being able to implement the desired features.
+June 2022  
+In June 2022, Théo (DevJ2K) completed his first fully functional project: a game developed in Python using Tkinter for a school assignment. Although the project had simple requirements, he appreciated the freedom to implement features beyond expectations and bring his own ideas to life.
 
-October 2022
-I noticed that many people at my school use Discord. This gave me the idea to create a Discord bot to provide students with various information from the school's intranet, such as their schedule, homework, grades, and more. So I started working on EntOnDiscord ! This project is one of my favorites because it allowed me to learn many concepts like OOP, scraping, database management, and more.
+October 2022  
+In October 2022, after noticing that many students at his school used Discord, Théo (DevJ2K) had the idea to develop a Discord bot to help students access key information from the school’s intranet (schedule, homework, grades, etc.).  
+This led to the creation of **EntOnDiscord**, one of his favorite projects. Through it, he learned object-oriented programming, web scraping, database management, and various backend concepts.
 
-December 2022
-I completed a second group project using HTML, CSS, JavaScript, and PHP. I really enjoyed this project because I was able to apply my 3D skills by creating all the images and videos and implementing 3D with Three.js. (https://github.com/DevJ2K/sft-r-website)
+December 2022 – Group Project  
+Théo (DevJ2K) completed a group project using HTML, CSS, JavaScript, and PHP. He contributed not only as a developer but also by producing all 3D assets (images and videos) and integrating them using Three.js.  
+➡️ GitHub: [sft-r-website](https://github.com/DevJ2K/sft-r-website)
 
-Being very interested in projects that require thinking, I tried to create my first AI dedicated to TicTacToe without external libraries. It records all the games it plays and uses them to anticipate potential defeats and create winning opportunities. (https://github.com/DevJ2K/tictactoe_ia)
+December 2022 – AI Tic-Tac-Toe  
+Also in December 2022, Théo (DevJ2K) began experimenting with AI by developing a simple engine to play Tic-Tac-Toe. Without relying on external libraries, the program learned from previous games and adapted its strategy to avoid losing and create winning moves.  
+➡️ GitHub: [tictactoe_ia](https://github.com/DevJ2K/tictactoe_ia)
 
-December 2022 - February 2023
-I began learning mobile application development in Swift and completed my first mission as a mobile developer. This first experience taught me how to approach a client, establish requirements, and meet their needs.
+December 2022 – February 2023  
+During this period, Théo (DevJ2K) began learning mobile development with Swift and completed his first mission as a mobile developer. This experience taught him how to interact with clients, define requirements, and deliver solutions that meet expectations.
 
-April 2023
-While continuing my projects, I passed my specialty exams (High School Diploma) and achieved a score of 20/20 in Computer Science and 18/20 in Mathematics !
+April 2023  
+While continuing his personal projects, Théo (DevJ2K) passed his French high school specialty exams, achieving a **20/20 in Computer Science** and **18/20 in Mathematics**.
 
-Summer 2023
-I traveled to the United States and had the opportunity to talk with several people in the IT field. I realized that this country best matched my expectations and offered the most opportunities to gain experience in IT. One of my goals is to work in the United States.
+Summer 2023  
+Théo (DevJ2K) traveled to the United States and spoke with various professionals in the IT sector. These interactions confirmed his desire to pursue opportunities in the U.S., where he believes the environment best matches his aspirations for growth and experience in the tech industry.
 
-September 2023
-I participated in the entrance exam for 42: La Piscine. This experience allowed me to meet new people, discover different learning methods, and challenge myself with increasingly difficult problems.
+In September 2023
+Théo (also known as DevJ2K) participated in the entrance exam for the 42 school, known as "La Piscine". This highly selective and intensive experience allowed him to meet new people, discover different learning methods, and challenge himself with increasingly difficult programming problems.
 
-November 6, 2023
-I joined 42 after passing the entrance exam. The curriculum is divided into two parts: the common core and the specialization. The common core, which usually takes about a year and a half, began for me.
+On November 6, 2023
+Théo (DevJ2K) officially joined 42 Paris after successfully passing the entrance exam. The curriculum at 42 is divided into two main parts: the common core and the specialization. Théo began the common core, which is typically designed to take around 18 months to complete.
 
-March 22, 2024
-After 4 months and 16 intensive days, I completed the common core in record time, a first at 42 Paris. I am proud that my skills and acquired discipline have paid off. This achievement ranks me 5th fastest worldwide out of more than 21,000 students across all 42 campuses.
+On March 22, 2024
+After just 4 months and 16 intensive days, Théo (DevJ2K) completed the common core of 42 Paris in record time. This exceptional achievement made him the 5th fastest worldwide among more than 21,000 students across all 42 campuses. This milestone reflects both his advanced technical skills and strong personal discipline.
