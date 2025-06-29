@@ -18,6 +18,8 @@ services:
       - ./backend/script.sh:/app/script.sh
     env_file:
       - env/.env-dev-backend
+    networks:
+      - portfolio-network
 
   # Not hot-reload
   frontend:
@@ -31,3 +33,23 @@ services:
       - 4000:4000
     env_file:
       - env/.env-dev-frontend
+    networks:
+      - portfolio-network
+
+  nginx:
+    image: nginx:latest
+    # container_name: portfolio-nginx
+    volumes:
+      - ./nginx/conf/app-dev.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
