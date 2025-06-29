@@ -26,6 +26,7 @@ EOL
 
     elif [[ "$target" == "frontend" ]]; then
       cat > "$filepath" <<EOL
+NODE_OPTIONS=
 NUXT_API_BASE_URL=
 API_KEY=
 EOL
