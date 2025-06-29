@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
   timeoutId = setTimeout(() => {
     console.log("Request timeout");
     cleanup();
-  }, 2 * 60000);
+  }, 4 * 60000);
 
   try {
     const response = await fetch(`${config.apiBaseUrl}/chat/ask`, {
