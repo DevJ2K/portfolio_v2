@@ -24,8 +24,6 @@ services:
       - 4000
     env_file:
       - env/.env-prod-frontend
-    depends_on:
-      - backend
     networks:
       - portfolio-network
 
