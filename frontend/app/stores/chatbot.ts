@@ -86,6 +86,7 @@ export const useChatbotStore = defineStore("chatbot", {
         }
       );
       await done;
+      scrollDown(false);
       this.isTyping = false;
       saveConversation(this.messages);
     },
