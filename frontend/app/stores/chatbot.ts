@@ -14,7 +14,7 @@ const scrollDown = async (force: boolean = true) => {
 
   if (!container || !bottom) return;
 
-  const threshold = 84; // px
+  const threshold = 128; // px
 
   const distanceToBottom =
     container.scrollHeight - container.scrollTop - container.clientHeight;
@@ -55,21 +55,21 @@ export const useChatbotStore = defineStore("chatbot", {
       scrollDown(true);
 
       this.messages.push({ content: message, role: "user", context: [] });
+      this.messages.push({ content: "", role: "assistant", context: null });
 
       const response = (await $fetch("/api/chat/enrich", {
         method: "POST",
         body: {
-          conversation: this.messages.slice(0, -1),
+          conversation: this.messages.slice(0, -2),
           prompt: message.trim(),
         },
       }).catch((_) => {
+        this.isTyping = false;
         throw new Error("An error occurred while sending the message.");
       })) as { conversation: Array<Chat> };
 
-      this.messages = response.conversation as Array<Chat>;
-      saveConversation(this.messages);
-
-      this.messages.push({ content: "", role: "assistant", context: null });
+      this.messages = response.conversation.concat({ content: "", role: "assistant", context: null }) as Array<Chat>;
+      saveConversation(response.conversation);
 
       const { abort, done } = await fetchAiResponse(
         {
@@ -80,6 +80,7 @@ export const useChatbotStore = defineStore("chatbot", {
             this.messages[this.messages.length - 1].content += token;
           } else {
             abort();
+            this.isTyping = false;
             return;
           }
           scrollDown(false);

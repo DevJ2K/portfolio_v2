@@ -12,7 +12,11 @@
       </div>
     </div>
     <div class="text-sm md:text-base">
+      <div v-if="isTyping && sanitizedMessage.length == 0">
+        <span v-if="isTyping" class="gradient-text pulse-animation">Thinking...</span>
+      </div>
       <div
+        v-else
         class="prose max-w-none break-words text-sm md:text-base [&_code]:break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words"
         v-html="sanitizedMessage"
       />
@@ -31,6 +35,10 @@ const { message } = defineProps({
   },
 });
 
+const chatbotStore = useChatbotStore();
+
+const { isTyping } = storeToRefs(chatbotStore);
+
 const sanitizedMessage = computed(() => {
   if (message != null) {
     return DOMPurify.sanitize(marked(message).toString());
@@ -39,4 +47,27 @@ const sanitizedMessage = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.gradient-text {
+  background: linear-gradient(90deg, #9c9c9c 80%, transparent 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.pulse-animation {
+  animation: pulse 1.75s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
