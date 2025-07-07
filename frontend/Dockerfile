@@ -6,10 +6,9 @@ COPY app/ .
 COPY ./run.sh /scripts/run.sh
 RUN chmod +x /scripts/run.sh
 
-RUN npm install
+RUN npm install -g npm@11.4.2
 
-# Windows only?
-# RUN npm install --platform=linux --arch=x64 sharp
+RUN npm ci
 
 
 ARG HOST
