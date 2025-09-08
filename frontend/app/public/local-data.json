@@ -52,9 +52,18 @@
       "title": "???",
       "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management, and more. It’s a major milestone in my journey as a developer.",
       "image": "/images/projects/unreleased-2.png",
-      "tags": ["Web"],
+      "tags": ["Web", "SaaS"],
       "isPrivate": true,
       "isSoonOnline": true
+    },
+    {
+      "title": "Drezly",
+      "description": "A SaaS platform designed to empower Vinted resellers with advanced tools to manage and grow their business. Drezly integrates AI-powered features, a Chrome extension, and a comprehensive dashboard.",
+      "image": "/images/projects/drezly.png",
+      "tags": ["SaaS"],
+      "onlineLink": "https://drezly.com",
+      "isPrivate": false,
+      "isSoonOnline": false
     },
     {
       "title": "Rubik's Cube Solver",
@@ -104,6 +113,15 @@
     }
   ],
   "experiences": [
+    {
+      "company": "Drezly",
+      "duration": "Sep. 2025 - Present",
+      "position": "Co-Founder & CTO",
+      "logo": "/images/experiences/drezly.png",
+      "description": "Built a SaaS platform from the ground up to support Vinted resellers in growing their business. The solution includes integrated AI-powered tools, a Chrome extension, and an advanced analytics dashboard. This project allowed me to apply and expand my expertise across API development, DevOps, full-stack engineering, and AI integration.",
+      "connector": "of",
+      "clazz": "bg-[#E7D4FF] border-[#BF96FF]"
+    },
     {
       "company": "???",
       "duration": "Feb. 2025 - Present",
