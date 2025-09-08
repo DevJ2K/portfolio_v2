@@ -5,8 +5,8 @@
     description="Projects that reflect what I love to build." />
 
     <PickerBar
-      class="my-8 bg-red-500"
-      :items="['AI', 'Web', 'Mobile']"
+      class="my-8"
+      :items="tags"
       :selected="selectedTag"
       @select="(index) => selectedTag = index" />
 
@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import type { Project } from '~/types/Project';
 
-const tags = ['AI', 'Web', 'Mobile'];
+const tags = ['AI', 'SaaS', 'Web', 'Mobile'];
 const selectedTag = ref(tags[0]);
 
 const myDataStore = useMyDataStore();

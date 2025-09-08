@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-3 items-center justify-center gap-2 bg-ui-background p-2 border border-ui-border rounded-2xl picker-shadow">
+  <div class="grid grid-cols-4 items-center justify-center gap-2 bg-ui-background p-2 border border-ui-border rounded-2xl picker-shadow">
     <button
     v-for="(item, index) in items" :key="index"
       :class="['px-4 py-2 rounded-lg font-medium border-b border-r border-transparent text-body', item === selected
