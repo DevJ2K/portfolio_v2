@@ -40,6 +40,12 @@
       "isSoonOnline": true
     },
     {
+      "title": "Drezly",
+      "description": "A SaaS platform designed to empower Vinted resellers with advanced tools to manage and grow their business. Drezly integrates AI-powered features, a Chrome extension, and a comprehensive dashboard.",
+      "tags": ["SaaS"],
+      "onlineLink": "https://drezly.com"
+    },
+    {
       "title": "Rubik's Cube Solver",
       "description": "The objective of this project was to create a program capable of solving a Rubik’s Cube in as few moves as possible. Developed in a team of two, Théo focused on the frontend using Vue and Three.js to produce a 3D animated visualization.",
       "tags": ["Web"],
