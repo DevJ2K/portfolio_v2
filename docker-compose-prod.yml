@@ -43,16 +43,16 @@ services:
     networks:
       - portfolio-network
 
-  certbot:
-    image: certbot/certbot
-  #   container_name: certbot
-    volumes:
-      - ./nginx/certbot/www:/var/www/certbot:rw
-      - ./nginx/certbot/conf:/etc/letsencrypt:rw
-    command: >
-      certonly --webroot --webroot-path=/var/www/certbot
-       --email ajavontheopro@gmail.com --agree-tos --no-eff-email
-       -d devj2k.com -d www.devj2k.com
+  # certbot:
+  #   image: certbot/certbot
+  # #   container_name: certbot
+  #   volumes:
+  #     - ./nginx/certbot/www:/var/www/certbot:rw
+  #     - ./nginx/certbot/conf:/etc/letsencrypt:rw
+  #   command: >
+  #     certonly --webroot --webroot-path=/var/www/certbot
+  #      --email ajavontheopro@gmail.com --agree-tos --no-eff-email
+  #      -d devj2k.com -d www.devj2k.com
 
 networks:
   portfolio-network:
