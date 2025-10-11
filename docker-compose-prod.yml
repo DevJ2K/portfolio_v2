@@ -16,7 +16,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./frontend-next
       args:
         - HOST=0.0.0.0
         - PORT=4000
