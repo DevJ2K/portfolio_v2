@@ -17,4 +17,42 @@
   --text-title: clamp(24px, 2vw + 1rem, 42px);
   --text-subtitle: clamp(22px, 1.5vw + 1rem, 36px);
   --text-body: clamp(0.875rem, 0.660rem + 0.43vw, 1rem);
+
+  @keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  75%,
+  100% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+}
+
+.gradient-text-1 {
+  background: linear-gradient(90deg, #4F13DD, #A37CFF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.gradient-text-2 {
+  background: linear-gradient(90deg, #1871ff, #dd52ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-3 {
+  background: linear-gradient(90deg, #6629ff, #3287ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.custom-ping {
+  animation: ping 1.0s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
