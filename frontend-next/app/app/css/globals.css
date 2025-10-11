@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@config "../tailwind.config.js";
+@config "../../tailwind.config.js";
 
 
 @theme {
@@ -55,4 +55,15 @@
 
 .custom-ping {
   animation: ping 1.0s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.project-badge {
+  display: flex;
+  background-color: var(--color-ui-background);
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 12px;
+  border-radius: 8px;
 }

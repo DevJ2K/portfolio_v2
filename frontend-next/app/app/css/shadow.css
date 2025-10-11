@@ -1,0 +1,33 @@
+.custom-shadow {
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.shadow-hover.custom-shadow:hover {
+  box-shadow: 0.5px 0.5px 0px 0 rgba(0, 0, 0, 0.2);
+}
+
+.selected-shadow {
+  box-shadow: inset -3px -3px 3px 0 rgb(255, 255, 255),
+              inset 1px 1px 6px 0 rgba(0, 0, 0, 0.10);
+}
+
+.picker-shadow {
+  box-shadow: -4px -4px 8px 0 rgba(255, 255, 255),
+              2px 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.project-card-shadow {
+  box-shadow: 2px 2px 16px 0 rgba(0, 0, 0, 0.07);
+}
+
+.project-badge-shadow {
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.1),
+              inset 1px 1px 4px 0 rgba(255, 255, 255),
+              inset -1px -1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.project-badge-hover:hover {
+  background-color: var(--color-ui-background-hover);
+  box-shadow: 0.5px 0.5px 0px 0 rgba(0, 0, 0, 0.1);
+}
