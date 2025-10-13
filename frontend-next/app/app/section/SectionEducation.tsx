@@ -4,7 +4,7 @@ import { Education } from "@/types/Education";
 
 const SectionEducation = ({ educations }: { educations: Education[] }) => {
   return (
-    <section className="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
+    <section id="education" className="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
       <HeaderSection
         title="Education"
         description="Where I built the foundations of my software engineering journey."

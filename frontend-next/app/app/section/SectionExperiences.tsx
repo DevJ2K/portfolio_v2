@@ -8,7 +8,7 @@ const SectionExperiences = ({
   workExperiences: WorkExperience[];
 }) => {
   return (
-    <section className="w-full flex flex-col items-center justify-center text-foreground text-center px-4">
+    <section id="work" className="w-full flex flex-col items-center justify-center text-foreground text-center px-4">
       <HeaderSection
         title="Experiences"
         description="A brief look at where I've worked and the roles I've held."

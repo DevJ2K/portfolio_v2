@@ -5,7 +5,7 @@ import { RiGithubLine } from "react-icons/ri";
 
 const SectionHero = () => {
   return (
-    <section className="w-full h-[90vh] flex flex-col items-center justify-center text-foreground text-center">
+    <section id="main" className="w-full h-[90vh] flex flex-col items-center justify-center text-foreground text-center">
       <h1 className="text-title font-extrabold leading-8 max-md:px-4">
         Hey, I’m Theo — aka <span className="gradient-text-1">DevJ2K</span>
       </h1>

@@ -6,7 +6,7 @@ import { RiGithubLine } from "react-icons/ri";
 
 const SectionContact = () => {
   return (
-    <section className="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
+    <section id="contact" className="w-full px-4 flex flex-col items-center justify-center text-foreground text-center">
       <HeaderSection
         title="Contact"
         description="You can find my contact information below if you'd like to get in touch."
