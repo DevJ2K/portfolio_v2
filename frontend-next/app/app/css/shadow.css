@@ -31,3 +31,8 @@
   background-color: var(--color-ui-background-hover);
   box-shadow: 0.5px 0.5px 0px 0 rgba(0, 0, 0, 0.1);
 }
+
+.skill-custom-shadow:hover {
+  cursor: pointer;
+  box-shadow: 0 0px 16px 4px rgba(0, 0, 0, 0.1);
+}

@@ -3,13 +3,11 @@
 import { useWorkExperience } from "@/providers/WorkExperienceProvider";
 import { marked } from "marked";
 import Image from "next/image";
-import { useState } from "react";
 import DOMPurify from "dompurify";
 import { MdClose } from "react-icons/md";
 
 const ModalWorkExperience = () => {
   const { activeWorkExperience } = useWorkExperience();
-  const [sanitizedDescription, setSanitizedDescription] = useState<string>("");
 
   const getSanitizedDescription = (description: string) => {
     return DOMPurify.sanitize(marked(description).toString());
