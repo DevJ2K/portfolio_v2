@@ -6,7 +6,7 @@ COPY app/ .
 COPY ./run.sh /scripts/run.sh
 RUN chmod +x /scripts/run.sh
 
-RUN npm install -g npm@11.4.2
+RUN npm install -g npm@11.6.2
 
 RUN npm ci
 

@@ -1,8 +1,9 @@
 #!/bin/sh
 
-env | grep 'NUXT' > .env
-cat .env
+touch .env
+env | grep 'API_BASE_URL' >> .env
+env | grep 'API_KEY' >> .env
 
 npm run build
 
-exec node .output/server/index.mjs
+exec npm run start
