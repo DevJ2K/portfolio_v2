@@ -62,7 +62,7 @@ git clone https://github.com/DevJ2K/portfolio_v2.git && cd portfolio_v2
 Run the following script to create the necessary `.env` files:
 
 ```bash
-chmod +x ./scripts/create_env.sh && ./scripts/create_env.sh
+chmod +x ./env/create-env.sh && ./env/create-env.sh
 ```
 
 ---
