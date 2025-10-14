@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./css/globals.css";
 import "./css/shadow.css";
+import "./css/chatbot.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/navbar/Navbar";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +34,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Chatbot/>
         <Toaster />
       </body>
       {/* <div className="fixed bottom-4 right-4 z-[2000]">

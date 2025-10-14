@@ -1,0 +1,51 @@
+.chatbot-header-shadow {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.chat-box-shadow {
+  box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.15);
+}
+
+.chat-user-shadow {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-prompt-shadow {
+  box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.animate-custom-floating-btn {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.group:hover .animate-custom-floating-btn {
+  animation: none;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 1.75s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
