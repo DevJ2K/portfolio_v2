@@ -1,9 +1,8 @@
 import { create } from "zustand";
 import type { Chat } from "@/types/Chat";
-import { stat } from "fs";
 import fetchAiResponse from "@/functions/fetchAiResponse";
-
-const LOCAL_STORAGE_KEY = "conversation";
+import { persist } from "zustand/middleware";
+import { LOCAL_STORAGE_CHATBOT_CONVERSATION_KEY } from "@/utils/constants";
 
 const scrollDown = async (force: boolean = true) => {
   if (force) {
@@ -25,95 +24,109 @@ const scrollDown = async (force: boolean = true) => {
   }
 };
 
-const getConversation = () => {
-  const messages = localStorage.getItem(LOCAL_STORAGE_KEY);
-  let conversations = [] as Array<Chat>;
-  if (messages) {
-    conversations = JSON.parse(messages) as Array<Chat>;
-  }
-  return conversations;
+type ChatbotStore = {
+  messages: Array<Chat>;
+  isTyping: boolean;
+  sendMessage: (message: string) => Promise<{ ok: boolean; message?: string }>;
+  clearConversation: () => void;
 };
 
-const saveConversation = (messages: Array<Chat>) => {
-  const stringifiedMessages = JSON.stringify(messages);
-  if (stringifiedMessages.length < 3000000) {
-    localStorage.setItem(LOCAL_STORAGE_KEY, stringifiedMessages);
-  } else {
-    console.warn("Conversation too large to store. Please clear it.");
-  }
-};
+const useChatbotStore = create<ChatbotStore>()(
+  persist(
+    (set, get: () => any) => ({
+      messages: [] as Array<Chat>,
+      isTyping: false,
 
-const useChatbotStore = create((set, get: () => any) => ({
-  messages: getConversation(),
-  isTyping: false,
+      sendMessage: async (message: string) => {
+        if (!message.trim()) return;
 
-  sendMessage: async (message: string) => {
-    if (!message.trim()) return;
+        set({ isTyping: true });
+        scrollDown(true);
 
-    set({ isTyping: true });
-    scrollDown(true);
+        set((state: any) => ({
+          messages: [
+            ...state.messages,
+            { content: message, role: "user", context: [] },
+            { content: "", role: "assistant", context: null },
+          ],
+        }));
 
-    // this.messages.push({ content: message, role: "user", context: [] });
-    // this.messages.push({ content: "", role: "assistant", context: null });
-
-    set((state: any) => ({
-      messages: [
-        ...state.messages,
-        { content: message, role: "user", context: [] },
-        { content: "", role: "assistant", context: null },
-      ]
-    }));
-
-    const response = await fetch("/api/chat/enrich", {
-      method: "POST",
-      body: JSON.stringify({
-        conversation: get().messages.slice(0, -2),
-        prompt: message.trim(),
-      }),
-    }).catch((_) => {
-      set({ isTyping: false });
-      throw new Error("An error occurred while sending the message.");
-    }); //  as { conversation: Array<Chat> }
-
-    const responseData = await response.json();
-
-    //  as { conversation: Array<Chat> }
-    // this.messages = response.conversation.concat({
-    //   content: "",
-    //   role: "assistant",
-    //   context: null,
-    // }) as Array<Chat>;
-
-    set({
-      messages: [
-        ...responseData.conversation,
-        { content: "", role: "assistant", context: null }
-      ]
-    });
-
-    saveConversation(responseData.conversation);
-
-    const { abort, done } = await fetchAiResponse(
-      {
-        conversation: get().messages.slice(0, -1),
-      },
-      (token: string) => {
-        const currentMessages = get().messages;
-        if (currentMessages[currentMessages.length - 1] != null) {
-          currentMessages[currentMessages.length - 1].content += token;
-        } else {
-          abort();
+        const response = await fetch("/api/chat/enrich", {
+          method: "POST",
+          body: JSON.stringify({
+            conversation: get().messages.slice(0, -2),
+            prompt: message.trim(),
+          }),
+        }).catch(() => {
           set({ isTyping: false });
-          return;
+          return null;
+        });
+
+        if (!response || !response.ok) {
+          set({ isTyping: false });
+          return {
+            ok: false,
+            message: `An error occurred while sending the message. Please try again later.`,
+          };
         }
-        scrollDown(false);
-      }
-    );
-    await done;
-    scrollDown(false);
-    set({ isTyping: false });
-    saveConversation(get().messages);
-  },
-}));
+        const responseData = (await response.json()) as {
+          conversation: Array<Chat>;
+        };
+
+        set({
+          messages: [
+            ...responseData.conversation,
+            { content: "", role: "assistant", context: null },
+          ],
+        });
+
+        try {
+          const { abort, done } = await fetchAiResponse(
+            {
+              conversation: get().messages.slice(0, -1),
+            },
+            (token: string) => {
+              const currentMessages = get().messages;
+              if (currentMessages[currentMessages.length - 1] != null) {
+                set((state: any) => ({
+                  messages: state.messages.map((msg: any, idx: number) =>
+                    idx === state.messages.length - 1
+                      ? { ...msg, content: msg.content + token }
+                      : msg
+                  ),
+                }));
+              } else {
+                abort();
+                set({ isTyping: false });
+                return;
+              }
+              scrollDown(false);
+            }
+          );
+          await done;
+          scrollDown(false);
+          set({ isTyping: false });
+        } catch (error) {
+          console.error("Error during fetchAiResponse:", error);
+          set({ isTyping: false });
+          return {
+            ok: false,
+            message: error instanceof Error ? error.message : String(error),
+          };
+        }
+      },
+      clearConversation() {
+        set({ messages: [] });
+      },
+    }),
+    {
+      name: LOCAL_STORAGE_CHATBOT_CONVERSATION_KEY,
+      partialize: (state) =>
+        Object.fromEntries(
+          Object.entries(state).filter(([key]) => !["isTyping"].includes(key))
+        ),
+    }
+  )
+);
 
 export default useChatbotStore;

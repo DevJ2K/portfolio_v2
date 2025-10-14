@@ -1,7 +1,7 @@
 import { Chat } from "@/types/Chat";
 
 const fetchAiResponse = async (
-    body: { conversation: Array<Chat> },
+    conversation: { conversation: Array<Chat> },
     onMessage: (token: string) => void
   ) => {
     const controller = new AbortController();
@@ -10,14 +10,14 @@ const fetchAiResponse = async (
     try {
       const response = await fetch('/api/chat/ask', {
         method: 'POST',
-        body: JSON.stringify(body),
+        body: JSON.stringify(conversation),
         signal,
       });
 
       if (!response.ok) {
-        const errorText = await response.text().catch(() => 'Unknown error');
-        console.error("Error response:", response.status, errorText);
-        throw new Error(`Server error: ${response.status} - ${errorText}`);
+        const errorContent = await response.json().catch(() => 'Unknown error');
+        // console.error("Error response:", response.status, errorText);
+        throw new Error(`Server error: ${response.status} - ${errorContent.error || errorContent}`);
       }
 
       const reader = response.body?.getReader();
