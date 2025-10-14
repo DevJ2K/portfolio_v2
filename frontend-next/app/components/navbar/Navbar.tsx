@@ -116,7 +116,7 @@ const Navbar = () => {
           }`}
           onClick={(event) => scrollToSection("work", event)}
         >
-          Experience
+          Experiences
         </a>
         <a
           href="#education"
