@@ -5,7 +5,10 @@ import { RiGithubLine } from "react-icons/ri";
 
 const SectionHero = () => {
   return (
-    <section id="main" className="w-full h-[90vh] flex flex-col items-center justify-center text-foreground text-center">
+    <section
+      id="main"
+      className="w-full h-[90vh] flex flex-col items-center justify-center text-foreground text-center"
+    >
       <h1 className="text-title font-extrabold leading-8 max-md:px-4">
         Hey, I’m Theo — aka <span className="gradient-text-1">DevJ2K</span>
       </h1>
@@ -40,17 +43,17 @@ const SectionHero = () => {
       </div>
       <div className="flex mt-8 gap-8">
         <ButtonSocial
-          icon={<RiGithubLine/>}
+          icon={<RiGithubLine />}
           link="https://github.com/DevJ2K"
           name="@DevJ2K"
         />
         <ButtonSocial
-          icon={<FaLinkedin/>}
+          icon={<FaLinkedin />}
           link="https://www.linkedin.com/in/devj2k"
           name="@DevJ2K"
         />
         <ButtonSocial
-          icon={<MdMailOutline/>}
+          icon={<MdMailOutline />}
           link="mailto:contact@devj2k.com"
           name="contact@devj2k.com"
         />

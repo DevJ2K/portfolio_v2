@@ -48,7 +48,6 @@ const CardEducation = ({ education }: { education: Education }) => {
           target={education.btnActive ? "_blank" : ""}
         >
           <span className="inline-flex items-center gap-2">
-            {/* <Icon name={education.btnIcon} /> */}
             {education.btnActive ? <LuSquareArrowOutUpRight /> : <LuLock />}
             {education.btnText}
           </span>

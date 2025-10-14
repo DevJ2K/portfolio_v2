@@ -59,31 +59,6 @@ const ModalWorkExperience = () => {
       <form method="dialog" className="modal-backdrop">
         <button>close</button>
       </form>
-
-      {/* <UModal
-      v-model:open="isModalOpen"
-      class="text-foreground"
-      :title="workExperience.company"
-      :description="`${workExperience.position} | ${workExperience.duration}`"
-    >
-      <!-- <template #header>
-        <div class="flex items-center justify-between w-full">
-          <div class="flex gap-2 justify-center items-center">
-            <div class="min-h-6 min-w-6 size-6 rounded-md overflow-hidden">
-              <NuxtImg :src="workExperience.logo" alt="Assistant J2K" width="400" />
-            </div>
-            <h3 class="text-body font-semibold">{{ workExperience.company }}</h3>
-
-          </div>
-          <Icon name="maki:cross" size="16" class="cursor-pointer text-black hover:text-gray-800" @click="toggleModal" />
-        </div>
-      </template> -->
-
-      <template #body>
-        <p class="text-body whitespace-pre-line" v-html="sanitizedDescription">
-        </p>
-      </template>
-    </UModal> */}
     </dialog>
   );
 };

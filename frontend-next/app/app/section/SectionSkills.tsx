@@ -4,7 +4,10 @@ import { Skill } from "@/types/Skill";
 
 const SectionSkills = ({ skills }: { skills: Skill[] }) => {
   return (
-    <section id="skills" className="w-full flex flex-col items-center justify-center text-foreground text-center">
+    <section
+      id="skills"
+      className="w-full flex flex-col items-center justify-center text-foreground text-center"
+    >
       <HeaderSection
         title="Skills"
         description="Explore the cards to learn how I work with each technology."

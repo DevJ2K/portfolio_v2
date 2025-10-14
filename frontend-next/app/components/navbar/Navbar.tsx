@@ -8,6 +8,15 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
+  const sections = [
+    "main",
+    "projects",
+    "work",
+    "education",
+    "skills",
+    "contact",
+  ];
+
   const headerOffset = 140;
 
   const scrollToSection = (
@@ -32,14 +41,6 @@ const Navbar = () => {
   };
 
   const updateActiveSection = () => {
-    const sections = [
-      "main",
-      "projects",
-      "work",
-      "education",
-      "skills",
-      "contact",
-    ];
     const scrollPosition = window.scrollY + headerOffset + 50;
 
     for (const sectionId of sections) {
@@ -78,13 +79,18 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
 
   return (
     <div className="fixed mx-auto bg-white z-40 top-12 flex items-center justify-between gap-3 p-2 md:w-[max(65vw,768px)] rounded-full nav-custom-shadow">
       <a href="#" onClick={(event) => scrollToSection("main", event)}>
         <div className="w-22 md:w-26 h-fit rounded-md flex items-center justify-center md:-rotate-6 md:ml-4">
-          <Image src="/images/DevJ2K.png" alt="Assistant J2K" width="400" height="400" />
+          <Image
+            src="/images/DevJ2K.png"
+            alt="Assistant J2K"
+            width="400"
+            height="400"
+          />
         </div>
       </a>
 

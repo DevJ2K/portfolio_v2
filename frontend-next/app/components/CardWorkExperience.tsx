@@ -3,20 +3,20 @@
 import { useWorkExperience } from "@/providers/WorkExperienceProvider";
 import { WorkExperience } from "@/types/WorkExperience";
 import Image from "next/image";
-import { useState } from "react";
 
 const CardWorkExperience = ({
   workExperience,
 }: {
   workExperience: WorkExperience;
 }) => {
-
   const { setActiveWorkExperience } = useWorkExperience();
 
   const openModal = () => {
     setActiveWorkExperience(workExperience);
-    (document.getElementById("modal_work_experience") as HTMLDialogElement)?.showModal();
-  }
+    (
+      document.getElementById("modal_work_experience") as HTMLDialogElement
+    )?.showModal();
+  };
 
   return (
     <div className="flex items-center gap-3 w-full col-span-2">
@@ -38,9 +38,6 @@ const CardWorkExperience = ({
         </div>
         <h1 className="text-sm">{workExperience.company}</h1>
       </div>
-
-
-
     </div>
   );
 };

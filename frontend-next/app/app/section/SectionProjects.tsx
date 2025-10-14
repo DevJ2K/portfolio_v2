@@ -11,7 +11,10 @@ const SectionProjects = ({ projects }: { projects: Project[] }) => {
   const [selectedTag, setSelectedTag] = useState<string>("AI");
 
   return (
-    <section id="projects" className="w-full flex flex-col items-center justify-center text-foreground text-center px-4">
+    <section
+      id="projects"
+      className="w-full flex flex-col items-center justify-center text-foreground text-center px-4"
+    >
       <HeaderSection
         title="Projects"
         description="Projects that reflect what I love to build."

@@ -10,11 +10,18 @@ type Ctx = {
 
 const WorkExperienceCtx = createContext<Ctx | null>(null);
 
-export function WorkExperienceProvider({ children }: { children: React.ReactNode }) {
-  const [activeWorkExperience, setActiveWorkExperience] = useState<WorkExperience | null>(null);
+export function WorkExperienceProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [activeWorkExperience, setActiveWorkExperience] =
+    useState<WorkExperience | null>(null);
 
   return (
-    <WorkExperienceCtx.Provider value={{ activeWorkExperience, setActiveWorkExperience }}>
+    <WorkExperienceCtx.Provider
+      value={{ activeWorkExperience, setActiveWorkExperience }}
+    >
       {children}
     </WorkExperienceCtx.Provider>
   );
@@ -22,6 +29,9 @@ export function WorkExperienceProvider({ children }: { children: React.ReactNode
 
 export function useWorkExperience() {
   const ctx = useContext(WorkExperienceCtx);
-  if (!ctx) throw new Error("useWorkExperience must be used within WorkExperienceProvider");
+  if (!ctx)
+    throw new Error(
+      "useWorkExperience must be used within WorkExperienceProvider"
+    );
   return ctx;
 }
