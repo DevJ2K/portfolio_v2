@@ -11,7 +11,8 @@ const PromptChatbot = ({
   sendMessage: (message: string) => void;
 }) => {
   const chatbotIsTyping = useChatbotStore((state) => state.isTyping);
-  const handleEnter = (event: Event) => {
+
+  const handleEnter = async (event: Event) => {
     if (prompt.trim().length > 0 && !chatbotIsTyping) {
       sendMessage(prompt);
       if (event && event.target) {

@@ -6,11 +6,20 @@ import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 
-const MessageChatbotSystem = ({ message }: { message: string }) => {
+const ChatbotMessageSystem = ({
+  message,
+  isLastMessage,
+}: {
+  message: string;
+  isLastMessage: boolean;
+}) => {
+  // Typing state from the store
   const isTyping = useChatbotStore((state) => state.isTyping);
 
+  // State to hold the sanitized HTML message
   const [sanitizedMessage, setSanitizedMessage] = useState<string>("");
 
+  // Sanitize and convert markdown to HTML whenever the message changes
   useEffect(() => {
     if (message != null) {
       setSanitizedMessage(DOMPurify.sanitize(marked(message).toString()));
@@ -35,7 +44,7 @@ const MessageChatbotSystem = ({ message }: { message: string }) => {
         </div>
       </div>
       <div className="text-sm md:text-base">
-        {isTyping && sanitizedMessage.length == 0 ? (
+        {isTyping && sanitizedMessage.length == 0 && isLastMessage ? (
           <div>
             <span className="gradient-text pulse-animation">Thinking...</span>
           </div>
@@ -50,4 +59,4 @@ const MessageChatbotSystem = ({ message }: { message: string }) => {
   );
 };
 
-export default MessageChatbotSystem;
+export default ChatbotMessageSystem;
