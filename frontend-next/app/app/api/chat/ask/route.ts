@@ -1,26 +1,22 @@
-// app/api/chat/route.ts
-import { NextRequest } from "next/server";
-
-// export const runtime = "edge"; // ou 'nodejs'
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
-
     const apiKey = process.env.API_KEY;
     const apiBaseUrl = process.env.API_BASE_URL;
 
     if (!apiKey) {
       console.error("API key is not configured.");
-      return new Response(
-        JSON.stringify({ error: "API key is not configured." }),
+      return NextResponse.json(
+        { error: "API key is not configured." },
         { status: 500 }
       );
     }
 
     if (!apiBaseUrl) {
       console.error("API base URL is not configured.");
-      return new Response(
-        JSON.stringify({ error: "API base URL is not configured." }),
+      return NextResponse.json(
+        { error: "API base URL is not configured." },
         { status: 500 }
       );
     }
@@ -37,7 +33,7 @@ export async function POST(req: NextRequest) {
 
     // Gestion du timeout
     timeoutId = setTimeout(() => {
-      console.log("Request timeout");
+      console.log("Timeout reached, aborting request");
       cleanup();
     }, 4 * 60000);
 
@@ -49,7 +45,7 @@ export async function POST(req: NextRequest) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "text/event-stream",
+          Accept: "text/event-stream",
           "x-api-key": apiKey,
         },
         body: JSON.stringify({ conversation }),
@@ -94,11 +90,11 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      return new Response(stream, {
+      return new NextResponse(stream, {
         headers: {
           "Content-Type": "text/event-stream",
           "Cache-Control": "no-cache",
-          "Connection": "keep-alive",
+          Connection: "keep-alive",
           "X-Accel-Buffering": "no",
           "Access-Control-Allow-Origin": "*",
         },
@@ -107,8 +103,11 @@ export async function POST(req: NextRequest) {
       cleanup();
 
       if (controller.signal.aborted) {
-        console.log("Request aborted");
-        return new Response("", { status: 499 });
+        console.error("Request aborted");
+        return NextResponse.json(
+          { error: "Request was aborted" },
+          { status: 499 }
+        );
       }
 
       console.error("Streaming error:", error);
@@ -121,7 +120,7 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      return new Response(errorStream, {
+      return new NextResponse(errorStream, {
         headers: {
           "Content-Type": "text/event-stream",
         },
@@ -129,8 +128,8 @@ export async function POST(req: NextRequest) {
     }
   } catch (error) {
     console.error("Request processing error:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to process request" }),
+    return NextResponse.json(
+      { error: "Failed to process request" },
       { status: 500 }
     );
   }

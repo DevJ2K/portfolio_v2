@@ -21,14 +21,14 @@ const ChatbotMessageSystem = ({
 
   // Sanitize and convert markdown to HTML whenever the message changes
   useEffect(() => {
-    if (message != null) {
-      setSanitizedMessage(DOMPurify.sanitize(marked(message).toString()));
-    } else {
+    if ((!message || message == "") && (!isLastMessage || !isTyping)) {
       setSanitizedMessage(
         "Je m'excuse, je rencontre des <span class='text-red-500'>difficultés</span> pour répondre à votre demande."
       );
+    } else {
+      setSanitizedMessage(DOMPurify.sanitize(marked(message).toString()));
     }
-  }, [message]);
+  }, [message, isTyping, isLastMessage]);
 
   return (
     <div className="flex w-full gap-2 py-2 px-3">

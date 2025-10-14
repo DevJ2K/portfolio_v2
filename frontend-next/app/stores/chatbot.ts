@@ -3,6 +3,7 @@ import type { Chat } from "@/types/Chat";
 import fetchAiResponse from "@/functions/fetchAiResponse";
 import { persist } from "zustand/middleware";
 import { LOCAL_STORAGE_CHATBOT_CONVERSATION_KEY } from "@/utils/constants";
+import { ChatbotStore } from "@/types/stores/ChatbotStore";
 
 const scrollDown = async (force: boolean = true) => {
   if (force) {
@@ -22,13 +23,6 @@ const scrollDown = async (force: boolean = true) => {
   if ((0 < distanceToBottom && distanceToBottom < threshold) || force) {
     bottom.scrollIntoView({ behavior: "smooth", block: "end" });
   }
-};
-
-type ChatbotStore = {
-  messages: Array<Chat>;
-  isTyping: boolean;
-  sendMessage: (message: string) => Promise<{ ok: boolean; message?: string }>;
-  clearConversation: () => void;
 };
 
 const useChatbotStore = create<ChatbotStore>()(
@@ -89,7 +83,7 @@ const useChatbotStore = create<ChatbotStore>()(
               const currentMessages = get().messages;
               if (currentMessages[currentMessages.length - 1] != null) {
                 set((state: any) => ({
-                  messages: state.messages.map((msg: any, idx: number) =>
+                  messages: state.messages.map((msg: Chat, idx: number) =>
                     idx === state.messages.length - 1
                       ? { ...msg, content: msg.content + token }
                       : msg
@@ -106,6 +100,7 @@ const useChatbotStore = create<ChatbotStore>()(
           await done;
           scrollDown(false);
           set({ isTyping: false });
+          return { ok: true };
         } catch (error) {
           console.error("Error during fetchAiResponse:", error);
           set({ isTyping: false });
