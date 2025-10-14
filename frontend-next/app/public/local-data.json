@@ -40,7 +40,7 @@
 
     {
       "title": "Portfolio-v2 (Web Part)",
-      "description": "This new version of my portfolio is built with Nuxt for the frontend and FastAPI for the backend. It gave me the opportunity to build a complete fullstack application, exploring essential software development concepts, followed by a secure deployment.",
+      "description": "This new version of my portfolio is built with Next for the frontend and FastAPI for the backend. It gave me the opportunity to build a complete fullstack application, exploring essential software development concepts, followed by a secure deployment.",
       "image": "/images/projects/portfolio-web.png",
       "tags": ["Web"],
       "onlineLink": "https://devj2k.com",
@@ -52,7 +52,7 @@
       "title": "???",
       "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management, and more. It’s a major milestone in my journey as a developer.",
       "image": "/images/projects/unreleased-2.png",
-      "tags": ["Web", "SaaS"],
+      "tags": ["SaaS"],
       "isPrivate": true,
       "isSoonOnline": true
     },
@@ -60,7 +60,7 @@
       "title": "Drezly",
       "description": "A SaaS platform designed to empower Vinted resellers with advanced tools to manage and grow their business. Drezly integrates AI-powered features, a Chrome extension, and a comprehensive dashboard.",
       "image": "/images/projects/drezly.png",
-      "tags": ["SaaS"],
+      "tags": ["SaaS", "Web"],
       "onlineLink": "https://drezly.com",
       "isPrivate": false,
       "isSoonOnline": false
@@ -118,7 +118,7 @@
       "duration": "Sep. 2025 - Present",
       "position": "Co-Founder & CTO",
       "logo": "/images/experiences/drezly.png",
-      "description": "Built a SaaS platform from the ground up to support Vinted resellers in growing their business. The solution includes integrated AI-powered tools, a Chrome extension, and an advanced analytics dashboard. This project allowed me to apply and expand my expertise across API development, DevOps, full-stack engineering, and AI integration.",
+      "description": "Built a SaaS platform from the ground up to support Vinted resellers in growing their business. The solution includes integrated AI-powered tools, a Chrome extension, and an advanced analytics dashboard. This project allowed me to apply and expand my expertise across API development, DevOps, full-stack engineering, and AI integration.\n\n<a href='https://drezly.com' target='_blank' class='underline text-blue-500'>Visit Drezly</a>",
       "connector": "of",
       "clazz": "bg-[#E7D4FF] border-[#BF96FF]"
     },
