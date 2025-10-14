@@ -214,12 +214,38 @@
       ]
     },
     {
-      "name": "Nuxt",
+      "name": "Next",
       "description": "My go-to framework for building web apps.",
       "achievements": [
-        "Built on Vue with a clear and intuitive syntax",
+        "Perfect to create SaaS applications",
         "Quick to set up and ideal for dynamic interfaces",
         "Perfect for full-stack web development"
+      ]
+    },
+    {
+      "name": "Typescript",
+      "description": "I use it in all my web projects.",
+      "achievements": [
+        "Improves code clarity with type safety",
+        "Works seamlessly with ESLint and modern frameworks"
+      ]
+    },
+    {
+      "name": "React Native",
+      "description": "My preferred framework for cross-platform mobile apps.",
+      "achievements": [
+        "Write once, run anywhere (iOS & Android)",
+        "Good performance for most apps",
+        "Easy to learn with React knowledge"
+      ]
+    },
+    {
+      "name": "Swift",
+      "description": "My favorite language for mobile development.",
+      "achievements": [
+        "Clean syntax and powerful IDE (Xcode)",
+        "Excellent native UI frameworks (SwiftUI, UIKit)",
+        "Excellent official documentation and community support"
       ]
     },
     {
@@ -232,20 +258,11 @@
       ]
     },
     {
-      "name": "Swift",
-      "description": "My favorite language for mobile development.",
-      "achievements": [
-        "Clean syntax and powerful IDE (Xcode)",
-        "Excellent official documentation and community support"
-      ]
-    },
-    {
       "name": "C",
       "description": "The first language I used during the core curriculum at 42.",
       "achievements": [
         "Helped me understand low-level memory management",
-        "Gained deep understanding of how computers work",
-        "Extremely fast and efficient at runtime"
+        "Gained deep understanding of how computers work"
       ]
     },
     {
@@ -253,17 +270,7 @@
       "description": "The second language I used during the core curriculum at 42.",
       "achievements": [
         "Great for mastering object-oriented programming concepts",
-        "Used in algorithms and systems logic",
         "Popular and backed by strong documentation"
-      ]
-    },
-    {
-      "name": "Firebase",
-      "description": "My primary choice for cloud-based databases.",
-      "achievements": [
-        "Easy to set up and manage",
-        "Cost-effective for low-to-medium traffic apps",
-        "Strong ecosystem with real-time capabilities"
       ]
     },
     {
@@ -273,14 +280,6 @@
         "Containerization of frontend and backend services",
         "Simplifies deployment and environment consistency",
         "Ideal for multi-machine development setups"
-      ]
-    },
-    {
-      "name": "Typescript",
-      "description": "I use it in all my web projects.",
-      "achievements": [
-        "Improves code clarity with type safety",
-        "Works seamlessly with ESLint and modern frameworks"
       ]
     }
   ]
