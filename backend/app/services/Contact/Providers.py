@@ -71,20 +71,20 @@ class DiscordProvider(NotificationProvider):
 
     def send(self, email: str, title: str, message: str) -> bool:
         data = {
-            "embeds": [{
-                "title": "📧 Nouveau message de contact",
-                "color": 0x00ff00,
-                "fields": [
-                    {"name": "De", "value": email, "inline": True},
-                    {"name": "Sujet", "value": title, "inline": True},
-                    {"name": "Message", "value": message, "inline": False}
-                ],
-                "timestamp": datetime.now(tz=ZoneInfo("Europe/Paris")).isoformat()
-            }],
+            "embeds": [
+                {
+                    "title": "📧 Nouveau message de contact",
+                    "color": 0x00FF00,
+                    "fields": [
+                        {"name": "De", "value": email, "inline": True},
+                        {"name": "Sujet", "value": title, "inline": True},
+                        {"name": "Message", "value": message, "inline": False},
+                    ],
+                    "timestamp": datetime.now(tz=ZoneInfo("Europe/Paris")).isoformat(),
+                }
+            ],
             "content": "@everyone Nouveau message reçu !",
-            "allowed_mentions": {
-                "parse": ["everyone"]
-            }
+            "allowed_mentions": {"parse": ["everyone"]},
         }
 
         try:
@@ -103,13 +103,13 @@ class SmtpProvider(NotificationProvider):
 
     def send(self, email: str, title: str, message: str) -> bool:
         msg = EmailMessage()
-        msg['Subject'] = f"[New contact message] : {title}"
-        msg['From'] = self.EMAIL_SENDER
-        msg['To'] = self.EMAIL_RECEIVER
+        msg["Subject"] = f"[New contact message] : {title}"
+        msg["From"] = self.EMAIL_SENDER
+        msg["To"] = self.EMAIL_RECEIVER
         msg.set_content(f"Sender: {email}\n\nBody: {message}")
 
         try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+            with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
                 smtp.starttls()
                 smtp.login(self.EMAIL_SENDER, self.PASSWORD_SENDER)
                 smtp.send_message(msg)
@@ -117,6 +117,7 @@ class SmtpProvider(NotificationProvider):
         except Exception as e:
             contact_logger.error(f"Smtp error: {e}")
             return False
+
 
 # class SlackProvider(NotificationProvider):
 #     def __init__(self, webhook_url: str):

@@ -7,21 +7,27 @@ from app.services.AI.RAG import RAG
 class ConversationHandler:
     def __init__(self) -> None:
         prompts_folder = Path(__file__).parent.parent.parent / "prompts"
-        self.__rag_prompt = self.__load_prompt__(prompts_folder / "RAG" / "context_portfolio.txt")
+        self.__rag_prompt = self.__load_prompt__(
+            prompts_folder / "RAG" / "context_portfolio.txt"
+        )
 
     def __load_prompt__(self, path: Path):
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             content = f.read()
         return content
 
     @staticmethod
-    def get_context(rag: RAG, input_messages: list[ChatMessage], query: str, k_context: int = 2) -> list[ChatMessage]:
+    def get_context(
+        rag: RAG, input_messages: list[ChatMessage], query: str, k_context: int = 2
+    ) -> list[ChatMessage]:
         messages = input_messages.copy()
-        messages.append({
-            "role": "user",
-            "content": query,
-            "context": rag.retrieve(query=query, k=k_context)
-        })
+        messages.append(
+            {
+                "role": "user",
+                "content": query,
+                "context": rag.retrieve(query=query, k=k_context),
+            }
+        )
         return messages
 
     def build(self, messages: list[ChatMessage]) -> list[MistralInput]:
@@ -33,8 +39,13 @@ class ConversationHandler:
         contexts = list(dict.fromkeys(contexts).keys())
 
         return [
-            {"role": "system", "content": self.__rag_prompt.format(context="".join([f"- {context}\n" for context in contexts]))},
-            *[{"role": chat["role"], "content": chat["content"]} for chat in messages]
+            {
+                "role": "system",
+                "content": self.__rag_prompt.format(
+                    context="".join([f"- {context}\n" for context in contexts])
+                ),
+            },
+            *[{"role": chat["role"], "content": chat["content"]} for chat in messages],
         ]
 
 
@@ -47,21 +58,14 @@ if __name__ == "__main__":
         {
             "role": "user",
             "content": "Salut, ça va ?",
-            "context": ["Le contexte", "Le contexte"]
+            "context": ["Le contexte", "Le contexte"],
         },
         {
             "role": "assistant",
-            "content": "Je vais super bien et toi ? Comment puis-je t'aider ?"
+            "content": "Je vais super bien et toi ? Comment puis-je t'aider ?",
         },
-        {
-            "role": "user",
-            "content": "Dis-moi",
-            "context": ["Le contexte", "Un autre"]
-        },
-        {
-            "role": "assistant",
-            "content": "Oui?"
-        }
+        {"role": "user", "content": "Dis-moi", "context": ["Le contexte", "Un autre"]},
+        {"role": "assistant", "content": "Oui?"},
     ]
 
     # data1 = Path(__file__).parent.parent.parent / "data" / "brut.txt"
@@ -69,17 +73,36 @@ if __name__ == "__main__":
 
     data_folder = Path(__file__).parent.parent.parent / "data"
 
-    rag = RAG(datasets=[
-        RagDataset(path=data_folder / "42cursus.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
-        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
-    ])
+    rag = RAG(
+        datasets=[
+            RagDataset(
+                path=data_folder / "42cursus.txt",
+                chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs"),
+            ),
+            RagDataset(
+                path=data_folder / "projects.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "experiences.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "educations.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "skills.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+        ]
+    )
 
     conversationHandler = ConversationHandler()
     print("Enrichment Conversation")
-    enrichment_conversation = ConversationHandler.get_context(rag, conversation, "SFT-R?")
+    enrichment_conversation = ConversationHandler.get_context(
+        rag, conversation, "SFT-R?"
+    )
     pprint(enrichment_conversation)
     print(" ======== ")
     print("Send to LLM")

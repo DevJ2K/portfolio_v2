@@ -8,6 +8,9 @@ class Configuration:
         self.MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
         if not self.MISTRAL_API_KEY:
             raise ValueError("Please set the MISTRAL_API_KEY environment variable.")
+        self.MISTRAL_MODEL = os.getenv("MISTRAL_MODEL")
+        if not self.MISTRAL_MODEL:
+            raise ValueError("Please set the MISTRAL_MODEL environment variable.")
         self.OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
         if not self.OLLAMA_MODEL:
             raise ValueError("Please set the OLLAMA_MODEL environment variable.")
@@ -29,9 +32,7 @@ class Configuration:
         self.DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
         if not self.DISCORD_WEBHOOK_URL:
             raise ValueError("Please set the DISCORD_WEBHOOK_URL environment variable.")
+        self.CONTEXT_SIZE = 7
 
 
 CONFIGURATION = Configuration()
-
-if __name__ == "__main__":
-    print(CONFIGURATION.MISTRAL_API_KEY)

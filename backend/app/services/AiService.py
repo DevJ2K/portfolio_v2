@@ -7,21 +7,19 @@ from app.utils.logger import ai_logger
 
 
 class AiService:
-    def __init__(self, rag: RAG, api_key: str, context_size: int = 3) -> None:
+    def __init__(
+        self, rag: RAG, model: str, api_key: str, context_size: int = 3
+    ) -> None:
         self.client = Mistral(api_key=api_key)
         self.rag = rag
         self.context_size = context_size
-        # self.model="open-mistral-7b"  # 5/10, mais pas assez rédirigé
-        # self.model="open-mixtral-8x7b"  # 6/10, mais tjrs en anglais
-        # self.model="open-mixtral-8x22b"  # 8/10, pas mal
-        # self.model="mistral-large-2402"  # 10/10, Pas malllll !!
-        # self.model="devstral-small-latest"
-        # self.model = "mistral-medium-latest"
-        self.model = "mistral-small-latest"
+        self.model = model
 
     def enrich(self, messages: list[ChatMessage], query: str) -> list[ChatMessage]:
         ai_logger.info(f"Enriching conversation with query: '{query}'")
-        return ConversationHandler.get_context(self.rag, messages, query, self.context_size)
+        return ConversationHandler.get_context(
+            self.rag, messages, query, self.context_size
+        )
 
     def ask(self, messages: list[ChatMessage]):
         conversation_handler = ConversationHandler()
@@ -29,12 +27,11 @@ class AiService:
 
         try:
             response_stream = self.client.chat.stream(
-                model=self.model,
-                messages=conversation
+                model=self.model, messages=conversation
             )
             response = ""
 
-            if hasattr(response_stream, '__iter__'):
+            if hasattr(response_stream, "__iter__"):
                 for event in response_stream:
                     if isinstance(event, CompletionEvent):
                         delta = event.data.choices[0].delta
@@ -43,29 +40,33 @@ class AiService:
                             response += token
                             yield token
 
-                ai_logger.info(f"New interaction:\nAsk: {conversation[-1].get('content', None)}\n\nResponse: {response}")
+                ai_logger.info(
+                    f"New interaction:\nAsk: {conversation[-1].get('content', None)}\n\nResponse: {response}"
+                )
 
             else:
                 ai_logger.warning("Stream not iterable, falling back to non-streaming")
                 regular_response = self.client.chat.complete(
-                    model=self.model,
-                    messages=conversation
+                    model=self.model, messages=conversation
                 )
                 content = regular_response.choices[0].message.content
                 response = content
                 yield content
-                ai_logger.info(f"New interaction:\nAsk: {conversation[-1].get('content', None)}\n\nResponse: {response}")
+                ai_logger.debug(
+                    f"New interaction:\nAsk: {conversation[-1].get('content', None)}\n\nResponse: {response}"
+                )
 
         except Exception as e:
             ai_logger.error(f"Error in streaming: {e}")
             try:
+                ai_logger.info("Attempting fallback to non-streaming response...")
                 regular_response = self.client.chat.complete(
-                    model=self.model,
-                    messages=conversation
+                    model=self.model, messages=conversation
                 )
                 content = regular_response.choices[0].message.content
                 yield content
-                ai_logger.info(f"Fallback response: {content}")
+                ai_logger.info("Fallback successful.")
+                ai_logger.debug(f"Fallback response: {content}")
             except Exception as fallback_error:
                 ai_logger.error(f"Fallback also failed: {fallback_error}")
                 yield "<span class='text-red-500'>I'm sorry, I couldn't process your request right now. Please try again in a moment.</span>"
@@ -90,13 +91,30 @@ if __name__ == "__main__":
 
     data_folder = Path(__file__).parent.parent / "data"
 
-    rag = RAG(datasets=[
-        RagDataset(path=data_folder / "42cursus.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
-        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
-    ])
+    rag = RAG(
+        datasets=[
+            RagDataset(
+                path=data_folder / "42cursus.txt",
+                chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs"),
+            ),
+            RagDataset(
+                path=data_folder / "projects.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "experiences.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "educations.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "skills.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+        ]
+    )
 
     ai_service = AiService(rag=rag, api_key=api_key)
 
@@ -122,10 +140,15 @@ if __name__ == "__main__":
     # ]
     conversation = []
 
-    conversation = ai_service.enrich(messages=conversation, query="En combien de temps Theo a-t-il terminé le cursus de 42 ?")
+    conversation = ai_service.enrich(
+        messages=conversation,
+        query="En combien de temps Theo a-t-il terminé le cursus de 42 ?",
+    )
 
     conversation_handler = ConversationHandler()
-    conversation_build: list[MistralInput] = conversation_handler.build(messages=conversation)
+    conversation_build: list[MistralInput] = conversation_handler.build(
+        messages=conversation
+    )
 
     print("=" * 40)
     print("Enriched conversation:")

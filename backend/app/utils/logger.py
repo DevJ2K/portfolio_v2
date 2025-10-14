@@ -32,7 +32,7 @@ def get_logger(level, name: str = "db.logger") -> logging.Logger:
     # ).ljust(20)
     formatter = CustomTimeFormatter(
         fmt=f"%(asctime)s - %(levelname)s - %(name)s - {file_adjustement} - %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S"
+        datefmt="%Y-%m-%d %H:%M:%S",
     )
     ch.setFormatter(formatter)
 
@@ -46,5 +46,5 @@ def get_logger(level, name: str = "db.logger") -> logging.Logger:
 main_logger = get_logger(logging.DEBUG, "main.logger")
 rag_logger = get_logger(logging.DEBUG, "RAG.logger")
 contact_logger = get_logger(logging.DEBUG, "contact.logger")
-ai_logger = get_logger(logging.DEBUG, "AI.logger")
+ai_logger = get_logger(logging.INFO, "AI.logger")
 api_logger = get_logger(logging.DEBUG, "API.logger")

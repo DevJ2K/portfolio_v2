@@ -20,7 +20,9 @@ class ChunkSplitter:
             elif format.splitter == "lines":
                 return [line for line in data.splitlines() if line.strip()]
             elif format.splitter == "paragraphs":
-                return [paragraph for paragraph in data.split("\n\n") if paragraph.strip()]
+                return [
+                    paragraph for paragraph in data.split("\n\n") if paragraph.strip()
+                ]
             else:
                 raise ValueError(f"Unknown splitter type: {format.splitter}")
         elif format.datatype == "json":
@@ -31,7 +33,9 @@ class ChunkSplitter:
                 chunks = []
                 for item in json_data.get("content", []):
                     string_content = f"{json_data.get('suffix', '')}\n"
-                    string_content += "\n".join(f"{key}: {value}" for key, value in item.items())
+                    string_content += "\n".join(
+                        f"{key}: {value}" for key, value in item.items()
+                    )
                     chunks.append(string_content)
                 return chunks
             except json.JSONDecodeError as e:
@@ -42,10 +46,15 @@ class ChunkSplitter:
 
 if __name__ == "__main__":
     from pathlib import Path
+
     # Example usage
     splitter = ChunkSplitter()
 
-    with open(Path(__file__).parent.parent.parent / "data" / "projects.json", 'r', encoding='utf-8') as file:
+    with open(
+        Path(__file__).parent.parent.parent / "data" / "projects.json",
+        "r",
+        encoding="utf-8",
+    ) as file:
         json_project = file.read()
 
     # print(splitter.split(json_project, ChunkFormat(datatype="json")))
@@ -53,9 +62,13 @@ if __name__ == "__main__":
         print(chunk)
         print("-" * 20)
 
-    with open(Path(__file__).parent.parent.parent / "data" / "test.txt", 'r', encoding='utf-8') as file:
+    with open(
+        Path(__file__).parent.parent.parent / "data" / "test.txt", "r", encoding="utf-8"
+    ) as file:
         test_project = file.read()
 
-    for chunk in splitter.split(test_project, ChunkFormat(datatype="text", splitter="paragraphs")):
+    for chunk in splitter.split(
+        test_project, ChunkFormat(datatype="text", splitter="paragraphs")
+    ):
         print(chunk)
         print("-" * 20)

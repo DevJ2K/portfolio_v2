@@ -15,6 +15,7 @@ for env in "${environments[@]}"; do
     if [[ "$target" == "backend" ]]; then
       cat > "$filepath" <<EOL
 MISTRAL_API_KEY=
+MISTRAL_MODEL=
 OLLAMA_MODEL=
 EMAIL_RECEIVER=
 EMAIL_SENDER=

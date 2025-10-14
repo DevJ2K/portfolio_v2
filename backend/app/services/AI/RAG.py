@@ -25,19 +25,27 @@ class RAG:
             raise RAGError("Unable to setup RAG without chunks.")
 
         # 2. Load chunks into the vector database
-        chunks_embeddings: np.ndarray = self.__load_chunks__(chunks=self.chunks)  # (n, d)
-        self.chunk_embeddings = self.chunk_embeddings.reshape((0, chunks_embeddings.shape[1]))  # (0, d)
+        chunks_embeddings: np.ndarray = self.__load_chunks__(
+            chunks=self.chunks
+        )  # (n, d)
+        self.chunk_embeddings = self.chunk_embeddings.reshape(
+            (0, chunks_embeddings.shape[1])
+        )  # (0, d)
         self.chunk_embeddings = np.vstack([self.chunk_embeddings, chunks_embeddings])
 
     def __get_chunks__(self, datasets: list[RagDataset]) -> list[str]:
         chunks = []
         for dataset in datasets:
             try:
-                with open(dataset.path, 'r') as f:
+                with open(dataset.path, "r") as f:
                     content = f.read()
-                    chunks += self.chunk_splitter.split(data=content, format=dataset.chunkFormat)
+                    chunks += self.chunk_splitter.split(
+                        data=content, format=dataset.chunkFormat
+                    )
             except Exception as e:
-                rag_logger.error(f"Failed to retrieve chunks from '{dataset}' : {type(e).__name__} - {str(e)}")
+                rag_logger.error(
+                    f"Failed to retrieve chunks from '{dataset}' : {type(e).__name__} - {str(e)}"
+                )
         # for i, chunk in enumerate(chunks):
         #     print(f"{BHMAG}Chunk {i + 1}/{len(chunks)}:{RESET} {chunk[:75]}...")
         return chunks
@@ -46,21 +54,31 @@ class RAG:
         chunk_embeddings: list[np.ndarray] = []
 
         for chunk in track(chunks, description=f"{BHMAG}Load chunks{RESET}"):
-            sentence_embedding: list[float] = ollama.embed(model=self.EMBEDDING_MODEL, input=chunk)['embeddings'][0]
+            sentence_embedding: list[float] = ollama.embed(
+                model=self.EMBEDDING_MODEL, input=chunk
+            )["embeddings"][0]
             chunk_embeddings.append(sentence_embedding)
 
         return np.vstack(chunk_embeddings)
 
     def __similarity__(self, matrix: np.ndarray, vector: np.ndarray) -> np.ndarray:
-        return (matrix @ vector) / (np.linalg.norm(matrix, axis=1) * np.linalg.norm(vector))
+        return (matrix @ vector) / (
+            np.linalg.norm(matrix, axis=1) * np.linalg.norm(vector)
+        )
 
     def retrieve(self, query: str, k: int) -> list[str]:
-        query_embedding: np.ndarray = np.array(ollama.embed(model=self.EMBEDDING_MODEL, input=query)['embeddings'][0])
+        query_embedding: np.ndarray = np.array(
+            ollama.embed(model=self.EMBEDDING_MODEL, input=query)["embeddings"][0]
+        )
 
-        similarities: np.ndarray = self.__similarity__(self.chunk_embeddings, query_embedding)
+        similarities: np.ndarray = self.__similarity__(
+            self.chunk_embeddings, query_embedding
+        )
         indexes: np.ndarray = np.argsort(similarities)[::-1][:k]
 
-        rag_logger.debug(f"Top similarities with : '{query}'\n{'\n'.join([f'{similarities[index]:.4f} - {self.chunks[index]}' for index in indexes])}")
+        rag_logger.debug(
+            f"Top similarities with : '{query}'\n{'\n'.join([f'{similarities[index]:.4f} - {self.chunks[index]}' for index in indexes])}"
+        )
 
         return [self.chunks[index] for index in indexes]
 
@@ -70,13 +88,30 @@ if __name__ == "__main__":
 
     data_folder = Path(__file__).parent.parent.parent / "data"
 
-    rag = RAG(datasets=[
-        RagDataset(path=data_folder / "42cursus.txt", chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs")),
-        RagDataset(path=data_folder / "projects.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "experiences.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "educations.json", chunkFormat=ChunkFormat(datatype="json")),
-        RagDataset(path=data_folder / "skills.json", chunkFormat=ChunkFormat(datatype="json")),
-    ])
+    rag = RAG(
+        datasets=[
+            RagDataset(
+                path=data_folder / "42cursus.txt",
+                chunkFormat=ChunkFormat(datatype="text", splitter="paragraphs"),
+            ),
+            RagDataset(
+                path=data_folder / "projects.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "experiences.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "educations.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+            RagDataset(
+                path=data_folder / "skills.json",
+                chunkFormat=ChunkFormat(datatype="json"),
+            ),
+        ]
+    )
 
     # import time
     # start_time = time.time()
