@@ -119,7 +119,20 @@ You can check the logs of both services with:
 docker-compose -f docker-compose-dev.yml logs -f
 ```
 
-#### Wait for both services to be fully started.
+You can check if the services are ready by running:
+
+#### Backend:
+```bash
+docker-compose -f docker-compose-dev.yml logs | grep 'Application startup complete' && echo True || echo False
+```
+
+#### Frontend:
+```bash
+docker-compose -f docker-compose-dev.yml logs | grep 'http://localhost:4000' && echo True || echo False
+```
+
+Once both commands return `True`, the application is ready.
+
 
 - The frontend will be accessible at `http://localhost:4000`.
 - The backend at `http://localhost:4001`. The automatic API documentation is available at `http://localhost:4001/docs`.
