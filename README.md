@@ -110,8 +110,20 @@ API_KEY=J2K-PORTFOLIO-Backend-API-KEY
 
 Use Docker Compose to build and run the application:
 ```bash
-docker-compose -f docker-compose-dev.yml up -d
+docker-compose -f docker-compose-dev.yml up -d backend frontend
 ```
+
+You can check the logs of both services with:
+
+```bash
+docker-compose -f docker-compose-dev.yml logs -f
+```
+
+#### Wait for both services to be fully started.
+
+- The frontend will be accessible at `http://localhost:4000`.
+- The backend at `http://localhost:4001`. The automatic API documentation is available at `http://localhost:4001/docs`.
+
 ---
 ### 6. Stop the application
 
