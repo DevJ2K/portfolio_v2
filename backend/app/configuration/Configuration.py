@@ -14,24 +14,15 @@ class Configuration:
         self.OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
         if not self.OLLAMA_MODEL:
             raise ValueError("Please set the OLLAMA_MODEL environment variable.")
-        self.EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
-        if not self.EMAIL_RECEIVER:
-            raise ValueError("Please set the EMAIL_RECEIVER environment variable.")
-        self.EMAIL_SENDER = os.getenv("EMAIL_SENDER")
-        if not self.EMAIL_SENDER:
-            raise ValueError("Please set the EMAIL_SENDER environment variable.")
-        self.PASSWORD_SENDER = os.getenv("PASSWORD_SENDER")
-        if not self.PASSWORD_SENDER:
-            raise ValueError("Please set the PASSWORD_SENDER environment variable.")
+        self.EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER", "")
+        self.EMAIL_SENDER = os.getenv("EMAIL_SENDER", "")
+        self.PASSWORD_SENDER = os.getenv("PASSWORD_SENDER", "")
+
         self.API_KEY = os.getenv("API_KEY")
         if not self.API_KEY:
             raise ValueError("Please set the API_KEY environment variable.")
-        self.PROXY_STATUS = os.getenv("PROXY_STATUS")  # disabled || enabled
-        if not self.PROXY_STATUS:
-            raise ValueError("Please set the PROXY_STATUS environment variable.")
-        self.DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
-        if not self.DISCORD_WEBHOOK_URL:
-            raise ValueError("Please set the DISCORD_WEBHOOK_URL environment variable.")
+        self.PROXY_STATUS = os.getenv("PROXY_STATUS", "disabled")  # disabled || enabled
+        self.DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "")
         self.CONTEXT_SIZE = 7
 
 
