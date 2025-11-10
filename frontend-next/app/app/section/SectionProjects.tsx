@@ -7,8 +7,8 @@ import { Project } from "@/types/Project";
 import { useState } from "react";
 
 const SectionProjects = ({ projects }: { projects: Project[] }) => {
-  const tags = ["AI", "SaaS", "Web", "Mobile"];
-  const [selectedTag, setSelectedTag] = useState<string>("AI");
+  const tags = ["SaaS", "AI", "Web", "Mobile"];
+  const [selectedTag, setSelectedTag] = useState<string>("SaaS");
 
   return (
     <section
