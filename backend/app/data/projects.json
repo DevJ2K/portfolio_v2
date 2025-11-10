@@ -34,16 +34,16 @@
       "githubLink": "https://github.com/DevJ2K/portfolio_v2"
     },
     {
-      "title": "???",
-      "description": "This unreleased project combines all of Théo's skills in AI, design, DevOps, and user data management. It represents a significant milestone in his development journey.",
-      "tags": ["Web"],
-      "isSoonOnline": true
-    },
-    {
       "title": "Drezly",
       "description": "A SaaS platform designed to empower Vinted resellers with advanced tools to manage and grow their business. Drezly integrates AI-powered features, a Chrome extension, and a comprehensive dashboard.",
       "tags": ["SaaS"],
       "onlineLink": "https://drezly.com"
+    },
+    {
+      "title": "DailyCook",
+      "description": "DailyCook is a mobile application that simplifies meal planning. It features Elsa, a friendly AI mascot who guides the user and provides tailored suggestions, making cooking stress-free.",
+      "tags": ["SaaS", "Web", "Mobile"],
+      "onlineLink": "https://daily-cook.com"
     },
     {
       "title": "Rubik's Cube Solver",
