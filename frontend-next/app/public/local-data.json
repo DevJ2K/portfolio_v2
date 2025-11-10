@@ -231,12 +231,11 @@
       ]
     },
     {
-      "name": "React Native",
-      "description": "My preferred framework for cross-platform mobile apps.",
+      "name": "React",
+      "description": "My go-to library for building modern and dynamic web interfaces.",
       "achievements": [
-        "Write once, run anywhere (iOS & Android)",
-        "Good performance for most apps",
-        "Easy to learn with React knowledge"
+        "Built complex, responsive, and interactive UI components",
+        "Used in combination with Next.js for high-performance web apps"
       ]
     },
     {
