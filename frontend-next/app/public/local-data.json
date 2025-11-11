@@ -67,6 +67,14 @@
       "isSoonOnline": false
     },
     {
+      "title": "???",
+      "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management, and more. It’s a major milestone in my journey as a developer.",
+      "image": "/images/projects/unreleased-2.png",
+      "tags": ["SaaS"],
+      "isPrivate": true,
+      "isSoonOnline": true
+    },
+    {
       "title": "Rubik's Cube Solver",
       "description": "The aim of this project was to develop a program capable of solving a Rubik’s Cube using as few moves as possible. Created as a team of two, I mainly worked on the frontend, built with Vue and Three.Js, to produce a nice animated 3D visualization.",
       "image": "/images/projects/app_rubik.png",
