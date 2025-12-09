@@ -2,21 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
-    const API_KEY = process.env.API_KEY;
-    const API_BASE_URL = process.env.API_BASE_URL;
+    const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
-    if (!API_BASE_URL) {
-      console.error("API base URL is not configured.");
+    if (!DISCORD_WEBHOOK_URL) {
+      console.error("Discord webhook URL is not configured.");
       return NextResponse.json(
-        { error: "API base URL is not configured." },
-        { status: 500 }
-      );
-    }
-
-    if (!API_KEY) {
-      console.error("API key is not configured.");
-      return NextResponse.json(
-        { error: "API key is not configured." },
+        { error: "Discord webhook URL is not configured." },
         { status: 500 }
       );
     }
@@ -27,18 +18,55 @@ export async function POST(req: NextRequest) {
       message,
     }: { email: string; title: string; message: string } = await req.json();
 
-    return await fetch(`${API_BASE_URL}/contact/send`, {
+    // Validation basique
+    if (!email || !title || !message) {
+      return NextResponse.json(
+        { error: "Missing required fields: email, title, or message" },
+        { status: 400 }
+      );
+    }
+
+    // Construction du payload Discord
+    const discordPayload = {
+      embeds: [
+        {
+          title: "📧 Nouveau message de contact",
+          color: 0x00ff00,
+          fields: [
+            { name: "De", value: email, inline: true },
+            { name: "Sujet", value: title, inline: true },
+            { name: "Message", value: message, inline: false },
+          ],
+          timestamp: new Date().toISOString(),
+        },
+      ],
+      content: "@everyone Nouveau message reçu !",
+      allowed_mentions: { parse: ["everyone"] },
+    };
+
+    // Envoi à Discord
+    const discordResponse = await fetch(DISCORD_WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": API_KEY,
       },
-      body: JSON.stringify({
-        email: email,
-        title: title,
-        message: message,
-      }),
+      body: JSON.stringify(discordPayload),
     });
+
+    if (!discordResponse.ok) {
+      console.error(
+        `Discord API error: ${discordResponse.status} ${discordResponse.statusText}`
+      );
+      return NextResponse.json(
+        { error: "Failed to send message to Discord" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      { success: true, message: "Message sent successfully" },
+      { status: 200 }
+    );
   } catch (error: Error | unknown) {
     console.error("Error in /api/contact/send:", error);
     return NextResponse.json(
