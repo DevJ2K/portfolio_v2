@@ -5,7 +5,8 @@ import "./css/shadow.css";
 import "./css/chatbot.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/navbar/Navbar";
-import Chatbot from "@/components/chatbot/Chatbot";
+import { Analytics } from "@vercel/analytics/next"
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
         {children}
         {/* <Chatbot /> */}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
