@@ -34,11 +34,11 @@ const SectionHero = () => {
       <div className="flex mt-7 gap-7 md:gap-14 text-body">
         <div className="flex gap-1.25 md:gap-2 justify-center items-center">
           <div className="size-1.5 md:size-2.5 bg-red-400 rounded-full custom-ping" />
-          <p>Unavailable for Internship</p>
+          <p>Unavailable for internship</p>
         </div>
         <div className="flex gap-1.25 md:gap-2 justify-center items-center">
-          <div className="size-1.5 md:size-2.5 bg-red-400 rounded-full custom-ping" />
-          <p>Unavailable for work</p>
+          <div className="size-1.5 md:size-2.5 bg-green-400 rounded-full custom-ping" />
+          <p>Open for work</p>
         </div>
       </div>
       <div className="flex mt-8 gap-8">
