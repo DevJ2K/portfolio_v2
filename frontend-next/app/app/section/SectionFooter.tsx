@@ -5,7 +5,7 @@ const SectionFooter = () => {
         Built by DevJ2K
       </h1>
       <p className="text-base text-center text-nowrap">
-        Copyright © Version 2025.10 - All Rights Reserved.
+        Copyright © Version 2026.10 - All Rights Reserved.
       </p>
     </footer>
   );

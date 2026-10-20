@@ -1,8 +1,7 @@
 import { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";
-import { AiFillSignal } from "react-icons/ai";
-import { LuClock, LuLock } from "react-icons/lu";
+import { LuClock, LuExternalLink, LuLock } from "react-icons/lu";
 import { RiGithubLine } from "react-icons/ri";
 
 const CardProject = ({ project }: { project: Project }) => {
@@ -24,9 +23,9 @@ const CardProject = ({ project }: { project: Project }) => {
           <Link
             href={project.onlineLink}
             target="_blank"
-            className="project-badge project-badge-shadow project-badge-hover text-[#38D52A] border border-[#9EFFAB]"
+            className="project-badge project-badge-shadow project-badge-hover text-[#38D52A] border border-[#38D52A]"
           >
-            <AiFillSignal className="text-sm" />
+            <LuExternalLink className="text-sm" />
             Online
           </Link>
         )}

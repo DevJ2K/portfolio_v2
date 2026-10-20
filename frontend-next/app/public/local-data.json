@@ -2,10 +2,9 @@
   "projects": [
     {
       "title": "Portfolio-v2 (AI Part)",
-      "description": "This project, which corresponds to this website, integrates a RAG (Retrieval-Augmented Generation) system combined with a Mistral LLM. The data used to power the RAG is based on myself, allowing it to answer any questions you might have about me.",
+      "description": "This project, which corresponds to this website, integrated a RAG (Retrieval-Augmented Generation) system combined with a Mistral LLM. Powered by data about myself, it could answer any question you might have about me. (This feature is currently disabled)",
       "image": "/images/projects/portfolio-ai.png",
       "tags": ["AI"],
-      "onlineLink": "https://devj2k.com",
       "githubLink": "https://github.com/DevJ2K/portfolio_v2",
       "isPrivate": false,
       "isSoonOnline": false
@@ -49,6 +48,15 @@
       "isSoonOnline": false
     },
     {
+      "title": "ACT.",
+      "description": "An iOS focus app that blocks distracting apps during work sessions. It offers Timer, Stopwatch and Pomodoro sessions, a strict mode, scheduled sessions, home screen widgets and detailed statistics with streaks.",
+      "image": "/images/projects/act.png",
+      "tags": ["SaaS", "Mobile"],
+      "onlineLink": "https://apps.apple.com/fr/app/id6757723423",
+      "isPrivate": false,
+      "isSoonOnline": false
+    },
+    {
       "title": "Drezly",
       "description": "A SaaS platform designed to empower Vinted resellers with advanced tools to manage and grow their business. Drezly integrates AI-powered features, a Chrome extension, and a comprehensive dashboard.",
       "image": "/images/projects/drezly.png",
@@ -65,14 +73,6 @@
       "onlineLink": "https://daily-cook.com",
       "isPrivate": false,
       "isSoonOnline": false
-    },
-    {
-      "title": "???",
-      "description": "This still-unreleased project is a full blend of all my knowledge: AI, design, DevOps, user data management, and more. It’s a major milestone in my journey as a developer.",
-      "image": "/images/projects/unreleased-2.png",
-      "tags": ["SaaS"],
-      "isPrivate": true,
-      "isSoonOnline": true
     },
     {
       "title": "Rubik's Cube Solver",
@@ -123,13 +123,13 @@
   ],
   "experiences": [
     {
-      "company": "DailyCook",
-      "duration": "Oct. 2025 - Present",
+      "company": "ACT.",
+      "duration": "Jan. 2026 - Present",
       "position": "Founder",
-      "logo": "/images/experiences/dailycook.png",
-      "description": "DailyCook is a mobile application that simplifies meal planning. It features Elsa, a friendly AI mascot who guides the user and provides tailored suggestions, making cooking stress-free. I developed this project entirely on my own, which allowed me to strengthen my skills in AI integration, app marketing, user feedback management, and the implementation of tools such as feedback systems. I also designed a landing page and built the full application from the ground up.\n\n<a href='https://daily-cook.com' target='_blank' class='underline text-blue-500'>Visit DailyCook</a>",
+      "logo": "/images/experiences/act.png",
+      "description": "I founded ACT. in January 2026 and run it entirely on my own: product, design, iOS development, monetization and growth.\n\nSince its App Store launch in February 2026, ACT. has gone through multiple major versions and It holds a 4.8/5 rating from +130 reviews (Last Update: 20 Oct. 2026).\n\nOn the business side, I rely on RevenueCat to track subscriptions and revenue, and on PostHog to analyze user behavior. This data guides my product decisions and helps me improve the experience with each release.\n\nFor acquisition, I run 3 Instagram and TikTok accounts dedicated to promoting ACT., with over 10,000 combined followers.\n\nACT. taught me to manage an app as a business: listening to users, iterating fast, and tying each feature to retention and revenue.\n\n<a href='https://apps.apple.com/fr/app/id6757723423' target='_blank' class='underline text-blue-500'>Visit ACT.</a>",
       "connector": "of",
-      "clazz": "bg-[#FFE8C9] border-[#FFC375]"
+      "clazz": "bg-[#DBF0DA] border-[#69D94A]"
     },
     {
       "company": "Drezly",
@@ -139,6 +139,24 @@
       "description": "Built a SaaS platform from the ground up to support Vinted resellers in growing their business. The solution includes integrated AI-powered tools, a Chrome extension, and an advanced analytics dashboard. This project allowed me to apply and expand my expertise across API development, DevOps, full-stack engineering, and AI integration.\n\n<a href='https://drezly.com' target='_blank' class='underline text-blue-500'>Visit Drezly</a>",
       "connector": "of",
       "clazz": "bg-[#E7D4FF] border-[#BF96FF]"
+    },
+    {
+      "company": "Padoa",
+      "duration": "Jan. 2026 - July 2026",
+      "position": "Full-Stack Developer Internship",
+      "logo": "/images/experiences/padoa.png",
+      "description": "Padoa is a SaaS reinventing occupational health in France by digitalizing employees' medical follow-up. I joined the Medical & Prevention division, in the squad in charge of the visit workflow: the most critical part of a medical visit, which ends with the certificate telling the employer whether the employee is fit to work.\n\nI was heavily involved in Padoa's main strategic challenge: its expansion into Germany. German occupational health is organized around medical protocols tied to specific risks, whereas France relies on strictly regulated visit types. My core work was adapting the product to this model, handling the display and confidentiality of medical protocols across the application while keeping it fully operational in both countries.\n\nThe codebase is built with Node.js and PostgreSQL on the backend and Angular on the frontend. After an onboarding end-to-end test, I shipped my first feature, and presented it in a cross-team demo.\n\nI worked within a rigorous delivery cycle: feature analysis, cross-team pairing to estimate and challenge implementations, one pull request per task linked to its Notion ticket, a CI running unit, integration, component and end-to-end tests, peer code reviews, and temporary environments for testing before production.\n\nThis internship deepened my TypeScript skills and my command of Angular reactivity (signals and observables). Working closely with domain experts and the design team, I also learned to approach every feature from the user's perspective.\n\n\n**Feedback from my tutor:**\n*Théo integrated well into the team from the moment he arrived. He quickly got involved in the team's core topics and contributed to their development. He was always attentive and eager to improve, which is a great quality in a developer beyond hard skills. A big thank you for his commitment and his work in the company!*",
+      "connector": "at",
+      "clazz": "bg-[#FFFFFF] border-[#DCDCDC]"
+    },
+    {
+      "company": "DailyCook",
+      "duration": "Oct. 2025 - Dec. 2025",
+      "position": "Founder",
+      "logo": "/images/experiences/dailycook.png",
+      "description": "DailyCook is a mobile application that simplifies meal planning. It features Elsa, a friendly AI mascot who guides the user and provides tailored suggestions, making cooking stress-free. I developed this project entirely on my own, which allowed me to strengthen my skills in AI integration, app marketing, user feedback management, and the implementation of tools such as feedback systems. I also designed a landing page and built the full application from the ground up.\n\n<a href='https://daily-cook.com' target='_blank' class='underline text-blue-500'>Visit DailyCook</a>",
+      "connector": "of",
+      "clazz": "bg-[#FFE8C9] border-[#FFC375]"
     },
     {
       "company": "Credit Agricole Corporate & Investment Bank",
@@ -200,19 +218,18 @@
       "description": "Enroll for a Master's degree in IT Architecture, specialized in AI & Data.",
       "btnText": "View Master's degree",
       "btnActive": false
-    },
-    {
-      "title": "Harvard University",
-      "image": "/images/educations/harvard.png",
-      "borderColor": "border-[#FF6666]",
-      "startDate": "2025",
-      "stat": "-",
-      "description": "Online courses about CS and AI.",
-      "btnText": "View Certificate",
-      "btnActive": false
     }
   ],
   "skills": [
+    {
+      "name": "Swift",
+      "description": "My favorite language for mobile development.",
+      "achievements": [
+        "Clean syntax and powerful IDE (Xcode)",
+        "Excellent native UI frameworks (SwiftUI, UIKit)",
+        "Excellent official documentation and community support"
+      ]
+    },
     {
       "name": "Python",
       "description": "My favorite language — I use it in most of my projects.",
@@ -245,15 +262,6 @@
       "achievements": [
         "Built complex, responsive, and interactive UI components",
         "Used in combination with Next.js for high-performance web apps"
-      ]
-    },
-    {
-      "name": "Swift",
-      "description": "My favorite language for mobile development.",
-      "achievements": [
-        "Clean syntax and powerful IDE (Xcode)",
-        "Excellent native UI frameworks (SwiftUI, UIKit)",
-        "Excellent official documentation and community support"
       ]
     },
     {

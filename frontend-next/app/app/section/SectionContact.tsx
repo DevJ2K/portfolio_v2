@@ -1,6 +1,7 @@
 import ButtonSocial from "@/components/ButtonSocial";
 import HeaderSection from "@/components/HeaderSection";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
 import { MdMailOutline } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 
@@ -17,6 +18,11 @@ const SectionContact = () => {
 
       <div className="flex flex-wrap mt-8 gap-8 max-w-3xl justify-center">
         <ButtonSocial
+          icon={<FaTiktok />}
+          link="https://www.tiktok.com/@dev.j2k"
+          name="J2K🧑🏽‍💻"
+        />
+        <ButtonSocial
           icon={<RiGithubLine />}
           link="https://github.com/DevJ2K"
           name="@DevJ2K"
@@ -31,21 +37,16 @@ const SectionContact = () => {
           link="mailto:contact@devj2k.com"
           name="contact@devj2k.com"
         />
-        <ButtonSocial
-          icon={<FaInstagram />}
-          link="https://www.instagram.com/DevJ2K"
-          name="@DevJ2K"
-        />
       </div>
 
       <div className="flex mt-12 gap-7 md:gap-14 text-body">
         <div className="flex gap-1.25 md:gap-2 justify-center items-center">
-          <div className="size-1.5 md:size-2.5 bg-red-400 rounded-full custom-ping" />
-          <p>Unavailable for internship</p>
-        </div>
-        <div className="flex gap-1.25 md:gap-2 justify-center items-center">
           <div className="size-1.5 md:size-2.5 bg-green-400 rounded-full custom-ping" />
           <p>Open for work</p>
+        </div>
+        <div className="flex gap-1.25 md:gap-2 justify-center items-center">
+          <div className="size-1.5 md:size-2.5 bg-red-400 rounded-full custom-ping" />
+          <p>Unavailable for internship</p>
         </div>
       </div>
 
