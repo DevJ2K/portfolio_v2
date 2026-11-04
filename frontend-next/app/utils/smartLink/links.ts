@@ -1,6 +1,10 @@
 import type { SmartLink } from "./resolve";
 
-const ACT_APP_STORE = "https://apps.apple.com/fr/app/act-bloque-tes-apps-focus/id6757723423";
+/**
+ * App Store Connect campaign link (Analytics → Acquisition → Campaigns),
+ * without its `ct`: the campaign is added per visitor (see `campaigns`).
+ */
+const ACT_APP_STORE = "https://apps.apple.com/app/apple-store/id6757723423?pt=126116317&mt=8";
 
 /** devj2k.com/ACT and devj2k.com/ACT. — same setup as taap.it/ccK6SI1. */
 export const ACT_LINK: SmartLink = {
@@ -13,6 +17,11 @@ export const ACT_LINK: SmartLink = {
   },
   fallback: ACT_APP_STORE,
   appName: "ACT.",
+  // App Store Connect campaigns, by app the link is opened from.
+  campaigns: {
+    tiktok: "Bio Tiktok",
+    instagram: "Bio Instagram",
+  },
   meta: {
     lang: "fr",
     title: "App ACT. - Bloque tes Apps & Focus - App Store",

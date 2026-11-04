@@ -33,6 +33,18 @@ export function smartLinkResponse(request: NextRequest, link: SmartLink): Respon
     ? ({ kind: "gateway" } as const)
     : resolveSmartLink(link, userAgent, request.nextUrl.searchParams);
 
+  if (resolution.kind === "addCampaign") {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: resolution.location,
+        "Cache-Control": "private, no-store, max-age=0",
+        Vary: "User-Agent",
+        "X-Robots-Tag": "noindex, nofollow",
+      },
+    });
+  }
+
   const html =
     resolution.kind === "gateway"
       ? renderGatewayPage(

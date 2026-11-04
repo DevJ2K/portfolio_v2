@@ -24,6 +24,12 @@ export type SmartLink = {
    * Without it, the gateway says "Pour accéder au lien,".
    */
   appName?: string;
+  /**
+   * App Store Connect campaign (`ct`) per in-app browser, used when the URL
+   * has no `ct`. `{ tiktok: "Bio Tiktok" }` = visitors coming from TikTok
+   * count for the "Bio Tiktok" campaign.
+   */
+  campaigns?: Partial<Record<InAppBrowser, string>>;
   /** Link preview (Open Graph / Twitter card) and document language. */
   meta: {
     lang: string;
@@ -36,6 +42,8 @@ export type SmartLink = {
 
 export type Resolution =
   | { kind: "gateway" }
+  /** Reload this smart link with its campaign in the URL (relative Location). */
+  | { kind: "addCampaign"; location: string }
   | {
       kind: "redirect";
       /** Opened right away ("" = nothing). */
@@ -61,6 +69,44 @@ const SAFARI_ESCAPE = /Snapchat|Twitter|LinkedInApp|Pinterest|Telegram|WhatsApp|
 /** Android in-app browsers that taap.it escapes with an `intent:` URL. */
 const ANDROID_IN_APP = /Instagram|FBAN|FBAV|FB_IAB|Snapchat|Twitter|LinkedInApp|Pinterest|Telegram|WhatsApp|Discord/;
 
+export type InAppBrowser =
+  | "tiktok"
+  | "instagram"
+  | "facebook"
+  | "snapchat"
+  | "twitter"
+  | "linkedin"
+  | "pinterest"
+  | "telegram"
+  | "whatsapp"
+  | "discord";
+
+const IN_APP_BROWSERS: [InAppBrowser, RegExp][] = [
+  ["tiktok", TIKTOK],
+  ["instagram", INSTAGRAM],
+  ["facebook", FACEBOOK],
+  ["snapchat", /Snapchat/],
+  ["twitter", /Twitter/],
+  ["linkedin", /LinkedInApp/],
+  ["pinterest", /Pinterest/],
+  ["telegram", /Telegram/],
+  ["whatsapp", /WhatsApp/],
+  ["discord", /Discord/],
+];
+
+export function detectInAppBrowser(userAgent: string): InAppBrowser | null {
+  return IN_APP_BROWSERS.find(([, pattern]) => pattern.test(userAgent))?.[0] ?? null;
+}
+
+/**
+ * Query string with spaces as %20: the App Store reads `+` literally, so
+ * `ct=Bio+Tiktok` would be another campaign than "Bio Tiktok". (A literal
+ * `+` is already serialized as %2B, so every `+` here is a space.)
+ */
+export function toQueryString(params: URLSearchParams): string {
+  return params.toString().replace(/\+/g, "%20");
+}
+
 export function detectPlatform(userAgent: string): Platform {
   if (/iPhone|iPad|iPod/.test(userAgent)) return "ios";
   if (/Android/.test(userAgent)) return "android";
@@ -68,12 +114,13 @@ export function detectPlatform(userAgent: string): Platform {
   return "other";
 }
 
-/** Appends the visitor's query string (utm_*, ct, ...) to a destination. */
+/** Adds the visitor's query string (utm_*, ct, ...) to a destination. */
 function withQuery(url: string | null, query: URLSearchParams): string {
   if (!url) return "";
   if (query.toString() === "") return url;
   const destination = new URL(url);
-  query.forEach((value, key) => destination.searchParams.append(key, value));
+  query.forEach((value, key) => destination.searchParams.set(key, value));
+  destination.search = toQueryString(destination.searchParams);
   return destination.toString();
 }
 
@@ -87,11 +134,23 @@ function toAndroidIntent(url: string): string {
 export function resolveSmartLink(
   link: SmartLink,
   userAgent: string,
-  query: URLSearchParams
+  visitorQuery: URLSearchParams
 ): Resolution {
+  const query = new URLSearchParams(visitorQuery);
+  const inApp = detectInAppBrowser(userAgent);
+  const campaign = inApp && link.campaigns?.[inApp];
+  if (campaign && !query.has("ct")) query.set("ct", campaign);
+
   // TikTok's in-app browser blocks the App Store: ask the visitor to switch
   // to their real browser, where this same URL will redirect normally.
-  if (TIKTOK.test(userAgent)) return { kind: "gateway" };
+  if (inApp === "tiktok") {
+    // "Open in browser" reopens the current URL: put the campaign in it
+    // first, otherwise the browser visit can't be attributed to TikTok.
+    if (!visitorQuery.has("ct") && query.has("ct")) {
+      return { kind: "addCampaign", location: `?${toQueryString(query)}` };
+    }
+    return { kind: "gateway" };
+  }
 
   const platform = detectPlatform(userAgent);
   const target = withQuery(link.targets[platform], query);
