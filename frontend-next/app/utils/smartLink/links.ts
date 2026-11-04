@@ -12,6 +12,7 @@ export const ACT_LINK: SmartLink = {
     other: ACT_APP_STORE,
   },
   fallback: ACT_APP_STORE,
+  appName: "ACT.",
   meta: {
     lang: "fr",
     title: "App ACT. - Bloque tes Apps & Focus - App Store",

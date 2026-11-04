@@ -19,6 +19,11 @@ export type SmartLink = {
   targets: Record<Platform, string | null>;
   /** Opened 1s after the page loads, if the visitor is still on it. */
   fallback: string | null;
+  /**
+   * App name shown in bold on the TikTok gateway ("Pour télécharger ACT.,").
+   * Without it, the gateway says "Pour accéder au lien,".
+   */
+  appName?: string;
   /** Link preview (Open Graph / Twitter card) and document language. */
   meta: {
     lang: string;

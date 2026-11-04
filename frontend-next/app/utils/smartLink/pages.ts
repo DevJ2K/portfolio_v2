@@ -83,28 +83,36 @@ export function renderRedirectPage(link: SmartLink, origin: string, redirect: Re
 
 const GATEWAY_COPY = {
   en: {
-    title: ["To access the link,", "follow these two simple steps:"],
+    access: "To access the link,",
+    download: (app: string) => `To download ${app},`,
+    steps: "follow these two simple steps:",
     tap: "Click on",
     where: "in the top right corner",
     then: "Then ",
     action: "Open in browser",
   },
   fr: {
-    title: ["Pour accéder au lien,", "suis ces deux étapes simples:"],
+    access: "Pour accéder au lien,",
+    download: (app: string) => `Pour télécharger ${app},`,
+    steps: "suis ces deux étapes simples:",
     tap: "Cliquez sur",
     where: "en haut à droite",
     then: "Puis ",
     action: "Ouvrir dans le navigateur",
   },
   es: {
-    title: ["Para acceder al enlace,", "sigue estos dos pasos simples :"],
+    access: "Para acceder al enlace,",
+    download: (app: string) => `Para descargar ${app},`,
+    steps: "sigue estos dos pasos simples :",
     tap: "Haz clic en",
     where: "en la parte superior derecha",
     then: "Luego ",
     action: "Abrir en el navegador",
   },
   de: {
-    title: ["Zum Link zugreifen,", "folge diesen zwei einfachen Schritten:"],
+    access: "Zum Link zugreifen,",
+    download: (app: string) => `Um ${app} herunterzuladen,`,
+    steps: "folge diesen zwei einfachen Schritten:",
     tap: "Klicken Sie auf",
     where: "in der oberen rechten Ecke",
     then: "dann ",
@@ -160,6 +168,7 @@ svg,img{display:block;vertical-align:middle}
 .gw-arrow:nth-child(3){opacity:.5;animation-delay:.4s}
 .gw-content{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;min-height:100%;height:100%;margin:0 16px}
 .gw-title{margin:0 0 32px;font-size:24px;font-weight:600;line-height:normal}
+.gw-title strong{font-weight:700}
 .gw-steps{display:flex;flex-direction:column;gap:24px}
 .gw-step{display:flex;align-items:flex-start;gap:16px}
 .gw-num{width:32px;height:32px;border:1px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:16px}
@@ -182,6 +191,9 @@ const DOTS = `<svg width="20" height="4" viewBox="0 0 20 4" fill="none" xmlns="h
  */
 export function renderGatewayPage(link: SmartLink, origin: string, locale: GatewayLocale): string {
   const copy = GATEWAY_COPY[locale];
+  const lead = link.appName
+    ? copy.download(`<strong>${escapeHtml(link.appName)}</strong>`)
+    : copy.access;
   const fontPreloads = Object.values(FONT_FILES)
     .map(
       (file) =>
@@ -202,7 +214,7 @@ export function renderGatewayPage(link: SmartLink, origin: string, locale: Gatew
       <div class="gw-pulse" aria-hidden="true"><div class="gw-pulse-ring"></div><div class="gw-pulse-core"></div></div>
       <div class="gw-arrows" aria-hidden="true">${ARROW}${ARROW}${ARROW}</div>
       <div class="gw-content">
-        <p class="gw-title">${copy.title[0]}<br />${copy.title[1]}</p>
+        <p class="gw-title">${lead}<br />${copy.steps}</p>
         <div class="gw-steps">
           <div class="gw-step">
             <div class="gw-num">1</div>
