@@ -19,8 +19,10 @@ export const ACT_LINK: SmartLink = {
   appName: "ACT.",
   // App Store Connect campaigns, by app the link is opened from.
   campaigns: {
-    tiktok: "Bio Tiktok",
-    instagram: "Bio Instagram",
+    // No spaces: some phones encode the URL twice, and App Store Connect then
+    // splits "Bio Tiktok" in two campaigns ("Bio Tiktok" and "Bio%20Tiktok").
+    tiktok: "bio-tiktok",
+    instagram: "bio-instagram",
   },
   meta: {
     lang: "fr",

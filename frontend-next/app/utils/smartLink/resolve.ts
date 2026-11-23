@@ -26,8 +26,8 @@ export type SmartLink = {
   appName?: string;
   /**
    * App Store Connect campaign (`ct`) per in-app browser, used when the URL
-   * has no `ct`. `{ tiktok: "Bio Tiktok" }` = visitors coming from TikTok
-   * count for the "Bio Tiktok" campaign.
+   * has no `ct`. `{ tiktok: "bio-tiktok" }` = visitors coming from TikTok
+   * count for the "bio-tiktok" campaign. Prefer names without spaces.
    */
   campaigns?: Partial<Record<InAppBrowser, string>>;
   /** Link preview (Open Graph / Twitter card) and document language. */
